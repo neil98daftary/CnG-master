@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        is-multidex="false"
+        jar="C:\Users\Neil\Desktop\Android Stuff\CnG-master\app\build\intermediates\exploded-aar\com.android.support\support-core-utils\24.2.1\jars\libs\internal_impl-24.2.1.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="24.0.3"
+        sha1="935a969265b2a166b2d20415423f5f6e90fe16e0">
+        <dex dex="C:\Users\Neil\Desktop\Android Stuff\CnG-master\app\build\intermediates\pre-dexed\debug\internal_impl-24.2.1_bb0c18fa8044ca6d0fd2285a7e43ae52b528e6f1.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Neil\Desktop\Android Stuff\CnG-master\app\build\intermediates\exploded-aar\com.android.support\support-fragment\24.2.1\jars\libs\internal_impl-24.2.1.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="24.0.3"
+        sha1="5f64d657e838e8375135c0f6057a7ff8fab6a50e">
+        <dex dex="C:\Users\Neil\Desktop\Android Stuff\CnG-master\app\build\intermediates\pre-dexed\debug\internal_impl-24.2.1_14db6ec0011a021aafc76ece6ae8d77299e7dfda.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Neil\Desktop\Android Stuff\CnG-master\app\build\intermediates\exploded-aar\com.android.support\support-core-utils\24.2.1\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="24.0.3"
+        sha1="9c4c3bc902450c39ed54de170db4fb12aea20a35">
+        <dex dex="C:\Users\Neil\Desktop\Android Stuff\CnG-master\app\build\intermediates\pre-dexed\debug\com.android.support-support-core-utils-24.2.1_9d8221c05689c6dbc73546bf2d0c1b355ecda63e.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Neil\Desktop\Android Stuff\CnG-master\app\build\intermediates\exploded-aar\com.android.support\support-core-ui\24.2.1\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="24.0.3"
+        sha1="e7f3132168957eefc46229fc32c3bd464642b71e">
+        <dex dex="C:\Users\Neil\Desktop\Android Stuff\CnG-master\app\build\intermediates\pre-dexed\debug\com.android.support-support-core-ui-24.2.1_b3f53c8aa6c66e76291eafa572b3501319e1ca53.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Neil\Desktop\Android Stuff\CnG-master\app\build\intermediates\exploded-aar\com.android.support\support-core-ui\24.2.1\jars\libs\internal_impl-24.2.1.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="24.0.3"
+        sha1="867dad63c33388ff8c7644b236579355036d075f">
+        <dex dex="C:\Users\Neil\Desktop\Android Stuff\CnG-master\app\build\intermediates\pre-dexed\debug\internal_impl-24.2.1_8e72275678dd6ee91b24d82689ce6b1a89531027.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Neil\Desktop\Android Stuff\CnG-master\app\build\intermediates\exploded-aar\com.android.support\support-media-compat\24.2.1\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="24.0.3"
+        sha1="09b462bbcb77650284bd6614f1a32f360ef369f8">
+        <dex dex="C:\Users\Neil\Desktop\Android Stuff\CnG-master\app\build\intermediates\pre-dexed\debug\com.android.support-support-media-compat-24.2.1_b6019ce2f8c99cf93617e974bc52f73481768b88.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Neil\Desktop\Android Stuff\CnG-master\app\build\intermediates\exploded-aar\com.android.support\animated-vector-drawable\24.2.1\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="24.0.3"
+        sha1="94bc1dfb84dcc8b6f6f8f7cc726d7b2dd39c1574">
+        <dex dex="C:\Users\Neil\Desktop\Android Stuff\CnG-master\app\build\intermediates\pre-dexed\debug\com.android.support-animated-vector-drawable-24.2.1_22cdf5b63fc27230cda12361e6ba73558a11e3be.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Neil\Desktop\Android Stuff\CnG-master\app\build\intermediates\exploded-aar\com.android.support\support-fragment\24.2.1\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="24.0.3"
+        sha1="b9a1ac78ad7ef3abedc4a4b30cd92bcacb939d1f">
+        <dex dex="C:\Users\Neil\Desktop\Android Stuff\CnG-master\app\build\intermediates\pre-dexed\debug\com.android.support-support-fragment-24.2.1_d67b7363cb8741367cd671324910b8aeb6b96d61.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Neil\Desktop\Android Stuff\CnG-master\app\build\intermediates\exploded-aar\com.sothree.slidinguppanel\library\3.3.1\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="24.0.3"
+        sha1="ab8a4903076897a8fe029433ba0c3c3f958712ce">
+        <dex dex="C:\Users\Neil\Desktop\Android Stuff\CnG-master\app\build\intermediates\pre-dexed\debug\com.sothree.slidinguppanel-library-3.3.1_678b7f48f7e77176f9cb82576d1bbb1ef6444d1b.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Neil\AppData\Local\Android\sdk1\extras\android\m2repository\com\android\support\support-annotations\24.2.1\support-annotations-24.2.1.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="24.0.3"
+        sha1="8de3aafecbdf98a61db6427f008f2d515bcd2544">
+        <dex dex="C:\Users\Neil\Desktop\Android Stuff\CnG-master\app\build\intermediates\pre-dexed\debug\support-annotations-24.2.1_bdd58ee199eae2a0f8f4a9984a507e650531bf4f.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Neil\Desktop\Android Stuff\CnG-master\app\build\intermediates\exploded-aar\com.android.support\support-compat\24.2.1\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="24.0.3"
+        sha1="0ecb4b595fa0f0f8018a149ace3ea6525624f94e">
+        <dex dex="C:\Users\Neil\Desktop\Android Stuff\CnG-master\app\build\intermediates\pre-dexed\debug\com.android.support-support-compat-24.2.1_4c7e3e24ac27b1854623e74dc7d63234f237d4fd.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Neil\Desktop\Android Stuff\CnG-master\app\build\intermediates\exploded-aar\com.android.support\cardview-v7\24.2.1\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="24.0.3"
+        sha1="c5e6490573cd2cc8018417f60ddd251138b6ed61">
+        <dex dex="C:\Users\Neil\Desktop\Android Stuff\CnG-master\app\build\intermediates\pre-dexed\debug\com.android.support-cardview-v7-24.2.1_1cfc534dca4f228dc20eed9f167db14e06a2d66d.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Neil\Desktop\Android Stuff\CnG-master\app\build\intermediates\exploded-aar\CnG-master.Libraries\circleindicator\1.2.2\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="24.0.3"
+        sha1="1db6784d006818fee2591f13b0bf09ac31a3d49a">
+        <dex dex="C:\Users\Neil\Desktop\Android Stuff\CnG-master\app\build\intermediates\pre-dexed\debug\CnG-master.Libraries-circleindicator-1.2.2_2e1c634ed07fd9089392932ff464d77b84ca38e1.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Neil\Desktop\Android Stuff\CnG-master\app\build\intermediates\exploded-aar\com.android.support\support-compat\24.2.1\jars\libs\internal_impl-24.2.1.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="24.0.3"
+        sha1="7e4389bd133359a2ff88623ff1e4ff93d6e6f780">
+        <dex dex="C:\Users\Neil\Desktop\Android Stuff\CnG-master\app\build\intermediates\pre-dexed\debug\internal_impl-24.2.1_795c9f70b23cce59ea041e9f8de48bed702ce641.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Neil\Desktop\Android Stuff\CnG-master\app\build\intermediates\exploded-aar\com.android.support\recyclerview-v7\24.2.1\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="24.0.3"
+        sha1="7521486d9bfd2cd9e756e0cf75ed7d97f2ce2d3b">
+        <dex dex="C:\Users\Neil\Desktop\Android Stuff\CnG-master\app\build\intermediates\pre-dexed\debug\com.android.support-recyclerview-v7-24.2.1_0122b461691bffd775799b765f45d4e70b22652a.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Neil\Desktop\Android Stuff\CnG-master\app\build\intermediates\exploded-aar\com.android.support\support-vector-drawable\24.2.1\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="24.0.3"
+        sha1="d5c731fc64c03dfe04d51134955b483551c35849">
+        <dex dex="C:\Users\Neil\Desktop\Android Stuff\CnG-master\app\build\intermediates\pre-dexed\debug\com.android.support-support-vector-drawable-24.2.1_ac2430dac3f80d904ffc30a7f6417d0594a87def.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Neil\Desktop\Android Stuff\CnG-master\app\build\intermediates\exploded-aar\com.android.support\support-media-compat\24.2.1\jars\libs\internal_impl-24.2.1.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="24.0.3"
+        sha1="fbf8da429efd5ad21e02e3e5ecaa1efc4167878d">
+        <dex dex="C:\Users\Neil\Desktop\Android Stuff\CnG-master\app\build\intermediates\pre-dexed\debug\internal_impl-24.2.1_01f41f821ab4183c2097f9a0e0dbb7289b0ed94d.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Neil\Desktop\Android Stuff\CnG-master\app\build\intermediates\exploded-aar\com.android.support\support-v4\24.2.1\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="24.0.3"
+        sha1="d7c42c80f6509b9ea4db28ca7859ffae08ec5741">
+        <dex dex="C:\Users\Neil\Desktop\Android Stuff\CnG-master\app\build\intermediates\pre-dexed\debug\com.android.support-support-v4-24.2.1_feacd204992d3a2e89573a3e53aa2fe2c8095691.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Neil\Desktop\Android Stuff\CnG-master\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\24.2.1\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="24.0.3"
+        sha1="43b2dba6b5a0b14527961b75329d0b90025f15ea">
+        <dex dex="C:\Users\Neil\Desktop\Android Stuff\CnG-master\app\build\intermediates\pre-dexed\debug\com.android.support-appcompat-v7-24.2.1_c6c4ec130cb4618d8ea101114a7f0b76b48d8cbf.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Neil\Desktop\Android Stuff\CnG-master\app\build\intermediates\exploded-aar\com.android.support\design\24.2.1\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="24.0.3"
+        sha1="e03f47f3d1017a093bb3239d4ec47c3447f40744">
+        <dex dex="C:\Users\Neil\Desktop\Android Stuff\CnG-master\app\build\intermediates\pre-dexed\debug\com.android.support-design-24.2.1_a09d4fdb6ab742f108a61af8f5163f27a4006589.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Neil\Desktop\Android Stuff\CnG-master\app\build\intermediates\exploded-aar\com.tjerkw.slideexpandable\SlidableListView\1.0\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="24.0.3"
+        sha1="a1c88a765bf7389c0b46f3c81ba0195977f0e118">
+        <dex dex="C:\Users\Neil\Desktop\Android Stuff\CnG-master\app\build\intermediates\pre-dexed\debug\com.tjerkw.slideexpandable-SlidableListView-1.0_cc1c9c5e710aa805247bca0cc347f3f87052cf46.jar" />
+    </item>
+
+</items>

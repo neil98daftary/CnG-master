@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/CnG-master.iml" filepath="$PROJECT_DIR$/CnG-master.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Libraries/Libraries.iml" filepath="$PROJECT_DIR$/Libraries/Libraries.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Libraries/PullUpMenu/PullUpMenu.iml" filepath="$PROJECT_DIR$/Libraries/PullUpMenu/PullUpMenu.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Libraries/SlidableListView/SlidableListView.iml" filepath="$PROJECT_DIR$/Libraries/SlidableListView/SlidableListView.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Libraries/circleindicator/circleindicator.iml" filepath="$PROJECT_DIR$/Libraries/circleindicator/circleindicator.iml" />
+    </modules>
+  </component>
+</project>

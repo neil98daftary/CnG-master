@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">CnG</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">Settings</string>
+
+    <string name="home">Home</string>
+    <string name="offers">Offers</string>
+    <string name="feedback">Feedback</string>
+    <string name="sign_out">Sign Out</string>
+    <string name="title_vendor_list">Items</string>
+    <string name="title_vendor_detail">Vendor Detail</string>
+    <string name="title_activity_vendor">Vendor</string>
+    <string name="sign_out_vendor">Sign Out</string>
+    <string name="my_shops">My Shops</string>
+</resources>
