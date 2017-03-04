@@ -9,6 +9,8 @@ public class Industry {
     private String industryName;
     private int industryId;
 
+    public Industry(){}
+
     public Industry(String name, int id){
         industryName=name;
         industryId=id;

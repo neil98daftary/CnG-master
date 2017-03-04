@@ -20,11 +20,12 @@ import java.util.ArrayList;
 public class HomeRecyclerAdapter extends RecyclerView.Adapter<HomeRecyclerAdapter.IndustryHolder>{
 
     private static ArrayList<Industry> mIndustries;
+    private Industry itemIndustry;
 
     public static class IndustryHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         private TextView mItemName;
-        private Industry mIndustry;
+        //private Industry mIndustry;
 
         public IndustryHolder(View v) {
             super(v);
@@ -42,7 +43,6 @@ public class HomeRecyclerAdapter extends RecyclerView.Adapter<HomeRecyclerAdapte
         }
 
         public void bindIndustry(Industry industry) {
-            mIndustry = industry;
             mItemName.setText(industry.getName());
         }
     }
@@ -55,12 +55,13 @@ public class HomeRecyclerAdapter extends RecyclerView.Adapter<HomeRecyclerAdapte
     public HomeRecyclerAdapter.IndustryHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View inflatedView = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.industry_item, parent, false);
+
         return new IndustryHolder(inflatedView);
     }
 
     @Override
     public void onBindViewHolder(HomeRecyclerAdapter.IndustryHolder holder, int position) {
-        Industry itemIndustry = mIndustries.get(position);
+        itemIndustry = mIndustries.get(position);
         holder.bindIndustry(itemIndustry);
     }
 

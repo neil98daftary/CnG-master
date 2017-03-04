@@ -1,6 +1,8 @@
 package com.example.adityadesai.cng.Activities;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
@@ -12,22 +14,40 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Toast;
 
 import com.example.adityadesai.cng.NavDrawerFragments.FeedbackPageFragment;
 import com.example.adityadesai.cng.NavDrawerFragments.HomePageFragment;
 import com.example.adityadesai.cng.NavDrawerFragments.MyShopsFragment;
 import com.example.adityadesai.cng.NavDrawerFragments.OffersPageFragment;
+import com.example.adityadesai.cng.Objects.Industry;
 import com.example.adityadesai.cng.R;
+
+
+
 
 public class  MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     FragmentManager mFragmentManager;
 
+    /*Initializing Firebase variables*/
+
+
+    public static final String ANONYMOUS = "anonymous";
+    public static final int RC_SIGN_IN = 1;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        Toast.makeText(this, "Welcome to CNG!!", Toast.LENGTH_SHORT).show();
+
+        /*Firebase Stuff*/
+
+
 
         // Transition
         overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
@@ -48,7 +68,13 @@ public class  MainActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+
+
+
     }
+
+
 
     @Override
     public void onBackPressed() {
