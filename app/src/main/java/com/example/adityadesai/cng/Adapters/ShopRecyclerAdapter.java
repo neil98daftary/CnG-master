@@ -30,6 +30,7 @@ public class ShopRecyclerAdapter extends RecyclerView.Adapter<ShopRecyclerAdapte
         private String name;
         private String address;
         private String phone;
+        private String id;
 
         public ShopHolder(View v) {
             super(v);
@@ -42,16 +43,20 @@ public class ShopRecyclerAdapter extends RecyclerView.Adapter<ShopRecyclerAdapte
         @Override
         public void onClick(View v) {
             int position  =   getAdapterPosition();
-            name = mItemName.getText().toString();
-            Shop shop=getShopbyName(name);
-            if(shop!=null){
-                address=shop.getShopAddress();
-                phone=shop.getShopPhone();
+            mShop = mShops.get(position);
+
+            if(mShop!=null){
+                address= mShop.getShopAddress();
+                phone= mShop.getShopPhone();
+                id = mShop.getShop_id();
             }
+
+
             Intent i=new Intent(v.getContext(),ShopDetailsActivity.class);
             i.putExtra("shopName",name);
             i.putExtra("shopAddress",address);
             i.putExtra("shopPhone",phone);
+            i.putExtra("shop_id",id);
             v.getContext().startActivity(i);
         }
 

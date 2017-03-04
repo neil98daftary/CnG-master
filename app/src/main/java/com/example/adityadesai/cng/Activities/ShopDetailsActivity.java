@@ -48,9 +48,10 @@ public class ShopDetailsActivity extends AppCompatActivity {
     private MenuRecyclerAdapter mAdapter;
     ArrayAdapter mArrayAdapter;
 
-    public static String name;
+    private String name;
     private String address;
     private String phone;
+    public static String id;
 
     private ListView mListView;
     public static ArrayList<ItemDetail> mItemDetails;
@@ -73,6 +74,7 @@ public class ShopDetailsActivity extends AppCompatActivity {
         name = i.getStringExtra("shopName");
         address = i.getStringExtra("shopAddress");
         phone = i.getStringExtra("shopPhone");
+        id = i.getStringExtra("shop_id");
 
         // Set title
         android.support.design.widget.CollapsingToolbarLayout toolbar=(android.support.design.widget.CollapsingToolbarLayout)findViewById(R.id.collapsingToolbar);
@@ -100,7 +102,7 @@ public class ShopDetailsActivity extends AppCompatActivity {
 
         mFirebaseDatabase = FirebaseDatabase.getInstance();
         mFirebaseStorage = FirebaseStorage.getInstance();
-        mItemDatabaseReference = mFirebaseDatabase.getReference().child(ShopListActivity.shop_type).child(name);
+        mItemDatabaseReference = mFirebaseDatabase.getReference().child(ShopListActivity.shop_type).child(id);
         mStorageReference = mFirebaseStorage.getReference().child("item_photos");
 
 
@@ -164,7 +166,9 @@ public class ShopDetailsActivity extends AppCompatActivity {
         fetchItemList fIL = new fetchItemList();
         fIL.execute();
 
-
+        /******* A sample on how to push data********/
+       // mItemDatabaseReference.push().setValue(new MenuItem("Rice"));
+        //mItemDatabaseReference.push().setValue(new MenuItem("Oil"));
 
     }
     //END OF onCreate//

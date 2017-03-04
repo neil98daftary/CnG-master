@@ -72,11 +72,16 @@ public class ItemDetailsActivity extends AppCompatActivity {
 
         mFirebaseDatabase = FirebaseDatabase.getInstance();
         mFirebaseStorage = FirebaseStorage.getInstance();
-        mItemDetailDatabaseReference = mFirebaseDatabase.getReference().child(ShopListActivity.shop_type).child(ShopDetailsActivity.name).child(item_name);
+        mItemDetailDatabaseReference = mFirebaseDatabase.getReference().child(ShopListActivity.shop_type).child(ShopDetailsActivity.id).child(item_name);
         mStorageReference = mFirebaseStorage.getReference().child("item_photos");
 
         fetchItemDetail fID = new fetchItemDetail();
         fID.execute();
+
+
+        /******SAMPLE ON HOW TO PUSH THE DATA*******/
+        //mItemDetailDatabaseReference.push().setValue(new ItemDetail("Groundnut","100 per L","Excellent Quality"));
+        //mItemDetailDatabaseReference.push().setValue(new ItemDetail("Sunflower","200 per L","Excellent Quality Also"));
 
     }
 

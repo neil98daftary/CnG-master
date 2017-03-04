@@ -87,6 +87,9 @@ public class ShopListActivity extends AppCompatActivity {
         fSl.execute();
 
 
+        /******sAMPLE ON HOW TO PUSH DATA******/
+        //mShopDatabaseReference.push().setValue(new Shop("Big Bazaar","Ghatkopar","69696969","1001"));
+        //mShopDatabaseReference.push().setValue(new Shop("Big Bazaar","Thane","420420420","1002"));
 
 
     }
@@ -116,9 +119,12 @@ public class ShopListActivity extends AppCompatActivity {
                         String shop_name = (String) snapshot.child("shopName").getValue();
                         String shop_address = (String) snapshot.child("shopAddress").getValue();
                         String shop_phonenum = (String) snapshot.child("shopPhone").getValue();
+                        String shop_id =  (String) snapshot.child("shop_id").getValue();
 
-                        if(shop_name != null && shop_address != null && shop_phonenum != null) {
-                            mShopList.add(new Shop(shop_name, shop_address, shop_phonenum));
+
+
+                        if(shop_name != null && shop_address != null && shop_phonenum != null && shop_id != null) {
+                            mShopList.add(new Shop(shop_name, shop_address, shop_phonenum,shop_id));
                         }
 
                     }
