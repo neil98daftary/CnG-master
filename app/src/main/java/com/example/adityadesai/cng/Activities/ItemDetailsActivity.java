@@ -1,6 +1,7 @@
 package com.example.adityadesai.cng.Activities;
 
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -13,10 +14,29 @@ import com.tjerkw.slideexpandable.library.SlideExpandableListAdapter;
 
 import java.util.ArrayList;
 
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+
+
 public class ItemDetailsActivity extends AppCompatActivity {
 
     private ListView mListView;
     private ItemDetailAdapter mAdapter;
+    private ArrayList<ItemDetail> mItemDetails;
+    private String item_name;
+
+    private FirebaseDatabase mFirebaseDatabase;
+    private DatabaseReference mItemDetailDatabaseReference;
+    private ChildEventListener mChildEventListener;
+    private FirebaseStorage mFirebaseStorage;
+    private StorageReference mStorageReference;
+    private ValueEventListener mValueEventLiatener;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,9 +51,12 @@ public class ItemDetailsActivity extends AppCompatActivity {
 
         //mListView = (ListView) findViewById(R.id.item_details_list);
         mListView = (ListView) this.findViewById(R.id.item_details_list);
+        mItemDetails = new ArrayList<ItemDetail>();
 
-        ArrayList<ItemDetail> mDetailList=new ArrayList<>();
-        mDetailList.add(new ItemDetail("Name A", "Rs 100", "Description A"));
+        Intent i = getIntent();
+        item_name = i.getStringExtra("Item");
+
+        /*mDetailList.add(new ItemDetail("Name A", "Rs 100", "Description A"));
         mDetailList.add(new ItemDetail("Name B", "Rs 100", "Description B"));
         mDetailList.add(new ItemDetail("Name C", "Rs 100", "Description C"));
         mDetailList.add(new ItemDetail("Name D", "Rs 100", "Description D"));
@@ -43,8 +66,22 @@ public class ItemDetailsActivity extends AppCompatActivity {
         mDetailList.add(new ItemDetail("Name H", "Rs 100", "Description H"));
         mDetailList.add(new ItemDetail("Name I", "Rs 100", "Description I"));
         mDetailList.add(new ItemDetail("Name J", "Rs 100", "Description J"));
+        */
 
-        mAdapter = new ItemDetailAdapter(this, mDetailList);
+
+
+        mFirebaseDatabase = FirebaseDatabase.getInstance();
+        mFirebaseStorage = FirebaseStorage.getInstance();
+        mItemDetailDatabaseReference = mFirebaseDatabase.getReference().child(ShopListActivity.shop_type).child(ShopDetailsActivity.name).child(item_name);
+        mStorageReference = mFirebaseStorage.getReference().child("item_photos");
+
+        fetchItemDetail fID = new fetchItemDetail();
+        fID.execute();
+
+    }
+
+    public void updateUI(){
+        mAdapter = new ItemDetailAdapter(this, mItemDetails);
         mListView.setAdapter(new SlideExpandableListAdapter(
                 mAdapter,
                 R.id.item_detail_view,
@@ -52,6 +89,38 @@ public class ItemDetailsActivity extends AppCompatActivity {
         ));
     }
 
+    public class fetchItemDetail extends AsyncTask<Void,Void,ArrayList<ItemDetail>> {
+        @Override
+        protected ArrayList<ItemDetail> doInBackground(Void... params) {
+
+            mValueEventLiatener = new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
+                    mItemDetails.clear();
+                    for(DataSnapshot snapshot : dataSnapshot.getChildren()){
+                        String iName = (String) snapshot.child("itemName").getValue();
+                        String iPrice = (String) snapshot.child("itemPrice").getValue();
+                        String iDesc = (String) snapshot.child("itemDescription").getValue();
+                        /*Trapping the price and Description????How???*/
+                        if(iName != null && iPrice != null && iDesc != null) {
+                            ItemDetail itemDetail = new ItemDetail(iName, iPrice, iDesc);
+                            mItemDetails.add(itemDetail);
+                        }
+
+                    }
+                    updateUI();
+                }
+
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
+
+                }
+            };
+
+            mItemDetailDatabaseReference.addValueEventListener(mValueEventLiatener);
+            return null;
+        }
+    }
     // Go back
     public boolean onOptionsItemSelected(MenuItem item){
         Intent i = new Intent(this, ShopDetailsActivity.class);

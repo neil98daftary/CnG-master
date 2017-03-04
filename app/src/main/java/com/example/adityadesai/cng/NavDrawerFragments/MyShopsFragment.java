@@ -49,13 +49,13 @@ public class MyShopsFragment extends android.support.v4.app.Fragment {
         mRecyclerView.setLayoutManager(mGridLayoutManager);
 
         final ArrayList<Industry> mIndustryList= new ArrayList<>();
-        mIndustryList.add(new Industry("Shop A",++id));
+        /*mIndustryList.add(new Industry("Shop A",++id));
         mIndustryList.add(new Industry("Shop B",++id));
         mIndustryList.add(new Industry("Shop C",++id));
         mIndustryList.add(new Industry("Shop D",++id));
         mIndustryList.add(new Industry("Shop E",++id));
         mIndustryList.add(new Industry("Shop F",++id));
-        mIndustryList.add(new Industry("Shop G",++id));
+        mIndustryList.add(new Industry("Shop G",++id));*/
 
         mAdapter = new HomeRecyclerAdapter(mIndustryList);
         mRecyclerView.setAdapter(mAdapter);
