@@ -7,11 +7,11 @@ package com.example.adityadesai.cng.Objects;
 public class Industry {
 
     private String industryName;
-    private int industryId;
+    private long industryId;
 
     public Industry(){}
 
-    public Industry(String name, int id){
+    public Industry(String name, Long id){
         industryName=name;
         industryId=id;
     }
@@ -19,7 +19,7 @@ public class Industry {
     public String getName(){
         return industryName;
     }
-    public int getId(){
+    public Long getId(){
         return industryId;
     }
 }

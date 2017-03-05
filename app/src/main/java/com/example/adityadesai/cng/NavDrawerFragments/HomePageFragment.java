@@ -57,6 +57,7 @@ public class HomePageFragment extends android.support.v4.app.Fragment {
     private StorageReference mStorageReference;
     private ValueEventListener mValueEventLiatener;
 
+
     public static final String ANONYMOUS = "anonymous";
     public static final int RC_SIGN_IN = 1;
 
@@ -80,7 +81,9 @@ public class HomePageFragment extends android.support.v4.app.Fragment {
 
         mIndustryList= new ArrayList<>();
 
-        mIndustryList.add(new Industry("Decor",++id));
+        //mMessagesDatabaseReference.push().setValue(new Industry("Gym",++id));
+        //mMessagesDatabaseReference.push().setValue(new Industry("Decor",++id));
+        //mMessagesDatabaseReference.push().setValue(new Industry("Groceries",++id));
         /*mIndustryList.add(new Industry("Clothing",++id));
         mIndustryList.add(new Industry("Shoes",++id));
         mIndustryList.add(new Industry("Chemist",++id));
@@ -141,7 +144,7 @@ public class HomePageFragment extends android.support.v4.app.Fragment {
                 public void onChildMoved(DataSnapshot dataSnapshot, String s) {}
                 public void onCancelled(DatabaseError databaseError) {}
             };
-            mMessagesDatabaseReference.addChildEventListener(mChildEventListener);
+            //mIndustryDatabaseReference.addChildEventListener(mChildEventListener);
         }
     }
 
@@ -164,8 +167,8 @@ public class HomePageFragment extends android.support.v4.app.Fragment {
                     mIndustryList.clear();
                     for(DataSnapshot snapshot : dataSnapshot.getChildren()){
                         String name = (String) snapshot.child("name").getValue();
-                        int id = 0;
-                        mIndustryList.add(new Industry(name,++id));
+                        Long id = (Long) snapshot.child("id").getValue();
+                        mIndustryList.add(new Industry(name,id));
                     }
                     updateUI();
                 }

@@ -13,8 +13,10 @@ public class ItemDetail{
     private String itemPrice;
     private String itemDescription;
 
-    public ItemDetail(String name, String price, String description){
-        itemName=name;
+
+    public ItemDetail(String type, String price, String description){
+
+        itemName=type;
         itemPrice=price;
         itemDescription=description;
     }

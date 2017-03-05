@@ -3,6 +3,7 @@ package com.example.adityadesai.cng.Activities;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
+import android.os.AsyncTask;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AlertDialog;
@@ -19,6 +20,7 @@ import android.widget.TextView;
 
 import com.example.adityadesai.cng.Adapters.CustomPagerAdapter;
 import com.example.adityadesai.cng.Adapters.MenuRecyclerAdapter;
+import com.example.adityadesai.cng.Objects.ItemDetail;
 import com.example.adityadesai.cng.Objects.MenuItem;
 import com.example.adityadesai.cng.R;
 import com.sothree.slidinguppanel.SlidingUpPanelLayout;
@@ -26,6 +28,15 @@ import com.sothree.slidinguppanel.SlidingUpPanelLayout;
 import java.util.ArrayList;
 
 import me.relex.circleindicator.CircleIndicator;
+
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 
 public class ShopDetailsActivity extends AppCompatActivity {
 
@@ -40,9 +51,19 @@ public class ShopDetailsActivity extends AppCompatActivity {
     private String name;
     private String address;
     private String phone;
+    public static String id;
 
     private ListView mListView;
+    public static ArrayList<ItemDetail> mItemDetails;
     int isFavourite=0;
+    private ArrayList<MenuItem> mMenuItems;
+
+    private FirebaseDatabase mFirebaseDatabase;
+    private DatabaseReference mItemDatabaseReference;
+    private ChildEventListener mChildEventListener;
+    private FirebaseStorage mFirebaseStorage;
+    private StorageReference mStorageReference;
+    private ValueEventListener mValueEventLiatener;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,6 +74,7 @@ public class ShopDetailsActivity extends AppCompatActivity {
         name = i.getStringExtra("shopName");
         address = i.getStringExtra("shopAddress");
         phone = i.getStringExtra("shopPhone");
+        id = i.getStringExtra("shop_id");
 
         // Set title
         android.support.design.widget.CollapsingToolbarLayout toolbar=(android.support.design.widget.CollapsingToolbarLayout)findViewById(R.id.collapsingToolbar);
@@ -78,12 +100,20 @@ public class ShopDetailsActivity extends AppCompatActivity {
         CircleIndicator indicator = (CircleIndicator) findViewById(R.id.indicator);
         indicator.setViewPager(mViewPager);
 
+        mFirebaseDatabase = FirebaseDatabase.getInstance();
+        mFirebaseStorage = FirebaseStorage.getInstance();
+        mItemDatabaseReference = mFirebaseDatabase.getReference().child(ShopListActivity.shop_type).child(id);
+        mStorageReference = mFirebaseStorage.getReference().child("item_photos");
+
+
+
+
         mRecyclerView = (RecyclerView) findViewById(R.id.shop_menu_recycler);
         mGridLayoutManager=new GridLayoutManager(this,2);
         mRecyclerView.setLayoutManager(mGridLayoutManager);
 
-        final ArrayList<MenuItem> mMenuItems= new ArrayList<>();
-        mMenuItems.add(new MenuItem("Item A"));
+        mMenuItems= new ArrayList<>();
+        /*mMenuItems.add(new MenuItem("Item A"));
         mMenuItems.add(new MenuItem("Item B"));
         mMenuItems.add(new MenuItem("Item C"));
         mMenuItems.add(new MenuItem("Item D"));
@@ -92,10 +122,11 @@ public class ShopDetailsActivity extends AppCompatActivity {
         mMenuItems.add(new MenuItem("Item G"));
         mMenuItems.add(new MenuItem("Item H"));
         mMenuItems.add(new MenuItem("Item I"));
-        mMenuItems.add(new MenuItem("Item J"));
+        mMenuItems.add(new MenuItem("Item J"));*/
 
-        mAdapter = new MenuRecyclerAdapter(mMenuItems);
-        mRecyclerView.setAdapter(mAdapter);
+
+
+
 
         final ArrayList<String> mOfferItems = new ArrayList<>();
         mOfferItems.add("Buy 1 get 1 free on Item A");
@@ -131,6 +162,52 @@ public class ShopDetailsActivity extends AppCompatActivity {
         };
 
         slidingPanel.addPanelSlideListener(mSlidePanelListener);
+
+        fetchItemList fIL = new fetchItemList();
+        fIL.execute();
+
+        /******* A sample on how to push data********/
+       // mItemDatabaseReference.push().setValue(new MenuItem("Rice"));
+        //mItemDatabaseReference.push().setValue(new MenuItem("Oil"));
+
+    }
+    //END OF onCreate//
+
+    public void updateUI(){
+        mAdapter = new MenuRecyclerAdapter(mMenuItems);
+        mRecyclerView.setAdapter(mAdapter);
+    }
+
+    public class fetchItemList extends AsyncTask<Void,Void,ArrayList<MenuItem>> {
+        @Override
+        protected ArrayList<MenuItem> doInBackground(Void... params) {
+
+            mValueEventLiatener = new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
+                    mMenuItems.clear();
+                    for(DataSnapshot snapshot : dataSnapshot.getChildren()){
+                        String iName = (String) snapshot.child("itemName").getValue();
+                        /*Trapping the price and Description????How???*/
+                        //ItemDetail itemDetail = new ItemDetail(iName,iPrice,iDesc);
+                        //mItemDetails.add(itemDetail);
+                        if(iName != null) {
+                            mMenuItems.add(new MenuItem(iName));
+                        }
+
+                    }
+                    updateUI();
+                }
+
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
+
+                }
+            };
+
+            mItemDatabaseReference.addValueEventListener(mValueEventLiatener);
+            return null;
+        }
     }
 
     // Go back

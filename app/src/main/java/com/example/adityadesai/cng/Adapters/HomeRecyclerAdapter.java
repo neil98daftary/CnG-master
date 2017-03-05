@@ -38,7 +38,7 @@ public class HomeRecyclerAdapter extends RecyclerView.Adapter<HomeRecyclerAdapte
         public void onClick(View v) {
             int position  =   getAdapterPosition();
             Intent i=new Intent(v.getContext(),ShopListActivity.class);
-            i.putExtra("id",Integer.toString(mIndustries.get(position).getId()));
+            i.putExtra("name",mIndustries.get(position).getName());
             v.getContext().startActivity(i);
         }
 

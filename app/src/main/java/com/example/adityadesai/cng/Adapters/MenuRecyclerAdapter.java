@@ -19,15 +19,16 @@ import java.util.ArrayList;
 
 public class MenuRecyclerAdapter extends RecyclerView.Adapter<MenuRecyclerAdapter.MenuHolder>{
 
-    private static ArrayList<MenuItem> mMenuItems;
+    private  ArrayList<MenuItem> mMenuItems;
 
     public static class MenuHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         private TextView mItemName;
-        private MenuItem mMenuItem;
+        private String mMenuItem;
 
         public MenuHolder(View v) {
             super(v);
+
 
             mItemName = (TextView) v.findViewById(R.id.industry_name);
             v.setOnClickListener(this);
@@ -36,12 +37,13 @@ public class MenuRecyclerAdapter extends RecyclerView.Adapter<MenuRecyclerAdapte
         @Override
         public void onClick(View v) {
             Intent i=new Intent(v.getContext(), ItemDetailsActivity.class);
+            i.putExtra("Item",mMenuItem);
             v.getContext().startActivity(i);
         }
 
-        public void bindIndustry(MenuItem menuItem) {
+        public void bindIndustry(String menuItem) {
             mMenuItem = menuItem;
-            mItemName.setText(menuItem.getItemName());
+            mItemName.setText(mMenuItem);
         }
     }
 
@@ -58,7 +60,7 @@ public class MenuRecyclerAdapter extends RecyclerView.Adapter<MenuRecyclerAdapte
 
     @Override
     public void onBindViewHolder(MenuRecyclerAdapter.MenuHolder holder, int position) {
-        MenuItem menuItem = mMenuItems.get(position);
+        String menuItem = mMenuItems.get(position).getItemName();
         holder.bindIndustry(menuItem);
     }
 
