@@ -15,4 +15,9 @@
     <string name="title_activity_vendor">Vendor</string>
     <string name="sign_out_vendor">Sign Out</string>
     <string name="my_shops">My Shops</string>
+    <string name="title_activity_a">a</string>
+    <string name="title_activity_b">b</string>
+    <string name="title_activity_edit_shop">EditShopActivity</string>
+    <string name="title_activity_edit_item_list">EditItemListActivity</string>
+    <string name="title_activity_edit_item_detail">EditItemDetailActivity</string>
 </resources>

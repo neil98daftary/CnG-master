@@ -9,6 +9,5 @@
         android:layout_height="match_parent"
         android:id="@+id/offer_image"
         android:background="@android:color/darker_gray"
-        android:src="@drawable/first_offer"
         android:scaleType="fitXY"/>
 </LinearLayout>

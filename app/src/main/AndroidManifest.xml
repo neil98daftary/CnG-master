@@ -17,13 +17,31 @@
             android:name=".Activities.ShopDetailsActivity"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".Activities.ItemDetailsActivity" />
-        <activity android:name=".Activities.choose_between">
+        <activity android:name=".Activities.ChoiceActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".Activities.VendorItemListActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".Activities.VendorItemDetailsActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".Activities.EditShopActivity"
+            android:label="@string/title_activity_edit_shop"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".Activities.EditItemListActivity"
+            android:label="@string/title_activity_edit_item_list"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".Activities.EditItemDetailActivity"
+            android:label="@string/title_activity_edit_item_detail"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>
