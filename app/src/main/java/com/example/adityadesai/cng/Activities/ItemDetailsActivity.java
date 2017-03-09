@@ -36,7 +36,7 @@ public class ItemDetailsActivity extends AppCompatActivity {
     private ChildEventListener mChildEventListener;
     private FirebaseStorage mFirebaseStorage;
     private StorageReference mStorageReference;
-    private ValueEventListener mValueEventLiatener;
+    private ValueEventListener mValueEventListener;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -98,7 +98,7 @@ public class ItemDetailsActivity extends AppCompatActivity {
         @Override
         protected ArrayList<ItemDetail> doInBackground(Void... params) {
 
-            mValueEventLiatener = new ValueEventListener() {
+            mValueEventListener = new ValueEventListener() {
                 @Override
                 public void onDataChange(DataSnapshot dataSnapshot) {
                     mItemDetails.clear();
@@ -122,7 +122,7 @@ public class ItemDetailsActivity extends AppCompatActivity {
                 }
             };
 
-            mItemDetailDatabaseReference.addValueEventListener(mValueEventLiatener);
+            mItemDetailDatabaseReference.addValueEventListener(mValueEventListener);
             return null;
         }
     }

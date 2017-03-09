@@ -51,10 +51,11 @@ public class ShopDetailsActivity extends AppCompatActivity {
     private String name;
     private String address;
     private String phone;
+    private String industry;
     public static String id;
 
     private ListView mListView;
-    public static ArrayList<ItemDetail> mItemDetails;
+    //public static ArrayList<ItemDetail> mItemDetails;
     int isFavourite=0;
     private ArrayList<MenuItem> mMenuItems;
 
@@ -63,7 +64,7 @@ public class ShopDetailsActivity extends AppCompatActivity {
     private ChildEventListener mChildEventListener;
     private FirebaseStorage mFirebaseStorage;
     private StorageReference mStorageReference;
-    private ValueEventListener mValueEventLiatener;
+    private ValueEventListener mValueEventListener;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -74,6 +75,7 @@ public class ShopDetailsActivity extends AppCompatActivity {
         name = i.getStringExtra("shopName");
         address = i.getStringExtra("shopAddress");
         phone = i.getStringExtra("shopPhone");
+        industry=i.getStringExtra("industry_name");
         id = i.getStringExtra("shop_id");
 
         // Set title
@@ -102,8 +104,8 @@ public class ShopDetailsActivity extends AppCompatActivity {
 
         mFirebaseDatabase = FirebaseDatabase.getInstance();
         mFirebaseStorage = FirebaseStorage.getInstance();
-        mItemDatabaseReference = mFirebaseDatabase.getReference().child(ShopListActivity.shop_type).child(id);
-        mStorageReference = mFirebaseStorage.getReference().child("item_photos");
+        mItemDatabaseReference = mFirebaseDatabase.getReference().child(industry).child(id); //change industry to ShopListActivity.shop_type
+        mStorageReference = mFirebaseStorage.getReference().child("item_photos");// if it doesnt work
 
 
 
@@ -182,7 +184,7 @@ public class ShopDetailsActivity extends AppCompatActivity {
         @Override
         protected ArrayList<MenuItem> doInBackground(Void... params) {
 
-            mValueEventLiatener = new ValueEventListener() {
+            mValueEventListener = new ValueEventListener() {
                 @Override
                 public void onDataChange(DataSnapshot dataSnapshot) {
                     mMenuItems.clear();
@@ -205,7 +207,7 @@ public class ShopDetailsActivity extends AppCompatActivity {
                 }
             };
 
-            mItemDatabaseReference.addValueEventListener(mValueEventLiatener);
+            mItemDatabaseReference.addValueEventListener(mValueEventListener);
             return null;
         }
     }

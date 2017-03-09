@@ -9,12 +9,14 @@ public class Shop {
     private String shopAddress;
     private String shopPhone;
     private String shop_id;
+    private String industryName;
 
-    public Shop(String name, String address, String phone,String id){
+    public Shop(String name, String address, String phone,String id, String industry){
         shopName=name;
         shopAddress=address;
         shopPhone=phone;
         shop_id = id;
+        industryName = industry;
     }
 
     public String getShopName(){
@@ -30,4 +32,6 @@ public class Shop {
     }
 
     public String getShop_id() {return shop_id;}
+
+    public String getIndustryName() {return industryName;}
 }

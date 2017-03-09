@@ -37,7 +37,7 @@ public class ShopListActivity extends AppCompatActivity {
     private ChildEventListener mChildEventListener;
     private FirebaseStorage mFirebaseStorage;
     private StorageReference mStorageReference;
-    private ValueEventListener mValueEventLiatener;
+    private ValueEventListener mValueEventListener;
 
     public static String shop_type;
 
@@ -111,7 +111,7 @@ public class ShopListActivity extends AppCompatActivity {
         @Override
         protected ArrayList<Shop> doInBackground(Void... params) {
 
-            mValueEventLiatener = new ValueEventListener() {
+            mValueEventListener = new ValueEventListener() {
                 @Override
                 public void onDataChange(DataSnapshot dataSnapshot) {
                     mShopList.clear();
@@ -120,11 +120,11 @@ public class ShopListActivity extends AppCompatActivity {
                         String shop_address = (String) snapshot.child("shopAddress").getValue();
                         String shop_phonenum = (String) snapshot.child("shopPhone").getValue();
                         String shop_id =  (String) snapshot.child("shop_id").getValue();
-
+                        String industry_name =  (String) snapshot.child("industryName").getValue();
 
 
                         if(shop_name != null && shop_address != null && shop_phonenum != null && shop_id != null) {
-                            mShopList.add(new Shop(shop_name, shop_address, shop_phonenum,shop_id));
+                            mShopList.add(new Shop(shop_name, shop_address, shop_phonenum,shop_id,industry_name));
                         }
 
                     }
@@ -137,7 +137,7 @@ public class ShopListActivity extends AppCompatActivity {
                 }
             };
 
-            mShopDatabaseReference.addValueEventListener(mValueEventLiatener);
+            mShopDatabaseReference.addValueEventListener(mValueEventListener);
             return null;
         }
     }

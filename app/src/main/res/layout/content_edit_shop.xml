@@ -15,6 +15,12 @@
     tools:showIn="@layout/activity_edit_shop">
 
     <EditText
+        android:hint="Industry"
+        android:id="@+id/edit_shop_industry"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <EditText
         android:hint="Name"
         android:id="@+id/edit_shop_name"
         android:layout_width="wrap_content"

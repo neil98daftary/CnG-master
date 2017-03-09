@@ -2,6 +2,7 @@ package com.example.adityadesai.cng.Adapters;
 
 import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +13,8 @@ import com.example.adityadesai.cng.Objects.Shop;
 import com.example.adityadesai.cng.Activities.ShopDetailsActivity;
 
 import java.util.ArrayList;
+
+
 
 /**
  * Created by adityadesai on 13/02/17.
@@ -31,6 +34,7 @@ public class ShopRecyclerAdapter extends RecyclerView.Adapter<ShopRecyclerAdapte
         private String address;
         private String phone;
         private String id;
+        private String industry;
 
         public ShopHolder(View v) {
             super(v);
@@ -46,17 +50,18 @@ public class ShopRecyclerAdapter extends RecyclerView.Adapter<ShopRecyclerAdapte
             mShop = mShops.get(position);
 
             if(mShop!=null){
+                industry=mShop.getIndustryName();
                 address= mShop.getShopAddress();
                 phone= mShop.getShopPhone();
                 id = mShop.getShop_id();
             }
-
 
             Intent i=new Intent(v.getContext(),ShopDetailsActivity.class);
             i.putExtra("shopName",name);
             i.putExtra("shopAddress",address);
             i.putExtra("shopPhone",phone);
             i.putExtra("shop_id",id);
+            i.putExtra("industry_name",industry);
             v.getContext().startActivity(i);
         }
 

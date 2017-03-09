@@ -1,18 +1,24 @@
 package com.example.adityadesai.cng.Adapters;
 
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.net.Uri;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.example.adityadesai.cng.Activities.EditShopActivity;
 import com.example.adityadesai.cng.Activities.VendorItemListActivity;
 import com.example.adityadesai.cng.R;
 import com.example.adityadesai.cng.Objects.Shop;
 import com.example.adityadesai.cng.Activities.ShopDetailsActivity;
 
 import java.util.ArrayList;
+
 
 /**
  * Created by adityadesai on 13/02/17.
@@ -22,12 +28,13 @@ public class VendorShopListAdapter extends RecyclerView.Adapter<VendorShopListAd
 
     private static ArrayList<Shop> mShops;
 
-    public static class ShopHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+    public static class ShopHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
 
         private TextView mItemName;
         private TextView mItemAddress;
         private Shop mShop;
 
+        private String industryName;
         private String name;
         private String address;
         private String phone;
@@ -47,17 +54,18 @@ public class VendorShopListAdapter extends RecyclerView.Adapter<VendorShopListAd
             mShop = mShops.get(position);
 
             if(mShop!=null){
+                industryName=mShop.getIndustryName();
                 address= mShop.getShopAddress();
                 phone= mShop.getShopPhone();
                 id = mShop.getShop_id();
             }
-
 
             Intent i=new Intent(v.getContext(),VendorItemListActivity.class);
             i.putExtra("shopName",name);
             i.putExtra("shopAddress",address);
             i.putExtra("shopPhone",phone);
             i.putExtra("shop_id",id);
+            i.putExtra("industry_name",industryName);
             v.getContext().startActivity(i);
         }
 
