@@ -82,13 +82,6 @@ public class ShopDetailsActivity extends AppCompatActivity {
         android.support.design.widget.CollapsingToolbarLayout toolbar=(android.support.design.widget.CollapsingToolbarLayout)findViewById(R.id.collapsingToolbar);
         toolbar.setTitle(name);
 
-        // Transition
-        overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
-
-        // Back button
-        Toolbar toolbar2 = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar2);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         // Sliding panel
         SlidingUpPanelLayout slidingPanel= (SlidingUpPanelLayout) findViewById(R.id.sliding_layout);
@@ -212,11 +205,10 @@ public class ShopDetailsActivity extends AppCompatActivity {
         }
     }
 
-    // Go back
-    public boolean onOptionsItemSelected(android.view.MenuItem item){
-        Intent i = new Intent(this, ShopListActivity.class);
-        startActivity(i);
-        return true;
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
     }
 
     public void openAddress(View v){

@@ -167,7 +167,7 @@ public class HomePageFragment extends android.support.v4.app.Fragment {
                     mIndustryList.clear();
                     for(DataSnapshot snapshot : dataSnapshot.getChildren()){
                         String name = (String) snapshot.child("name").getValue();
-                        Long id = (Long) snapshot.child("id").getValue();
+                        String id = snapshot.child("id").getValue().toString();
                         mIndustryList.add(new Industry(name,id));
                     }
                     updateUI();

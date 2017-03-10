@@ -43,12 +43,6 @@ public class ItemDetailsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_item_details);
 
-        // Transition
-        overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
-
-        // Back button
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
         //mListView = (ListView) findViewById(R.id.item_details_list);
         mListView = (ListView) this.findViewById(R.id.item_details_list);
         mItemDetails = new ArrayList<ItemDetail>();
@@ -126,11 +120,10 @@ public class ItemDetailsActivity extends AppCompatActivity {
             return null;
         }
     }
-    // Go back
-    public boolean onOptionsItemSelected(MenuItem item){
-        Intent i = new Intent(this, ShopDetailsActivity.class);
-        startActivity(i);
-        return true;
 
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
     }
 }

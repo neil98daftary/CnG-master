@@ -51,6 +51,7 @@ public class ShopRecyclerAdapter extends RecyclerView.Adapter<ShopRecyclerAdapte
 
             if(mShop!=null){
                 industry=mShop.getIndustryName();
+                name=mShop.getShopName();
                 address= mShop.getShopAddress();
                 phone= mShop.getShopPhone();
                 id = mShop.getShop_id();

@@ -45,12 +45,8 @@ public class ShopListActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        // Transition
-        overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
         setContentView(R.layout.activity_shop_list);
 
-        // Back button
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         // Get and display IID
         Intent i= getIntent();
@@ -94,13 +90,14 @@ public class ShopListActivity extends AppCompatActivity {
 
     }
 
-    // Go back
-    public boolean onOptionsItemSelected(MenuItem item){
-        Intent i = new Intent(this, MainActivity.class);
-        startActivity(i);
-        return true;
-
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
     }
+
+
+
 
     public void updateUI(){
         mAdapter = new ShopRecyclerAdapter(mShopList);

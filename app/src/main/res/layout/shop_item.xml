@@ -43,7 +43,7 @@
                 android:id="@+id/ratingBar"
                 android:numStars="5"
                 android:transformPivotX="8dp"
-                android:isIndicator="false"
+                android:isIndicator="true"
                 style="@style/customRatingBar"/>
         </LinearLayout>
     </LinearLayout>

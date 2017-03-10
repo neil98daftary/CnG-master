@@ -23,10 +23,12 @@ import com.example.adityadesai.cng.NavDrawerFragments.FeedbackPageFragment;
 import com.example.adityadesai.cng.NavDrawerFragments.HomePageFragment;
 import com.example.adityadesai.cng.NavDrawerFragments.MyShopsFragment;
 import com.example.adityadesai.cng.NavDrawerFragments.OffersPageFragment;
+import com.example.adityadesai.cng.Objects.Id;
 import com.example.adityadesai.cng.Objects.Industry;
+import com.example.adityadesai.cng.Objects.ItemDetail;
 import com.example.adityadesai.cng.R;
-
-
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 
 public class  MainActivity extends AppCompatActivity
@@ -48,6 +50,21 @@ public class  MainActivity extends AppCompatActivity
         Toast.makeText(this, "Welcome to CNG!!", Toast.LENGTH_SHORT).show();
 
         /*Firebase Stuff*/
+
+
+        //Initializing id folder
+        /*FirebaseDatabase fd=FirebaseDatabase.getInstance();
+        DatabaseReference dr=fd.getReference().child("id");
+        dr.push().setValue(new Industry("Groceries","GR"));
+        dr.push().setValue(new Industry("Decor","DE"));
+        dr.push().setValue(new Industry("Gym","GY"));
+        dr=fd.getReference().child("id").child("Groceries");
+        dr.push().setValue(new Id("GR000000001"));
+        dr=fd.getReference().child("id").child("Decor");
+        dr.push().setValue(new Id("DE000000001"));
+        dr=fd.getReference().child("id").child("Gym");
+        dr.push().setValue(new Id("GY000000001"));*/
+
 
 
 
@@ -85,6 +102,8 @@ public class  MainActivity extends AppCompatActivity
             drawer.closeDrawer(GravityCompat.START);
         } else {
             super.onBackPressed();
+            Intent i=new Intent(this,ChoiceActivity.class);
+            startActivity(i);
         }
     }
 
