@@ -27,7 +27,7 @@ import java.util.ArrayList;
 
 import static android.R.attr.name;
 
-public class VendorItemListActivity extends AppCompatActivity {
+public class VendorItemsListActivity extends AppCompatActivity {
 
     private RecyclerView mRecyclerView;
     private GridLayoutManager mGridLayoutManager;
@@ -88,7 +88,7 @@ public class VendorItemListActivity extends AppCompatActivity {
         mMenuItems.add(new MenuItem("Item I"));
         mMenuItems.add(new MenuItem("Item J"));*/
 
-        VendorItemListActivity.fetchItemList fIL = new VendorItemListActivity.fetchItemList();
+        VendorItemsListActivity.fetchItemList fIL = new VendorItemsListActivity.fetchItemList();
         fIL.execute();
 
 

@@ -102,7 +102,7 @@ public class  MainActivity extends AppCompatActivity
             drawer.closeDrawer(GravityCompat.START);
         } else {
             super.onBackPressed();
-            Intent i=new Intent(this,ChoiceActivity.class);
+            Intent i=new Intent(this,ChooseActivity.class);
             startActivity(i);
         }
     }

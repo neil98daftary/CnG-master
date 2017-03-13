@@ -286,7 +286,7 @@
         jumboMode="true"
         optimize="true"
         revision="25.0.0"
-        sha1="4d9c40b6a9ec4451e5b2db0ab7a7dc77fd416c48">
+        sha1="f842733478efc9487c771e96042fd8186a08f6c5">
         <dex dex="C:\Users\Public\AndroidStudioProjects\CnG-master\app\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run-bootstrap_a75242e3389269a76cab180590e65d76ecf05620\classes.dex" />
     </item>
 

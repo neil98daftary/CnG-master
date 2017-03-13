@@ -40,7 +40,7 @@ public class EditItemListActivity extends AppCompatActivity {
                 itemName=itemNameEditText.getText().toString();
 
                 mFirebaseDatabase=FirebaseDatabase.getInstance();
-                mDatabaseReference=mFirebaseDatabase.getReference().child(VendorItemListActivity.industryName).child(VendorItemListActivity.id);
+                mDatabaseReference=mFirebaseDatabase.getReference().child(VendorItemsListActivity.industryName).child(VendorItemsListActivity.id);
 
                 mDatabaseReference.push().setValue(new MenuItem(itemName));
 

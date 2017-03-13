@@ -8,7 +8,7 @@ import android.view.View;
 
 import com.example.adityadesai.cng.R;
 
-public class ChoiceActivity extends AppCompatActivity {
+public class ChooseActivity extends AppCompatActivity {
 
     SharedPreferences.Editor editor;
 

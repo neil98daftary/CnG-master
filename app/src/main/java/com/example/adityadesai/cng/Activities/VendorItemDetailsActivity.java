@@ -11,7 +11,8 @@ import android.view.View;
 import android.widget.ListView;
 
 import com.example.adityadesai.cng.Adapters.ItemDetailAdapter;
-//import com.example.adityadesai.cng.Adapters.VendorItemDetailAdapter;
+import com.example.adityadesai.cng.Adapters.VendorItemDetailsAdapter;
+
 import com.example.adityadesai.cng.Objects.ItemDetail;
 import com.example.adityadesai.cng.R;
 import com.google.firebase.database.DataSnapshot;
@@ -29,7 +30,7 @@ import static com.example.adityadesai.cng.R.id.item_name;
 public class VendorItemDetailsActivity extends AppCompatActivity {
 
     private ListView mListView;
-    //private VendorItemDetailAdapter mAdapter;
+    private VendorItemDetailsAdapter mAdapter;
     private ArrayList<ItemDetail> mDetailList;
     public static String item_name;
 
@@ -71,28 +72,28 @@ public class VendorItemDetailsActivity extends AppCompatActivity {
         mDetailList.add(new ItemDetail("Name J", "Rs 100", "Description J"));*/
 
         mFirebaseDatabase = FirebaseDatabase.getInstance();
-        mItemDetailDatabaseReference = mFirebaseDatabase.getReference().child(VendorItemListActivity.industryName).child(VendorItemListActivity.id).child(item_name);
+        mItemDetailDatabaseReference = mFirebaseDatabase.getReference().child(VendorItemsListActivity.industryName).child(VendorItemsListActivity.id).child(item_name);
 
         VendorItemDetailsActivity.fetchItemDetail fID = new VendorItemDetailsActivity.fetchItemDetail();
         fID.execute();
 
-        /*mAdapter = new VendorItemDetailAdapter(this, mDetailList);
+        /*mAdapter = new VendorItemDetailsAdapter(this, mDetailList);
         mListView.setAdapter(new SlideExpandableListAdapter(
                 mAdapter,
                 R.id.item_detail_view,
                 R.id.item_description
-        ));
-        */
+        ));*/
+
     }
 
     public void updateUI(){
-        /*mAdapter = new VendorItemDetailAdapter(this, mDetailList);
+        mAdapter = new VendorItemDetailsAdapter(VendorItemDetailsActivity.this, mDetailList);
         mListView.setAdapter(new SlideExpandableListAdapter(
                 mAdapter,
                 R.id.item_detail_view,
                 R.id.item_description
         ));
-        */
+
 
     }
 
@@ -108,9 +109,10 @@ public class VendorItemDetailsActivity extends AppCompatActivity {
                         String iName = (String) snapshot.child("itemName").getValue();
                         String iPrice = (String) snapshot.child("itemPrice").getValue();
                         String iDesc = (String) snapshot.child("itemDescription").getValue();
+                        String iUrl = (String) snapshot.child("itemUrl").getValue();
                         /*Trapping the price and Description????How???*/
                         if(iName != null && iPrice != null && iDesc != null) {
-                            ItemDetail itemDetail = new ItemDetail(iName, iPrice, iDesc);
+                            ItemDetail itemDetail = new ItemDetail(iName, iPrice, iDesc,iUrl);
                             mDetailList.add(itemDetail);
                         }
 

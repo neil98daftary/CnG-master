@@ -17,7 +17,7 @@
             android:name=".Activities.ShopDetailsActivity"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".Activities.ItemDetailsActivity" />
-        <activity android:name=".Activities.ChoiceActivity">
+        <activity android:name=".Activities.ChooseActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -25,7 +25,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".Activities.VendorItemListActivity"
+            android:name=".Activities.VendorItemsListActivity"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".Activities.VendorItemDetailsActivity"

@@ -100,9 +100,10 @@ public class ItemDetailsActivity extends AppCompatActivity {
                         String iName = (String) snapshot.child("itemName").getValue();
                         String iPrice = (String) snapshot.child("itemPrice").getValue();
                         String iDesc = (String) snapshot.child("itemDescription").getValue();
+                        String iUrl = (String) snapshot.child("itemUrl").getValue();
                         /*Trapping the price and Description????How???*/
                         if(iName != null && iPrice != null && iDesc != null) {
-                            ItemDetail itemDetail = new ItemDetail(iName, iPrice, iDesc);
+                            ItemDetail itemDetail = new ItemDetail(iName, iPrice, iDesc,iUrl);
                             mItemDetails.add(itemDetail);
                         }
 

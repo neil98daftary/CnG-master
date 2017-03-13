@@ -6,8 +6,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.example.adityadesai.cng.Objects.ItemDetail;
 import com.example.adityadesai.cng.R;
 
@@ -37,10 +39,13 @@ public class ItemDetailAdapter extends ArrayAdapter<ItemDetail> {
         TextView name=(TextView)listItemView.findViewById(R.id.item_name);
         TextView price=(TextView)listItemView.findViewById(R.id.item_price);
         TextView description=(TextView)listItemView.findViewById(R.id.item_description);
+        ImageView photo = (ImageView) listItemView.findViewById(R.id.item_image);
 
         name.setText(currentItem.getItemName());
         price.setText(currentItem.getItemPrice());
         description.setText(currentItem.getItemDescription());
+
+        Glide.with(photo.getContext()).load(currentItem.getItemUrl()).into(photo);
 
 
         return listItemView;

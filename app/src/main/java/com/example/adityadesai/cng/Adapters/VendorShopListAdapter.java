@@ -16,6 +16,7 @@ import com.bumptech.glide.Glide;
 import com.example.adityadesai.cng.Activities.EditShopActivity;
 
 //import com.example.adityadesai.cng.Activities.VendorItemListActivity;
+import com.example.adityadesai.cng.Activities.VendorItemsListActivity;
 import com.example.adityadesai.cng.R;
 import com.example.adityadesai.cng.Objects.Shop;
 import com.example.adityadesai.cng.Activities.ShopDetailsActivity;
@@ -69,7 +70,7 @@ public class VendorShopListAdapter extends RecyclerView.Adapter<VendorShopListAd
                 Url = mShop.getShopUrl();
             }
 
-            /*Intent i=new Intent(v.getContext(),VendorItemListActivity.class);
+            Intent i=new Intent(v.getContext(),VendorItemsListActivity.class);
             i.putExtra("shopName",name);
             i.putExtra("shopAddress",address);
             i.putExtra("shopPhone",phone);
@@ -77,7 +78,7 @@ public class VendorShopListAdapter extends RecyclerView.Adapter<VendorShopListAd
             i.putExtra("industry_name",industryName);
             i.putExtra("shop_url",Url);
             v.getContext().startActivity(i);
-            */
+
         }
 
         public void bindIndustry(Shop shop) {
