@@ -11,7 +11,7 @@ import android.view.View;
 import android.widget.ListView;
 
 import com.example.adityadesai.cng.Adapters.ItemDetailAdapter;
-import com.example.adityadesai.cng.Adapters.VendorItemDetailAdapter;
+//import com.example.adityadesai.cng.Adapters.VendorItemDetailAdapter;
 import com.example.adityadesai.cng.Objects.ItemDetail;
 import com.example.adityadesai.cng.R;
 import com.google.firebase.database.DataSnapshot;
@@ -29,7 +29,7 @@ import static com.example.adityadesai.cng.R.id.item_name;
 public class VendorItemDetailsActivity extends AppCompatActivity {
 
     private ListView mListView;
-    private VendorItemDetailAdapter mAdapter;
+    //private VendorItemDetailAdapter mAdapter;
     private ArrayList<ItemDetail> mDetailList;
     public static String item_name;
 
@@ -76,21 +76,24 @@ public class VendorItemDetailsActivity extends AppCompatActivity {
         VendorItemDetailsActivity.fetchItemDetail fID = new VendorItemDetailsActivity.fetchItemDetail();
         fID.execute();
 
-        mAdapter = new VendorItemDetailAdapter(this, mDetailList);
+        /*mAdapter = new VendorItemDetailAdapter(this, mDetailList);
         mListView.setAdapter(new SlideExpandableListAdapter(
                 mAdapter,
                 R.id.item_detail_view,
                 R.id.item_description
         ));
+        */
     }
 
     public void updateUI(){
-        mAdapter = new VendorItemDetailAdapter(this, mDetailList);
+        /*mAdapter = new VendorItemDetailAdapter(this, mDetailList);
         mListView.setAdapter(new SlideExpandableListAdapter(
                 mAdapter,
                 R.id.item_detail_view,
                 R.id.item_description
         ));
+        */
+
     }
 
     public class fetchItemDetail extends AsyncTask<Void,Void,ArrayList<ItemDetail>> {

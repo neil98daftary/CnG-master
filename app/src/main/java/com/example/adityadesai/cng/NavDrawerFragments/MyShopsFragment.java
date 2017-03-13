@@ -128,9 +128,10 @@ public class MyShopsFragment extends android.support.v4.app.Fragment {
                         String shop_phonenum = (String) snapshot.child("shopPhone").getValue();
                         String shop_id =  (String) snapshot.child("shop_id").getValue();
                         String industry_name =  (String) snapshot.child("industryName").getValue();
+                        String shop_uri = (String) snapshot.child("shopUrl").getValue();
 
                         if(shop_name != null && shop_address != null && shop_phonenum != null && shop_id != null) {
-                            mShopList.add(new Shop(shop_name, shop_address, shop_phonenum,shop_id,industry_name));
+                            mShopList.add(new Shop(shop_name, shop_address, shop_phonenum,shop_id,industry_name,shop_uri));
                         }
 
                     }

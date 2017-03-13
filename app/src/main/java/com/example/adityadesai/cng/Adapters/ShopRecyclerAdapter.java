@@ -1,13 +1,16 @@
 package com.example.adityadesai.cng.Adapters;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.example.adityadesai.cng.R;
 import com.example.adityadesai.cng.Objects.Shop;
 import com.example.adityadesai.cng.Activities.ShopDetailsActivity;
@@ -28,6 +31,7 @@ public class ShopRecyclerAdapter extends RecyclerView.Adapter<ShopRecyclerAdapte
 
         private TextView mItemName;
         private TextView mItemAddress;
+        private ImageView mImageView;
         private Shop mShop;
 
         private String name;
@@ -41,6 +45,7 @@ public class ShopRecyclerAdapter extends RecyclerView.Adapter<ShopRecyclerAdapte
 
             mItemName = (TextView) v.findViewById(R.id.shop_name);
             mItemAddress = (TextView) v.findViewById(R.id.shop_address);
+            mImageView = (ImageView) v.findViewById(R.id.shop_image);
             v.setOnClickListener(this);
         }
 
@@ -70,6 +75,10 @@ public class ShopRecyclerAdapter extends RecyclerView.Adapter<ShopRecyclerAdapte
             mShop = shop;
             mItemName.setText(shop.getShopName());
             mItemAddress.setText(shop.getShopAddress());
+            if (shop.getShopUrl() != null) {
+                Glide.with(mImageView.getContext()).load(mShop.getShopUrl()).into(mImageView);
+
+            }
         }
     }
 

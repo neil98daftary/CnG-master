@@ -2,283 +2,292 @@
 <items version="2" >
 
     <item
-        is-multidex="false"
-        jar="/Users/adityadesai/Desktop/CnG-master/app/build/intermediates/exploded-aar/com.android.support/support-core-utils/24.2.1/jars/libs/internal_impl-24.2.1.jar"
-        jumboMode="false"
+        is-multidex="true"
+        jar="C:\Users\USER\.android\build-cache\32dd7b75a32b90801040f6e17a6749ce24adcda1\output\jars\classes.jar"
+        jumboMode="true"
         optimize="true"
-        revision="24.0.3"
-        sha1="935a969265b2a166b2d20415423f5f6e90fe16e0">
-        <dex dex="/Users/adityadesai/Desktop/CnG-master/app/build/intermediates/pre-dexed/debug/internal_impl-24.2.1_c5719da2a18c6da2671eb2e503b0d1b1507d4dc1.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/Users/adityadesai/Desktop/CnG-master/app/build/intermediates/exploded-aar/com.android.support/support-v4/24.2.1/jars/classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="24.0.3"
-        sha1="d7c42c80f6509b9ea4db28ca7859ffae08ec5741">
-        <dex dex="/Users/adityadesai/Desktop/CnG-master/app/build/intermediates/pre-dexed/debug/com.android.support-support-v4-24.2.1_79eee943f09ec0c2376ce8b3f0a62ca25245b083.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/Users/adityadesai/Desktop/CnG-master/app/build/intermediates/exploded-aar/com.android.support/cardview-v7/24.2.1/jars/classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="24.0.3"
-        sha1="c5e6490573cd2cc8018417f60ddd251138b6ed61">
-        <dex dex="/Users/adityadesai/Desktop/CnG-master/app/build/intermediates/pre-dexed/debug/com.android.support-cardview-v7-24.2.1_717bcf25ae2e72f98baca52cea90444a5f95a363.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/Users/adityadesai/Desktop/CnG-master/app/build/intermediates/exploded-aar/com.google.firebase/firebase-database-connection/9.6.1/jars/classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="24.0.3"
-        sha1="ac8365c87591065db07f7bac8551504504832cd4">
-        <dex dex="/Users/adityadesai/Desktop/CnG-master/app/build/intermediates/pre-dexed/debug/com.google.firebase-firebase-database-connection-9.6.1_cb84ca9150eb45e6a44a2f84f77bc5d0dd36c9d2.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/Users/adityadesai/Desktop/CnG-master/app/build/intermediates/exploded-aar/com.android.support/support-fragment/24.2.1/jars/classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="24.0.3"
-        sha1="b9a1ac78ad7ef3abedc4a4b30cd92bcacb939d1f">
-        <dex dex="/Users/adityadesai/Desktop/CnG-master/app/build/intermediates/pre-dexed/debug/com.android.support-support-fragment-24.2.1_d12cdd34dbf338ff484d6bbb5a905998430215a4.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/Users/adityadesai/Desktop/CnG-master/app/build/intermediates/exploded-aar/com.android.support/support-core-ui/24.2.1/jars/classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="24.0.3"
-        sha1="e7f3132168957eefc46229fc32c3bd464642b71e">
-        <dex dex="/Users/adityadesai/Desktop/CnG-master/app/build/intermediates/pre-dexed/debug/com.android.support-support-core-ui-24.2.1_3b724e87267eb6cea856a0465e5d18af13424e0c.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/Users/adityadesai/Desktop/CnG-master/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/jars/classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="24.0.3"
-        sha1="43b2dba6b5a0b14527961b75329d0b90025f15ea">
-        <dex dex="/Users/adityadesai/Desktop/CnG-master/app/build/intermediates/pre-dexed/debug/com.android.support-appcompat-v7-24.2.1_c4d2ff468eba52bbb2a8027ed1089e7d2d17b144.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/Users/adityadesai/Desktop/CnG-master/app/build/intermediates/exploded-aar/com.google.firebase/firebase-database/9.6.1/jars/classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="24.0.3"
-        sha1="b75ecdd04a37d31b4a0da2729fc5c558962a529b">
-        <dex dex="/Users/adityadesai/Desktop/CnG-master/app/build/intermediates/pre-dexed/debug/com.google.firebase-firebase-database-9.6.1_022f1fc1764ed42e12cfa2a871b5165e2f66ffee.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/Users/adityadesai/Desktop/CnG-master/app/build/intermediates/exploded-aar/com.google.firebase/firebase-storage-common/9.6.1/jars/classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="24.0.3"
-        sha1="159494eb362396d073d8c922b77e40c0da5fc5bc">
-        <dex dex="/Users/adityadesai/Desktop/CnG-master/app/build/intermediates/pre-dexed/debug/com.google.firebase-firebase-storage-common-9.6.1_0d3603699b4559ff0d6585d41d676568271504c9.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/Users/adityadesai/Desktop/CnG-master/app/build/intermediates/exploded-aar/com.android.support/support-media-compat/24.2.1/jars/classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="24.0.3"
-        sha1="09b462bbcb77650284bd6614f1a32f360ef369f8">
-        <dex dex="/Users/adityadesai/Desktop/CnG-master/app/build/intermediates/pre-dexed/debug/com.android.support-support-media-compat-24.2.1_f8ea9cb1c0f08ebcaad019f09d925ad83cf1fd11.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/Users/adityadesai/Desktop/CnG-master/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/9.6.1/jars/classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="24.0.3"
-        sha1="eccaaa9ffa6bb4bfbd2e870f01aaf69655d353be">
-        <dex dex="/Users/adityadesai/Desktop/CnG-master/app/build/intermediates/pre-dexed/debug/com.google.android.gms-play-services-basement-9.6.1_177c2cbad0e2c023c40bcbff2a4a1dadb90ef854.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/Users/adityadesai/Desktop/CnG-master/app/build/intermediates/exploded-aar/com.android.support/support-vector-drawable/24.2.1/jars/classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="24.0.3"
-        sha1="d5c731fc64c03dfe04d51134955b483551c35849">
-        <dex dex="/Users/adityadesai/Desktop/CnG-master/app/build/intermediates/pre-dexed/debug/com.android.support-support-vector-drawable-24.2.1_2ff0b57c9e939361021bed7fbe935928d9430202.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/Users/adityadesai/Desktop/CnG-master/app/build/intermediates/exploded-aar/com.android.support/support-media-compat/24.2.1/jars/libs/internal_impl-24.2.1.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="24.0.3"
-        sha1="fbf8da429efd5ad21e02e3e5ecaa1efc4167878d">
-        <dex dex="/Users/adityadesai/Desktop/CnG-master/app/build/intermediates/pre-dexed/debug/internal_impl-24.2.1_4796779d096c7ba64650e0e28852cfa0b9a2ba2d.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/Users/adityadesai/Desktop/CnG-master/app/build/intermediates/exploded-aar/com.google.firebase/firebase-analytics/9.6.1/jars/classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="24.0.3"
-        sha1="a1c351dc10b92d638da57f3a6513f87cfbdc9f83">
-        <dex dex="/Users/adityadesai/Desktop/CnG-master/app/build/intermediates/pre-dexed/debug/com.google.firebase-firebase-analytics-9.6.1_5ffcda8a65be75b361a88f2bfee9562a8b9a2acf.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/Users/adityadesai/Desktop/CnG-master/app/build/intermediates/exploded-aar/com.android.support/support-core-utils/24.2.1/jars/classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="24.0.3"
-        sha1="9c4c3bc902450c39ed54de170db4fb12aea20a35">
-        <dex dex="/Users/adityadesai/Desktop/CnG-master/app/build/intermediates/pre-dexed/debug/com.android.support-support-core-utils-24.2.1_6a40e5d28520f882a27fbf9e0fa20c8e41818a98.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/Users/adityadesai/Desktop/CnG-master/app/build/intermediates/exploded-aar/com.android.support/support-compat/24.2.1/jars/libs/internal_impl-24.2.1.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="24.0.3"
-        sha1="7e4389bd133359a2ff88623ff1e4ff93d6e6f780">
-        <dex dex="/Users/adityadesai/Desktop/CnG-master/app/build/intermediates/pre-dexed/debug/internal_impl-24.2.1_d3eb3d576965b486cda2e5c82ff5f9685ed3fac7.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/Users/adityadesai/Library/Android/sdk/extras/android/m2repository/com/android/support/support-annotations/24.2.1/support-annotations-24.2.1.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="24.0.3"
-        sha1="8de3aafecbdf98a61db6427f008f2d515bcd2544">
-        <dex dex="/Users/adityadesai/Desktop/CnG-master/app/build/intermediates/pre-dexed/debug/support-annotations-24.2.1_d01f5dc2e39ac7278f2c8fd7c810cab170e5dd35.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/Users/adityadesai/Desktop/CnG-master/app/build/intermediates/exploded-aar/com.android.support/recyclerview-v7/24.2.1/jars/classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="24.0.3"
-        sha1="7521486d9bfd2cd9e756e0cf75ed7d97f2ce2d3b">
-        <dex dex="/Users/adityadesai/Desktop/CnG-master/app/build/intermediates/pre-dexed/debug/com.android.support-recyclerview-v7-24.2.1_8b94f74f22991d83cb185ca6b711ee79a4a75155.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/Users/adityadesai/Desktop/CnG-master/app/build/intermediates/exploded-aar/com.android.support/support-compat/24.2.1/jars/classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="24.0.3"
-        sha1="0ecb4b595fa0f0f8018a149ace3ea6525624f94e">
-        <dex dex="/Users/adityadesai/Desktop/CnG-master/app/build/intermediates/pre-dexed/debug/com.android.support-support-compat-24.2.1_2aadd5cbeab4a0268f2969f2585204ecef016686.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/Users/adityadesai/Desktop/CnG-master/app/build/intermediates/exploded-aar/com.android.support/design/24.2.1/jars/classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="24.0.3"
-        sha1="e03f47f3d1017a093bb3239d4ec47c3447f40744">
-        <dex dex="/Users/adityadesai/Desktop/CnG-master/app/build/intermediates/pre-dexed/debug/com.android.support-design-24.2.1_b7fd6d1170a87bba9855146199b1f785a8eee154.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/Users/adityadesai/Desktop/CnG-master/app/build/intermediates/exploded-aar/com.android.support/animated-vector-drawable/24.2.1/jars/classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="24.0.3"
-        sha1="94bc1dfb84dcc8b6f6f8f7cc726d7b2dd39c1574">
-        <dex dex="/Users/adityadesai/Desktop/CnG-master/app/build/intermediates/pre-dexed/debug/com.android.support-animated-vector-drawable-24.2.1_e8183195104f1fa97f07f430e7f84a83365eb96d.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/Users/adityadesai/Desktop/CnG-master/app/build/intermediates/exploded-aar/com.tjerkw.slideexpandable/SlidableListView/1.0/jars/classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="24.0.3"
-        sha1="a1c88a765bf7389c0b46f3c81ba0195977f0e118">
-        <dex dex="/Users/adityadesai/Desktop/CnG-master/app/build/intermediates/pre-dexed/debug/com.tjerkw.slideexpandable-SlidableListView-1.0_adbc674c9affeccf917a598d5e40b1c1c7c72be0.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/Users/adityadesai/Desktop/CnG-master/app/build/intermediates/exploded-aar/com.google.firebase/firebase-storage/9.6.1/jars/classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="24.0.3"
-        sha1="8c6ef5bd4072f8cda2b89d8356ea7d8acd0683aa">
-        <dex dex="/Users/adityadesai/Desktop/CnG-master/app/build/intermediates/pre-dexed/debug/com.google.firebase-firebase-storage-9.6.1_183830aa922ceae4d2a124144aace295fe8d700f.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/Users/adityadesai/Desktop/CnG-master/app/build/intermediates/exploded-aar/com.google.firebase/firebase-common/9.6.1/jars/classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="24.0.3"
-        sha1="1ef72e72bc0d05602c366582afa9439f58bb31d6">
-        <dex dex="/Users/adityadesai/Desktop/CnG-master/app/build/intermediates/pre-dexed/debug/com.google.firebase-firebase-common-9.6.1_c33803ae69f1016eb469a3d5a3f5a238b06ed384.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/Users/adityadesai/Desktop/CnG-master/app/build/intermediates/exploded-aar/com.sothree.slidinguppanel/library/3.3.1/jars/classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="24.0.3"
+        revision="25.0.0"
         sha1="ab8a4903076897a8fe029433ba0c3c3f958712ce">
-        <dex dex="/Users/adityadesai/Desktop/CnG-master/app/build/intermediates/pre-dexed/debug/com.sothree.slidinguppanel-library-3.3.1_f4bb98be2b916d669d3e961c9a18320b5df3902a.jar" />
+        <dex dex="C:\Users\Public\AndroidStudioProjects\CnG-master\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_7ea55bb5bc897782bb0f019f998df9f8e54f7904\classes.dex" />
     </item>
     <item
-        is-multidex="false"
-        jar="/Users/adityadesai/Desktop/CnG-master/app/build/intermediates/exploded-aar/com.google.firebase/firebase-iid/9.6.1/jars/classes.jar"
-        jumboMode="false"
+        is-multidex="true"
+        jar="C:\Users\USER\.android\build-cache\d9245478ab08b300b977e1001ae9eba0f7689fc3\output\jars\classes.jar"
+        jumboMode="true"
         optimize="true"
-        revision="24.0.3"
-        sha1="1e14ebe1cda8491f152083e752ca5bf73cd37bff">
-        <dex dex="/Users/adityadesai/Desktop/CnG-master/app/build/intermediates/pre-dexed/debug/com.google.firebase-firebase-iid-9.6.1_8ddde88c4aa81a4106dcb1686ccb853f52dabc6b.jar" />
+        revision="25.0.0"
+        sha1="159494eb362396d073d8c922b77e40c0da5fc5bc">
+        <dex dex="C:\Users\Public\AndroidStudioProjects\CnG-master\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_76675efa90e7854fc97db99f13db77e6bb7c8fa6\classes.dex" />
     </item>
     <item
-        is-multidex="false"
-        jar="/Users/adityadesai/Desktop/CnG-master/app/build/intermediates/exploded-aar/com.android.support/support-core-ui/24.2.1/jars/libs/internal_impl-24.2.1.jar"
-        jumboMode="false"
+        is-multidex="true"
+        jar="C:\Users\USER\.android\build-cache\d33d6885d64ed3de77f2ad80bc01b9d0c2390a61\output\jars\classes.jar"
+        jumboMode="true"
         optimize="true"
-        revision="24.0.3"
-        sha1="867dad63c33388ff8c7644b236579355036d075f">
-        <dex dex="/Users/adityadesai/Desktop/CnG-master/app/build/intermediates/pre-dexed/debug/internal_impl-24.2.1_b8e96db8a2126748b999e628d8345e2f3c4c22ca.jar" />
+        revision="25.0.0"
+        sha1="e7f3132168957eefc46229fc32c3bd464642b71e">
+        <dex dex="C:\Users\Public\AndroidStudioProjects\CnG-master\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_37002939eae25be9451204a7e4071eb9a5e083e9\classes.dex" />
     </item>
     <item
-        is-multidex="false"
-        jar="/Users/adityadesai/Desktop/CnG-master/app/build/intermediates/exploded-aar/com.android.support/support-fragment/24.2.1/jars/libs/internal_impl-24.2.1.jar"
-        jumboMode="false"
+        is-multidex="true"
+        jar="C:\Users\Public\AndroidStudioProjects\CnG-master\app\build\intermediates\incremental-runtime-classes\debug\instant-run.jar"
+        jumboMode="true"
         optimize="true"
-        revision="24.0.3"
-        sha1="5f64d657e838e8375135c0f6057a7ff8fab6a50e">
-        <dex dex="/Users/adityadesai/Desktop/CnG-master/app/build/intermediates/pre-dexed/debug/internal_impl-24.2.1_9a2b90cdb6559cad3d3efbfc2685a2a8568e4744.jar" />
+        revision="25.0.0"
+        sha1="c82741bc129dd5f99f11a4ab8666ae24262053b6">
+        <dex dex="C:\Users\Public\AndroidStudioProjects\CnG-master\app\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run_40cf36589978fa9468aa9c1e4086a5202fa66d15\classes.dex" />
     </item>
     <item
-        is-multidex="false"
-        jar="/Users/adityadesai/Desktop/CnG-master/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-tasks/9.6.1/jars/classes.jar"
-        jumboMode="false"
+        is-multidex="true"
+        jar="C:\Users\USER\AppData\Local\Android\sdk\extras\android\m2repository\com\android\support\support-annotations\24.2.1\support-annotations-24.2.1.jar"
+        jumboMode="true"
         optimize="true"
-        revision="24.0.3"
-        sha1="4a36600281a648769411ef642c331851732bf29e">
-        <dex dex="/Users/adityadesai/Desktop/CnG-master/app/build/intermediates/pre-dexed/debug/com.google.android.gms-play-services-tasks-9.6.1_7665196154e40118e0b88070b57bd7c7c16ad182.jar" />
+        revision="25.0.0"
+        sha1="8de3aafecbdf98a61db6427f008f2d515bcd2544">
+        <dex dex="C:\Users\Public\AndroidStudioProjects\CnG-master\app\build\intermediates\transforms\dex\debug\folders\1000\10\support-annotations-24.2.1_6eb5b0421016e03d19047a5dd1efdd7c7a6709e9\classes.dex" />
     </item>
     <item
-        is-multidex="false"
-        jar="/Users/adityadesai/Desktop/CnG-master/app/build/intermediates/exploded-aar/com.google.firebase/firebase-analytics-impl/9.6.1/jars/classes.jar"
-        jumboMode="false"
+        is-multidex="true"
+        jar="C:\Users\USER\.android\build-cache\6061c2545af15576565f05516dc2ecf09fcb174a\output\jars\classes.jar"
+        jumboMode="true"
         optimize="true"
-        revision="24.0.3"
+        revision="25.0.0"
+        sha1="0ecb4b595fa0f0f8018a149ace3ea6525624f94e">
+        <dex dex="C:\Users\Public\AndroidStudioProjects\CnG-master\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_e9c7463bdf785d045633f0c3521ed556073ad74a\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\USER\.android\build-cache\6061c2545af15576565f05516dc2ecf09fcb174a\output\jars\libs\internal_impl-24.2.1.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="7e4389bd133359a2ff88623ff1e4ff93d6e6f780">
+        <dex dex="C:\Users\Public\AndroidStudioProjects\CnG-master\app\build\intermediates\transforms\dex\debug\folders\1000\10\internal_impl-24.2.1_8d4f00929b68e9c88444600ce6f7328bf618abd6\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\USER\.android\build-cache\6163ee3ff1fa230acbfc135b2f11af6222f594d7\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="e03f47f3d1017a093bb3239d4ec47c3447f40744">
+        <dex dex="C:\Users\Public\AndroidStudioProjects\CnG-master\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_db9702a70d4670697d676b5aeb0141ea0ecf5559\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\USER\.android\build-cache\c83d7a0477ad7872d6378248938bd275936c7754\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
         sha1="0efd1b44f47c134fb245914a1d54a55adbfc2f8d">
-        <dex dex="/Users/adityadesai/Desktop/CnG-master/app/build/intermediates/pre-dexed/debug/com.google.firebase-firebase-analytics-impl-9.6.1_d9171e40cdbe39a635490323feaf6c70cb1c07f1.jar" />
+        <dex dex="C:\Users\Public\AndroidStudioProjects\CnG-master\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_42ea7a087911b7a249e81ee72291a272f12b8264\classes.dex" />
     </item>
     <item
-        is-multidex="false"
-        jar="/Users/adityadesai/Desktop/CnG-master/app/build/intermediates/exploded-aar/CnG-master.Libraries/circleindicator/1.2.2/jars/classes.jar"
-        jumboMode="false"
+        is-multidex="true"
+        jar="C:\Users\USER\.gradle\caches\modules-2\files-2.1\com.github.bumptech.glide\glide\3.7.0\9e9eeaf9948ee4d6c3ab354e8dc14368f16994a4\glide-3.7.0.jar"
+        jumboMode="true"
         optimize="true"
-        revision="24.0.3"
-        sha1="1db6784d006818fee2591f13b0bf09ac31a3d49a">
-        <dex dex="/Users/adityadesai/Desktop/CnG-master/app/build/intermediates/pre-dexed/debug/CnG-master.Libraries-circleindicator-1.2.2_7f472c8988491dc4bcdf71015025b137e7f1156c.jar" />
+        revision="25.0.0"
+        sha1="9e9eeaf9948ee4d6c3ab354e8dc14368f16994a4">
+        <dex dex="C:\Users\Public\AndroidStudioProjects\CnG-master\app\build\intermediates\transforms\dex\debug\folders\1000\10\glide-3.7.0_8f9725af7d5d4270d5220d301b9f5ea78680c879\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\USER\.android\build-cache\73a9226730145edea1541ad7df9a4ef850915f66\output\jars\libs\internal_impl-24.2.1.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="fbf8da429efd5ad21e02e3e5ecaa1efc4167878d">
+        <dex dex="C:\Users\Public\AndroidStudioProjects\CnG-master\app\build\intermediates\transforms\dex\debug\folders\1000\10\internal_impl-24.2.1_83f72ae0ea22ac5938cdf253692abc2da2a764dd\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\USER\.android\build-cache\d33d6885d64ed3de77f2ad80bc01b9d0c2390a61\output\jars\libs\internal_impl-24.2.1.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="867dad63c33388ff8c7644b236579355036d075f">
+        <dex dex="C:\Users\Public\AndroidStudioProjects\CnG-master\app\build\intermediates\transforms\dex\debug\folders\1000\10\internal_impl-24.2.1_b7cd4bca5e5bbb08b4ceafdcf11ebd6169b733d5\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\USER\.android\build-cache\19a3291fbc9befd1be4a940b91aecaea78ae4680\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="9c4c3bc902450c39ed54de170db4fb12aea20a35">
+        <dex dex="C:\Users\Public\AndroidStudioProjects\CnG-master\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_9d1d05273fea3baa3282f84548068b3b2ac0bfed\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\USER\.android\build-cache\5fedc7f3265b60a0a0007e5a74f4d445cb8d8a2c\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="94bc1dfb84dcc8b6f6f8f7cc726d7b2dd39c1574">
+        <dex dex="C:\Users\Public\AndroidStudioProjects\CnG-master\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_b2c5892c10462a3a0d2220cc1587a1ac596665f2\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\USER\.android\build-cache\561bfa148c064a1a0ab8958aaf8c5f86f473a016\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="1ef72e72bc0d05602c366582afa9439f58bb31d6">
+        <dex dex="C:\Users\Public\AndroidStudioProjects\CnG-master\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_bd8fe6e7c7f7484523e8e9f4a6d537def73929f8\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\USER\.android\build-cache\f5da464771470f69cdded247f0c9788f0fc27b46\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="eccaaa9ffa6bb4bfbd2e870f01aaf69655d353be">
+        <dex dex="C:\Users\Public\AndroidStudioProjects\CnG-master\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_0c4ab1f262f7ae662eb9701418cd29f6af2fd071\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\USER\.android\build-cache\c247966a45140f836af8060c177d8d36819df46f\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="7521486d9bfd2cd9e756e0cf75ed7d97f2ce2d3b">
+        <dex dex="C:\Users\Public\AndroidStudioProjects\CnG-master\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_00a847d537a6810768171cb786dd5b686a1760ef\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\USER\.android\build-cache\03d5e37df8a659f0b878d2f70ef2393f810c1a63\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="43b2dba6b5a0b14527961b75329d0b90025f15ea">
+        <dex dex="C:\Users\Public\AndroidStudioProjects\CnG-master\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_1d2c6304e4befd3b6001069321c49e820adc9de4\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\USER\.android\build-cache\73a9226730145edea1541ad7df9a4ef850915f66\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="09b462bbcb77650284bd6614f1a32f360ef369f8">
+        <dex dex="C:\Users\Public\AndroidStudioProjects\CnG-master\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_cfc763ef46947e3436744decbe8f999693b1b6cd\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\USER\.android\build-cache\57f278a8c9e76473b488e928cc6c1ad340adc049\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="d7c42c80f6509b9ea4db28ca7859ffae08ec5741">
+        <dex dex="C:\Users\Public\AndroidStudioProjects\CnG-master\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_0f3d7f6f4680632b37d00ea1fbe61970b92d1735\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\USER\.android\build-cache\031a50fd25b435e14506a19381f2f695e05bc338\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="d5c731fc64c03dfe04d51134955b483551c35849">
+        <dex dex="C:\Users\Public\AndroidStudioProjects\CnG-master\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_b62fbe4ec6fb5277dfc9e7e5b67c3419636b3f3d\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\USER\.android\build-cache\c2dd0b65d6a25466e8947bdae84e1d6bc24d7aca\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="b75ecdd04a37d31b4a0da2729fc5c558962a529b">
+        <dex dex="C:\Users\Public\AndroidStudioProjects\CnG-master\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_ea82358403ff25c624cf43ea3e4b5751fa431efc\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\USER\.android\build-cache\ca3496e712a64dbb7667b96bd0329b71bb47d750\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="b9a1ac78ad7ef3abedc4a4b30cd92bcacb939d1f">
+        <dex dex="C:\Users\Public\AndroidStudioProjects\CnG-master\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_c914f7991dd2c1decfa83d648a3b3d4e31ee84c1\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\USER\.android\build-cache\9fce9167553f3edefdb2c58643dd37b8dcbe876d\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="c5e6490573cd2cc8018417f60ddd251138b6ed61">
+        <dex dex="C:\Users\Public\AndroidStudioProjects\CnG-master\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_bb5661ec434b3b3525626e829c2b9b896a7ab294\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\USER\.android\build-cache\d3602edc6099d8884db108530df47cdcb2ff57fb\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="ac8365c87591065db07f7bac8551504504832cd4">
+        <dex dex="C:\Users\Public\AndroidStudioProjects\CnG-master\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_cdf4a3738a506e7d8e93e07214957381808cc8b0\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\USER\.android\build-cache\ca0c2737ab37266be7257228070294cd3aa8860e\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="8c6ef5bd4072f8cda2b89d8356ea7d8acd0683aa">
+        <dex dex="C:\Users\Public\AndroidStudioProjects\CnG-master\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_2dba181b11a54474341ed024a0653516119c4568\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\USER\.android\build-cache\32baf98054a94856b71c35aaf312c5ffd9c6e8ed\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="4a36600281a648769411ef642c331851732bf29e">
+        <dex dex="C:\Users\Public\AndroidStudioProjects\CnG-master\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_3d651c1de6f225ccc74e7539164e32fad07e1add\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\USER\.android\build-cache\ca3496e712a64dbb7667b96bd0329b71bb47d750\output\jars\libs\internal_impl-24.2.1.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="5f64d657e838e8375135c0f6057a7ff8fab6a50e">
+        <dex dex="C:\Users\Public\AndroidStudioProjects\CnG-master\app\build\intermediates\transforms\dex\debug\folders\1000\10\internal_impl-24.2.1_39a4c1c0fa1161de9eadf475718c9a7dd6571a40\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\USER\.android\build-cache\935532242ac32667ff43bc2aaebe229685e0d461\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="1e14ebe1cda8491f152083e752ca5bf73cd37bff">
+        <dex dex="C:\Users\Public\AndroidStudioProjects\CnG-master\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_5ec5f3067b5832b221923026ac1bba909659b414\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\USER\.android\build-cache\19a3291fbc9befd1be4a940b91aecaea78ae4680\output\jars\libs\internal_impl-24.2.1.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="935a969265b2a166b2d20415423f5f6e90fe16e0">
+        <dex dex="C:\Users\Public\AndroidStudioProjects\CnG-master\app\build\intermediates\transforms\dex\debug\folders\1000\10\internal_impl-24.2.1_17a02c3ae5169dbaf89e9e6bbd4e5121205256dd\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\USER\.android\build-cache\ac8b07e7cc38fa2a2ebf7da2f87cf55237e1ed67\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="a1c351dc10b92d638da57f3a6513f87cfbdc9f83">
+        <dex dex="C:\Users\Public\AndroidStudioProjects\CnG-master\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_ce4ff934b7b28abdcacd8cbcfee2fa58f432d8de\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Public\AndroidStudioProjects\CnG-master\app\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="4d9c40b6a9ec4451e5b2db0ab7a7dc77fd416c48">
+        <dex dex="C:\Users\Public\AndroidStudioProjects\CnG-master\app\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run-bootstrap_a75242e3389269a76cab180590e65d76ecf05620\classes.dex" />
     </item>
 
 </items>

@@ -9,10 +9,13 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.example.adityadesai.cng.Activities.EditShopActivity;
-import com.example.adityadesai.cng.Activities.VendorItemListActivity;
+
+//import com.example.adityadesai.cng.Activities.VendorItemListActivity;
 import com.example.adityadesai.cng.R;
 import com.example.adityadesai.cng.Objects.Shop;
 import com.example.adityadesai.cng.Activities.ShopDetailsActivity;
@@ -24,6 +27,7 @@ import java.util.ArrayList;
  * Created by adityadesai on 13/02/17.
  */
 
+
 public class VendorShopListAdapter extends RecyclerView.Adapter<VendorShopListAdapter.ShopHolder> {
 
     private static ArrayList<Shop> mShops;
@@ -32,6 +36,7 @@ public class VendorShopListAdapter extends RecyclerView.Adapter<VendorShopListAd
 
         private TextView mItemName;
         private TextView mItemAddress;
+        private ImageView mImageView;
         private Shop mShop;
 
         private String industryName;
@@ -39,12 +44,14 @@ public class VendorShopListAdapter extends RecyclerView.Adapter<VendorShopListAd
         private String address;
         private String phone;
         private String id;
+        private String Url;
 
         public ShopHolder(View v) {
             super(v);
 
             mItemName = (TextView) v.findViewById(R.id.shop_name);
             mItemAddress = (TextView) v.findViewById(R.id.shop_address);
+            mImageView = (ImageView) v.findViewById(R.id.shop_image);
             v.setOnClickListener(this);
         }
 
@@ -54,25 +61,32 @@ public class VendorShopListAdapter extends RecyclerView.Adapter<VendorShopListAd
             mShop = mShops.get(position);
 
             if(mShop!=null){
+                name = mShop.getShopName();
                 industryName=mShop.getIndustryName();
                 address= mShop.getShopAddress();
                 phone= mShop.getShopPhone();
                 id = mShop.getShop_id();
+                Url = mShop.getShopUrl();
             }
 
-            Intent i=new Intent(v.getContext(),VendorItemListActivity.class);
+            /*Intent i=new Intent(v.getContext(),VendorItemListActivity.class);
             i.putExtra("shopName",name);
             i.putExtra("shopAddress",address);
             i.putExtra("shopPhone",phone);
             i.putExtra("shop_id",id);
             i.putExtra("industry_name",industryName);
+            i.putExtra("shop_url",Url);
             v.getContext().startActivity(i);
+            */
         }
 
         public void bindIndustry(Shop shop) {
             mShop = shop;
             mItemName.setText(shop.getShopName());
             mItemAddress.setText(shop.getShopAddress());
+            if(shop.getShopUrl() != null){
+                Glide.with(mImageView.getContext()).load(shop.getShopUrl()).into(mImageView);
+            }
         }
     }
 

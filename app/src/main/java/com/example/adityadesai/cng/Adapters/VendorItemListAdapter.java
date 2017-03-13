@@ -18,6 +18,7 @@ import java.util.ArrayList;
  * Created by adityadesai on 11/02/17.
  */
 
+
 public class VendorItemListAdapter extends RecyclerView.Adapter<VendorItemListAdapter.MenuHolder>{
 
     private  ArrayList<MenuItem> mMenuItems;

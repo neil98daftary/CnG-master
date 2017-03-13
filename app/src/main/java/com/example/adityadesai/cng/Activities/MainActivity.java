@@ -23,7 +23,7 @@ import com.example.adityadesai.cng.NavDrawerFragments.FeedbackPageFragment;
 import com.example.adityadesai.cng.NavDrawerFragments.HomePageFragment;
 import com.example.adityadesai.cng.NavDrawerFragments.MyShopsFragment;
 import com.example.adityadesai.cng.NavDrawerFragments.OffersPageFragment;
-import com.example.adityadesai.cng.Objects.Id;
+//import com.example.adityadesai.cng.Objects.Id;
 import com.example.adityadesai.cng.Objects.Industry;
 import com.example.adityadesai.cng.Objects.ItemDetail;
 import com.example.adityadesai.cng.R;
