@@ -8,7 +8,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.example.adityadesai.cng.Activities.ChoiceActivity">
+    tools:context="com.example.adityadesai.cng.Activities.ChooseActivity">
 
     <Button
         android:layout_width="wrap_content"
@@ -34,5 +34,14 @@
         android:layout_marginLeft="66dp"
         android:layout_marginStart="66dp"
         android:onClick="Vendor"/>
+
+    <TextView
+        android:id="@+id/username"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/buyer"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="48dp"
+        android:text="TextView" />
 
 </RelativeLayout>

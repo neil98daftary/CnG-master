@@ -27,6 +27,9 @@ import com.example.adityadesai.cng.NavDrawerFragments.OffersPageFragment;
 import com.example.adityadesai.cng.Objects.Industry;
 import com.example.adityadesai.cng.Objects.ItemDetail;
 import com.example.adityadesai.cng.R;
+import com.firebase.ui.auth.AuthUI;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -39,8 +42,9 @@ public class  MainActivity extends AppCompatActivity
     /*Initializing Firebase variables*/
 
 
-    public static final String ANONYMOUS = "anonymous";
-    public static final int RC_SIGN_IN = 1;
+    private String name;
+    private String url;
+
 
 
     @Override
@@ -66,6 +70,12 @@ public class  MainActivity extends AppCompatActivity
         dr.push().setValue(new Id("GY000000001"));*/
 
 
+
+        Intent i = getIntent();
+        Bundle b = i.getExtras();
+
+        name = b.getString("username");
+        url = b.getString("photoUrl");
 
 
         // Transition
@@ -147,14 +157,25 @@ public class  MainActivity extends AppCompatActivity
             fragment=new MyShopsFragment();
         } else if (id == R.id.sign_out) {
             // Till sign out page is not made
-            fragment=new HomePageFragment();
+            AuthUI.getInstance()
+                    .signOut(this)
+                    .addOnCompleteListener(new OnCompleteListener<Void>() {
+                        public void onComplete(@NonNull Task<Void> task) {
+                            // user is now signed out
+                            startActivity(new Intent(MainActivity.this, ChooseActivity.class));
+                            finish();
+                        }
+                    });
         }
 
+
         // Switching out current fragment for new fragment
-        FragmentTransaction transaction=getSupportFragmentManager().beginTransaction();
-        transaction.replace(R.id.mainFrame,fragment);
-        transaction.addToBackStack(null);
-        transaction.commit();
+        if(id != R.id.sign_out) {
+            FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+            transaction.replace(R.id.mainFrame, fragment);
+            transaction.addToBackStack(null);
+            transaction.commit();
+        }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);

@@ -48,7 +48,6 @@ public class HomePageFragment extends android.support.v4.app.Fragment {
 
 
     /*Initializing Firebase variables*/
-    private String mUsername;
 
     private FirebaseDatabase mFirebaseDatabase;
     private DatabaseReference mMessagesDatabaseReference;
@@ -67,7 +66,6 @@ public class HomePageFragment extends android.support.v4.app.Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
 
         View rootView =inflater.inflate(R.layout.home_page,null);
-        mUsername = ANONYMOUS;
         mFirebaseDatabase = FirebaseDatabase.getInstance();
         mFirebaseStorage = FirebaseStorage.getInstance();
         mMessagesDatabaseReference = mFirebaseDatabase.getReference().child("Industry");
