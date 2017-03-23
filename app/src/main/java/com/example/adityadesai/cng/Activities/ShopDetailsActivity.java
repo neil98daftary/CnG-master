@@ -18,6 +18,7 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.example.adityadesai.cng.Adapters.CustomAdapter;
 import com.example.adityadesai.cng.Adapters.CustomPagerAdapter;
 import com.example.adityadesai.cng.Adapters.MenuRecyclerAdapter;
 import com.example.adityadesai.cng.Objects.ItemDetail;
@@ -78,6 +79,9 @@ public class ShopDetailsActivity extends AppCompatActivity {
         industry=i.getStringExtra("industry_name");
         id = i.getStringExtra("shop_id");
 
+        ViewPager viewPager = (ViewPager) findViewById(R.id.viewpager);
+        viewPager.setAdapter(new CustomAdapter(this));
+
         // Set title
         android.support.design.widget.CollapsingToolbarLayout toolbar=(android.support.design.widget.CollapsingToolbarLayout)findViewById(R.id.collapsingToolbar);
         toolbar.setTitle(name);
@@ -103,9 +107,9 @@ public class ShopDetailsActivity extends AppCompatActivity {
 
 
 
-        mRecyclerView = (RecyclerView) findViewById(R.id.shop_menu_recycler);
-        mGridLayoutManager=new GridLayoutManager(this,2);
-        mRecyclerView.setLayoutManager(mGridLayoutManager);
+        //mRecyclerView = (RecyclerView) findViewById(R.id.shop_menu_recycler);
+        //mGridLayoutManager=new GridLayoutManager(this,2);
+        //mRecyclerView.setLayoutManager(mGridLayoutManager);
 
         mMenuItems= new ArrayList<>();
         /*mMenuItems.add(new MenuItem("Item A"));
@@ -158,8 +162,8 @@ public class ShopDetailsActivity extends AppCompatActivity {
 
         slidingPanel.addPanelSlideListener(mSlidePanelListener);
 
-        fetchItemList fIL = new fetchItemList();
-        fIL.execute();
+//        fetchItemList fIL = new fetchItemList();
+//        fIL.execute();
 
         /******* A sample on how to push data********/
        // mItemDatabaseReference.push().setValue(new MenuItem("Rice"));
@@ -168,42 +172,42 @@ public class ShopDetailsActivity extends AppCompatActivity {
     }
     //END OF onCreate//
 
-    public void updateUI(){
-        mAdapter = new MenuRecyclerAdapter(mMenuItems);
-        mRecyclerView.setAdapter(mAdapter);
-    }
+//    public void updateUI(){
+//        mAdapter = new MenuRecyclerAdapter(mMenuItems);
+//        mRecyclerView.setAdapter(mAdapter);
+//    }
 
-    public class fetchItemList extends AsyncTask<Void,Void,ArrayList<MenuItem>> {
-        @Override
-        protected ArrayList<MenuItem> doInBackground(Void... params) {
-
-            mValueEventListener = new ValueEventListener() {
-                @Override
-                public void onDataChange(DataSnapshot dataSnapshot) {
-                    mMenuItems.clear();
-                    for(DataSnapshot snapshot : dataSnapshot.getChildren()){
-                        String iName = (String) snapshot.child("itemName").getValue();
-                        /*Trapping the price and Description????How???*/
-                        //ItemDetail itemDetail = new ItemDetail(iName,iPrice,iDesc);
-                        //mItemDetails.add(itemDetail);
-                        if(iName != null) {
-                            mMenuItems.add(new MenuItem(iName));
-                        }
-
-                    }
-                    updateUI();
-                }
-
-                @Override
-                public void onCancelled(DatabaseError databaseError) {
-
-                }
-            };
-
-            mItemDatabaseReference.addValueEventListener(mValueEventListener);
-            return null;
-        }
-    }
+//    public class fetchItemList extends AsyncTask<Void,Void,ArrayList<MenuItem>> {
+//        @Override
+//        protected ArrayList<MenuItem> doInBackground(Void... params) {
+//
+//            mValueEventListener = new ValueEventListener() {
+//                @Override
+//                public void onDataChange(DataSnapshot dataSnapshot) {
+//                    mMenuItems.clear();
+//                    for(DataSnapshot snapshot : dataSnapshot.getChildren()){
+//                        String iName = (String) snapshot.child("itemName").getValue();
+//                        /*Trapping the price and Description????How???*/
+//                        //ItemDetail itemDetail = new ItemDetail(iName,iPrice,iDesc);
+//                        //mItemDetails.add(itemDetail);
+//                        if(iName != null) {
+//                            mMenuItems.add(new MenuItem(iName));
+//                        }
+//
+//                    }
+//                    updateUI();
+//                }
+//
+//                @Override
+//                public void onCancelled(DatabaseError databaseError) {
+//
+//                }
+//            };
+//
+//            mItemDatabaseReference.addValueEventListener(mValueEventListener);
+//            return null;
+//        }
+//    }
 
     @Override
     public void onBackPressed() {

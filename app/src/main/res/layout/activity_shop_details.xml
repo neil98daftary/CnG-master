@@ -109,13 +109,10 @@
                 style="@style/customRatingBar"
                 android:layout_gravity="center_horizontal"/>
 
-            <android.support.v7.widget.RecyclerView
-                android:id="@+id/shop_menu_recycler"
+            <android.support.v4.view.ViewPager
+                android:id="@+id/viewpager"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:scrollbars="vertical"
-                android:clickable="true">
-            </android.support.v7.widget.RecyclerView>
+                android:layout_height="wrap_content"/>
         </LinearLayout>
 
         <android.support.design.widget.FloatingActionButton
