@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -39,7 +40,7 @@ import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
-public class ShopDetailsActivity extends AppCompatActivity {
+public class ShopDetailsActivity extends AppCompatActivity implements TabLayout.OnTabSelectedListener {
 
     CustomPagerAdapter mCustomPagerAdapter;
     ViewPager mViewPager;
@@ -67,6 +68,16 @@ public class ShopDetailsActivity extends AppCompatActivity {
     private StorageReference mStorageReference;
     private ValueEventListener mValueEventListener;
 
+
+
+    //This is our tablayout
+    private TabLayout tabLayout;
+
+    //This is our viewPager
+    private ViewPager viewPager;
+
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -79,8 +90,43 @@ public class ShopDetailsActivity extends AppCompatActivity {
         industry=i.getStringExtra("industry_name");
         id = i.getStringExtra("shop_id");
 
-        ViewPager viewPager = (ViewPager) findViewById(R.id.viewpager);
-        viewPager.setAdapter(new CustomAdapter(this));
+
+//        Toolbar toolbar1 = (Toolbar) findViewById(R.id.toolbar1);
+//        setSupportActionBar(toolbar1);
+
+        //Initializing the tablayout
+        tabLayout = (TabLayout) findViewById(R.id.tabLayout);
+
+        //Adding the tabs using addTab() method
+        tabLayout.addTab(tabLayout.newTab().setText("Home"));
+        tabLayout.addTab(tabLayout.newTab().setText("Offers"));
+        tabLayout.addTab(tabLayout.newTab().setText("Contact"));
+        tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
+
+        //Initializing viewPager
+        viewPager = (ViewPager) findViewById(R.id.viewpager);
+
+        //Creating our pager adapter
+        CustomAdapter adapter = new CustomAdapter(getSupportFragmentManager(), tabLayout.getTabCount());
+
+        //Adding adapter to pager
+        viewPager.setAdapter(adapter);
+
+        //Adding onTabSelectedListener to swipe views
+        tabLayout.setOnTabSelectedListener(this);
+
+
+
+
+
+
+
+
+
+
+
+
+
 
         // Set title
         android.support.design.widget.CollapsingToolbarLayout toolbar=(android.support.design.widget.CollapsingToolbarLayout)findViewById(R.id.collapsingToolbar);
@@ -127,40 +173,40 @@ public class ShopDetailsActivity extends AppCompatActivity {
 
 
 
-        final ArrayList<String> mOfferItems = new ArrayList<>();
-        mOfferItems.add("Buy 1 get 1 free on Item A");
-        mOfferItems.add("Buy 2 get 1 free on Item B");
-        mOfferItems.add("Flat 50% off on Item C");
-        mOfferItems.add("Buy 1 get 1 free on Item D");
-
-
-        mListView = (ListView)findViewById(R.id.offers_list);
-        mArrayAdapter = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,mOfferItems);
-        mListView.setAdapter(mArrayAdapter);
-
-        SlidingUpPanelLayout.PanelSlideListener mSlidePanelListener=new SlidingUpPanelLayout.PanelSlideListener() {
-            @Override
-            public void onPanelSlide(View panel, float slideOffset) {
-                TextView title=(TextView)panel.findViewById(R.id.title_offer);
-                ImageView icon=(ImageView)panel.findViewById(R.id.slide_panel_icon);
-                View decorView = getWindow().getDecorView();
-                if(slideOffset==1){
-                    decorView.setSystemUiVisibility(View.SYSTEM_UI_FLAG_FULLSCREEN);
-                    title.setText("Slide down to close!");
-                    icon.setImageResource(android.R.drawable.arrow_down_float);
-                }
-                else{
-                    decorView.setSystemUiVisibility(View.SYSTEM_UI_FLAG_IMMERSIVE);
-                    title.setText("Slide up to view offers!");
-                    icon.setImageResource(android.R.drawable.arrow_up_float);
-                }
-            }
-            @Override
-            public void onPanelStateChanged(View panel, SlidingUpPanelLayout.PanelState previousState, SlidingUpPanelLayout.PanelState newState) {
-            }
-        };
-
-        slidingPanel.addPanelSlideListener(mSlidePanelListener);
+//        final ArrayList<String> mOfferItems = new ArrayList<>();
+//        mOfferItems.add("Buy 1 get 1 free on Item A");
+//        mOfferItems.add("Buy 2 get 1 free on Item B");
+//        mOfferItems.add("Flat 50% off on Item C");
+//        mOfferItems.add("Buy 1 get 1 free on Item D");
+//
+//
+//        mListView = (ListView)findViewById(R.id.offers_list);
+//        mArrayAdapter = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,mOfferItems);
+//        mListView.setAdapter(mArrayAdapter);
+//
+//        SlidingUpPanelLayout.PanelSlideListener mSlidePanelListener=new SlidingUpPanelLayout.PanelSlideListener() {
+//            @Override
+//            public void onPanelSlide(View panel, float slideOffset) {
+//                TextView title=(TextView)panel.findViewById(R.id.title_offer);
+//                ImageView icon=(ImageView)panel.findViewById(R.id.slide_panel_icon);
+//                View decorView = getWindow().getDecorView();
+//                if(slideOffset==1){
+//                    decorView.setSystemUiVisibility(View.SYSTEM_UI_FLAG_FULLSCREEN);
+//                    title.setText("Slide down to close!");
+//                    icon.setImageResource(android.R.drawable.arrow_down_float);
+//                }
+//                else{
+//                    decorView.setSystemUiVisibility(View.SYSTEM_UI_FLAG_IMMERSIVE);
+//                    title.setText("Slide up to view offers!");
+//                    icon.setImageResource(android.R.drawable.arrow_up_float);
+//                }
+//            }
+//            @Override
+//            public void onPanelStateChanged(View panel, SlidingUpPanelLayout.PanelState previousState, SlidingUpPanelLayout.PanelState newState) {
+//            }
+//        };
+//
+//        slidingPanel.addPanelSlideListener(mSlidePanelListener);
 
 //        fetchItemList fIL = new fetchItemList();
 //        fIL.execute();
@@ -172,42 +218,42 @@ public class ShopDetailsActivity extends AppCompatActivity {
     }
     //END OF onCreate//
 
-//    public void updateUI(){
-//        mAdapter = new MenuRecyclerAdapter(mMenuItems);
-//        mRecyclerView.setAdapter(mAdapter);
-//    }
+    //    public void updateUI(){
+    //        mAdapter = new MenuRecyclerAdapter(mMenuItems);
+    //        mRecyclerView.setAdapter(mAdapter);
+    //    }
 
-//    public class fetchItemList extends AsyncTask<Void,Void,ArrayList<MenuItem>> {
-//        @Override
-//        protected ArrayList<MenuItem> doInBackground(Void... params) {
-//
-//            mValueEventListener = new ValueEventListener() {
-//                @Override
-//                public void onDataChange(DataSnapshot dataSnapshot) {
-//                    mMenuItems.clear();
-//                    for(DataSnapshot snapshot : dataSnapshot.getChildren()){
-//                        String iName = (String) snapshot.child("itemName").getValue();
-//                        /*Trapping the price and Description????How???*/
-//                        //ItemDetail itemDetail = new ItemDetail(iName,iPrice,iDesc);
-//                        //mItemDetails.add(itemDetail);
-//                        if(iName != null) {
-//                            mMenuItems.add(new MenuItem(iName));
-//                        }
-//
-//                    }
-//                    updateUI();
-//                }
-//
-//                @Override
-//                public void onCancelled(DatabaseError databaseError) {
-//
-//                }
-//            };
-//
-//            mItemDatabaseReference.addValueEventListener(mValueEventListener);
-//            return null;
-//        }
-//    }
+    //    public class fetchItemList extends AsyncTask<Void,Void,ArrayList<MenuItem>> {
+    //        @Override
+    //        protected ArrayList<MenuItem> doInBackground(Void... params) {
+    //
+    //            mValueEventListener = new ValueEventListener() {
+    //                @Override
+    //                public void onDataChange(DataSnapshot dataSnapshot) {
+    //                    mMenuItems.clear();
+    //                    for(DataSnapshot snapshot : dataSnapshot.getChildren()){
+    //                        String iName = (String) snapshot.child("itemName").getValue();
+    //                        /*Trapping the price and Description????How???*/
+    //                        //ItemDetail itemDetail = new ItemDetail(iName,iPrice,iDesc);
+    //                        //mItemDetails.add(itemDetail);
+    //                        if(iName != null) {
+    //                            mMenuItems.add(new MenuItem(iName));
+    //                        }
+    //
+    //                    }
+    //                    updateUI();
+    //                }
+    //
+    //                @Override
+    //                public void onCancelled(DatabaseError databaseError) {
+    //
+    //                }
+    //            };
+    //
+    //            mItemDatabaseReference.addValueEventListener(mValueEventListener);
+    //            return null;
+    //        }
+    //    }
 
     @Override
     public void onBackPressed() {
@@ -250,5 +296,21 @@ public class ShopDetailsActivity extends AppCompatActivity {
             favFab.setImageResource(R.drawable.ic_unfavorite);
             isFavourite=0;
         }
+    }
+
+    @Override
+    public void onTabSelected(TabLayout.Tab tab) {
+        viewPager.setCurrentItem(tab.getPosition());
+
+    }
+
+    @Override
+    public void onTabUnselected(TabLayout.Tab tab) {
+
+    }
+
+    @Override
+    public void onTabReselected(TabLayout.Tab tab) {
+
     }
 }

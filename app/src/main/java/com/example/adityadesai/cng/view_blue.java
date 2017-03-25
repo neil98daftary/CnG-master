@@ -1,13 +1,42 @@
 package com.example.adityadesai.cng;
 
+import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
 
-public class view_blue extends AppCompatActivity {
+import java.util.ArrayList;
+
+public class view_blue extends Fragment {
+
+    private ListView mListView;
+    ArrayAdapter mArrayAdapter;
+    ArrayList<String> mOfferItems;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.view_blue);
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+
+        //Returning the layout file after inflating
+        //Change R.layout.tab1 in you classes
+        View view1 = inflater.inflate(R.layout.view_blue, container, false);
+
+        mOfferItems = new ArrayList<>();
+        mOfferItems.add("Buy 1 get 1 free on Item A");
+        mOfferItems.add("Buy 2 get 1 free on Item B");
+        mOfferItems.add("Flat 50% off on Item C");
+        mOfferItems.add("Buy 1 get 1 free on Item D");
+
+
+        mListView = (ListView) view1.findViewById(R.id.offers_list1);
+        mArrayAdapter = new ArrayAdapter<String>(getActivity(),android.R.layout.simple_list_item_1,mOfferItems);
+        mListView.setAdapter(mArrayAdapter);
+
+
+
+        return view1;
     }
 }

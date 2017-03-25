@@ -1,51 +1,56 @@
 package com.example.adityadesai.cng.Adapters;
 
 import android.content.Context;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.PagerAdapter;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.adityadesai.cng.Objects.ModelObject;
+import com.example.adityadesai.cng.view_blue;
+import com.example.adityadesai.cng.view_green;
+import com.example.adityadesai.cng.view_red;
 
 /**
  * Created by neil on 23/3/17.
  */
 
-public class CustomAdapter extends PagerAdapter{
-    private Context mContext;
+public class CustomAdapter extends FragmentStatePagerAdapter{
+    //integer to count number of tabs
+    int tabCount;
 
-    public CustomAdapter(Context context) {
-        mContext = context;
+    //Constructor to the class
+    public CustomAdapter(FragmentManager fm, int tabCount) {
+        super(fm);
+        //Initializing tab count
+        this.tabCount= tabCount;
     }
 
+    //Overriding method getItem
     @Override
-    public Object instantiateItem(ViewGroup collection, int position) {
-        ModelObject modelObject = ModelObject.values()[position];
-        LayoutInflater inflater = LayoutInflater.from(mContext);
-        ViewGroup layout = (ViewGroup) inflater.inflate(modelObject.getLayoutResId(), collection, false);
-        collection.addView(layout);
-        return layout;
+    public Fragment getItem(int position) {
+        //Returning the current tabs
+        switch (position) {
+            case 0:
+                view_red tab1 = new view_red();
+                return tab1;
+            case 1:
+                view_blue tab2 = new view_blue();
+                return tab2;
+            case 2:
+                view_green tab3 = new view_green();
+                return tab3;
+            default:
+                return null;
+        }
     }
 
-    @Override
-    public void destroyItem(ViewGroup collection, int position, Object view) {
-        collection.removeView((View) view);
-    }
-
+    //Overriden method getCount to get the number of tabs
     @Override
     public int getCount() {
-        return ModelObject.values().length;
-    }
-
-    @Override
-    public boolean isViewFromObject(View view, Object object) {
-        return view == object;
-    }
-
-    @Override
-    public CharSequence getPageTitle(int position) {
-        ModelObject customPagerEnum = ModelObject.values()[position];
-        return mContext.getString(customPagerEnum.getTitleResId());
+        return tabCount;
     }
 }
