@@ -42,9 +42,9 @@
             android:name=".Activities.EditItemDetailActivity"
             android:label="@string/title_activity_edit_item_detail"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".view_red" />
-        <activity android:name=".view_blue" />
-        <activity android:name=".view_green"></activity>
+        <activity android:name=".view_items" />
+        <activity android:name=".view_offers" />
+        <activity android:name=".view_details"></activity>
     </application>
 
 </manifest>

@@ -1,13 +1,5 @@
-<com.sothree.slidinguppanel.SlidingUpPanelLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:sothree="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/sliding_layout"
-    android:layout_width="wrap_content"
-    android:layout_height="match_parent"
-    android:gravity="bottom"
-    sothree:umanoPanelHeight="68dp"
-    sothree:umanoShadowHeight="4dp">
-
-    <android.support.design.widget.CoordinatorLayout
+<android.support.design.widget.CoordinatorLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
@@ -19,7 +11,8 @@
             android:layout_width="match_parent"
             android:layout_height="200dp"
             android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
-            android:fitsSystemWindows="true">
+            android:fitsSystemWindows="true"
+            >
 
             <android.support.design.widget.CollapsingToolbarLayout
                 android:id="@+id/collapsingToolbar"
@@ -44,35 +37,41 @@
                     android:layout_gravity="bottom" />
 
                 <android.support.v7.widget.Toolbar
-                    android:id="@+id/toolbar"
+                    android:id="@+id/main.toolbar"
                     android:layout_width="match_parent"
                     android:layout_height="?attr/actionBarSize"
                     app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
-                    app:layout_collapseMode="pin"/>
+                    app:layout_collapseMode="pin"
+                    />
             </android.support.design.widget.CollapsingToolbarLayout>
 
         </android.support.design.widget.AppBarLayout>
-        <LinearLayout
+
+        <android.support.v4.widget.NestedScrollView
+            android:id="@+id/nest_scrollview"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
             app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-
-
-            <android.support.design.widget.TabLayout
-                android:id="@+id/tabLayout"
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="?attr/colorPrimary"
-                android:minHeight="?attr/actionBarSize"
-                android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"/>
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+                <android.support.design.widget.TabLayout
+                    android:id="@+id/tabs"
+                    android:background="@color/colorPrimary"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    style="@style/CategoryTab"/>
 
-            <android.support.v4.view.ViewPager
-                android:id="@+id/viewpager"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
-        </LinearLayout>
+                <android.support.v4.view.ViewPager
+                    android:id="@+id/viewpager"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"/>
+            </LinearLayout>
+        </android.support.v4.widget.NestedScrollView>
+
 
         <android.support.design.widget.FloatingActionButton
             android:id="@+id/favFab"
@@ -97,46 +96,4 @@
             android:onClick="ratingCheck"
             />
 
-
-
-        <RatingBar
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/ratingBar1"
-            android:numStars="5"
-            android:isIndicator="false"
-            style="@style/customRatingBar"
-            android:layout_gravity="center_horizontal"/>
-
-    </android.support.design.widget.CoordinatorLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center|top"
-        android:orientation="vertical">
-        <ImageView
-            android:id="@+id/slide_panel_icon"
-            android:layout_width="match_parent"
-            android:layout_height="40px"
-            android:paddingTop="5px"
-            android:src="@android:drawable/arrow_up_float"
-            android:background="@color/colorPrimaryDark"/>
-        <TextView
-            android:id="@+id/title_offer"
-            android:layout_width="match_parent"
-            android:layout_height="60px"
-            android:text="Slide up to view offers!"
-            android:gravity="center|top"
-            android:textSize="16sp"
-            android:background="@color/colorPrimaryDark"
-            android:textColor="@android:color/white"/>
-
-        <ListView
-            android:id="@+id/offers_list"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/colorAccent"></ListView>
-    </LinearLayout>
-
-</com.sothree.slidinguppanel.SlidingUpPanelLayout>
+</android.support.design.widget.CoordinatorLayout>

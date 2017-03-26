@@ -1,7 +1,6 @@
 package com.example.adityadesai.cng;
 
 import android.support.v4.app.Fragment;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,7 +10,7 @@ import android.widget.ListView;
 
 import java.util.ArrayList;
 
-public class view_blue extends Fragment {
+public class view_offers extends Fragment {
 
     private ListView mListView;
     ArrayAdapter mArrayAdapter;
@@ -22,7 +21,7 @@ public class view_blue extends Fragment {
 
         //Returning the layout file after inflating
         //Change R.layout.tab1 in you classes
-        View view1 = inflater.inflate(R.layout.view_blue, container, false);
+        View view1 = inflater.inflate(R.layout.view_offers, container, false);
 
         mOfferItems = new ArrayList<>();
         mOfferItems.add("Buy 1 get 1 free on Item A");

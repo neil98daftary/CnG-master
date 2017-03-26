@@ -8,6 +8,7 @@ import android.os.AsyncTask;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
+import android.support.v4.widget.NestedScrollView;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -22,7 +23,7 @@ import android.widget.ListView;
 import android.widget.RatingBar;
 import android.widget.TextView;
 
-import com.example.adityadesai.cng.Adapters.CustomAdapter;
+import com.example.adityadesai.cng.Adapters.CategoryAdapter;
 import com.example.adityadesai.cng.Adapters.CustomPagerAdapter;
 import com.example.adityadesai.cng.Adapters.MenuRecyclerAdapter;
 import com.example.adityadesai.cng.Objects.ItemDetail;
@@ -93,42 +94,23 @@ public class ShopDetailsActivity extends AppCompatActivity implements TabLayout.
         industry=i.getStringExtra("industry_name");
         id = i.getStringExtra("shop_id");
 
-//fa
-
-
-//        Toolbar toolbar1 = (Toolbar) findViewById(R.id.toolbar1);
-//        setSupportActionBar(toolbar1);
-
-        //Initializing the tablayout
-        tabLayout = (TabLayout) findViewById(R.id.tabLayout);
-
-        //Adding the tabs using addTab() method
-        tabLayout.addTab(tabLayout.newTab().setText("Home"));
-        tabLayout.addTab(tabLayout.newTab().setText("Offers"));
-        tabLayout.addTab(tabLayout.newTab().setText("Contact"));
-        tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
 
         //Initializing viewPager
         viewPager = (ViewPager) findViewById(R.id.viewpager);
 
         //Creating our pager adapter
-        CustomAdapter adapter = new CustomAdapter(getSupportFragmentManager(), tabLayout.getTabCount());
+        CategoryAdapter adapter = new CategoryAdapter(this,getSupportFragmentManager());
 
         //Adding adapter to pager
         viewPager.setAdapter(adapter);
 
+        tabLayout = (TabLayout) findViewById(R.id.tabs);
+
         //Adding onTabSelectedListener to swipe views
-        tabLayout.setOnTabSelectedListener(this);
+        tabLayout.setupWithViewPager(viewPager);
 
-
-
-
-
-
-
-
-
-
+        NestedScrollView scrollView = (NestedScrollView) findViewById (R.id.nest_scrollview);
+        scrollView.setFillViewport (true);
 
 
 
@@ -136,11 +118,6 @@ public class ShopDetailsActivity extends AppCompatActivity implements TabLayout.
         // Set title
         android.support.design.widget.CollapsingToolbarLayout toolbar=(android.support.design.widget.CollapsingToolbarLayout)findViewById(R.id.collapsingToolbar);
         toolbar.setTitle(name);
-
-
-        // Sliding panel
-        SlidingUpPanelLayout slidingPanel= (SlidingUpPanelLayout) findViewById(R.id.sliding_layout);
-        slidingPanel.setPanelHeight(100);
 
         mCustomPagerAdapter = new CustomPagerAdapter(this);
 
@@ -175,43 +152,6 @@ public class ShopDetailsActivity extends AppCompatActivity implements TabLayout.
         mMenuItems.add(new MenuItem("Item J"));*/
 
 
-
-
-
-        final ArrayList<String> mOfferItems = new ArrayList<>();
-        mOfferItems.add("Buy 1 get 1 free on Item A");
-        mOfferItems.add("Buy 2 get 1 free on Item B");
-        mOfferItems.add("Flat 50% off on Item C");
-        mOfferItems.add("Buy 1 get 1 free on Item D");
-
-
-        mListView = (ListView)findViewById(R.id.offers_list);
-        mArrayAdapter = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,mOfferItems);
-        mListView.setAdapter(mArrayAdapter);
-
-        SlidingUpPanelLayout.PanelSlideListener mSlidePanelListener=new SlidingUpPanelLayout.PanelSlideListener() {
-            @Override
-            public void onPanelSlide(View panel, float slideOffset) {
-                TextView title=(TextView)panel.findViewById(R.id.title_offer);
-                ImageView icon=(ImageView)panel.findViewById(R.id.slide_panel_icon);
-                View decorView = getWindow().getDecorView();
-                if(slideOffset==1){
-                    decorView.setSystemUiVisibility(View.SYSTEM_UI_FLAG_FULLSCREEN);
-                    title.setText("Slide down to close!");
-                    icon.setImageResource(android.R.drawable.arrow_down_float);
-                }
-                else{
-                    decorView.setSystemUiVisibility(View.SYSTEM_UI_FLAG_IMMERSIVE);
-                    title.setText("Slide up to view offers!");
-                    icon.setImageResource(android.R.drawable.arrow_up_float);
-                }
-            }
-            @Override
-            public void onPanelStateChanged(View panel, SlidingUpPanelLayout.PanelState previousState, SlidingUpPanelLayout.PanelState newState) {
-            }
-        };
-
-        slidingPanel.addPanelSlideListener(mSlidePanelListener);
 
 //        fetchItemList fIL = new fetchItemList();
 //        fIL.execute();

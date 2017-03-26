@@ -25,4 +25,12 @@
     <string name="red">RED</string>
     <string name="blue">BLUE</string>
     <string name="green">GREEN</string>
+
+    <string name="category_items">Items</string>
+
+    <!-- Category name for the vocabulary words for colors [CHAR LIMIT=20] -->
+    <string name="category_offers">Offers</string>
+
+    <!-- Category name for the vocabulary words for numbers [CHAR LIMIT=20] -->
+    <string name="category_details">Details</string>
 </resources>

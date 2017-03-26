@@ -2,7 +2,6 @@ package com.example.adityadesai.cng;
 
 import android.os.AsyncTask;
 import android.support.v4.app.Fragment;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -21,7 +20,7 @@ import com.google.firebase.storage.StorageReference;
 
 import java.util.ArrayList;
 
-public class view_red extends Fragment {
+public class view_items extends Fragment {
 
     private RecyclerView mRecyclerView;
     private GridLayoutManager mGridLayoutManager;
@@ -37,7 +36,7 @@ public class view_red extends Fragment {
 
         //Returning the layout file after inflating
         //Change R.layout.tab1 in you classes
-        View view = inflater.inflate(R.layout.view_red, container, false);
+        View view = inflater.inflate(R.layout.view_items, container, false);
 
 
 
