@@ -29,6 +29,16 @@ public class view_blue extends Fragment {
         mOfferItems.add("Buy 2 get 1 free on Item B");
         mOfferItems.add("Flat 50% off on Item C");
         mOfferItems.add("Buy 1 get 1 free on Item D");
+        mOfferItems.add("Flat 50% off on Item C");
+        mOfferItems.add("Flat 50% off on Item C");
+        mOfferItems.add("Flat 50% off on Item C");
+        mOfferItems.add("Flat 50% off on Item C");
+        mOfferItems.add("Flat 50% off on Item C");
+        mOfferItems.add("Flat 50% off on Item C");
+        mOfferItems.add("Flat 50% off on Item C");
+        mOfferItems.add("Flat 50% off on Item C");
+        mOfferItems.add("Flat 50% off on Item C");
+        mOfferItems.add("Flat 50% off on Item C");
 
 
         mListView = (ListView) view1.findViewById(R.id.offers_list1);

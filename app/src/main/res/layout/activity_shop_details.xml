@@ -58,56 +58,6 @@
             android:orientation="vertical"
             app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:orientation="horizontal">
-                    <android.support.v7.widget.CardView
-                        xmlns:card_view="http://schemas.android.com/apk/res-auto"
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        card_view:cardCornerRadius="15dp"
-                        android:layout_margin="@dimen/card_margin"
-                        card_view:cardBackgroundColor="@color/colorAccent"
-                        app:layout_anchor="@id/appBar"
-                        android:onClick="openAddress">
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:text="Address"
-                            android:textSize="15dp"
-                            android:textStyle="bold"
-                            android:gravity="center"/>
-                    </android.support.v7.widget.CardView>
-                    <android.support.v7.widget.CardView
-                        xmlns:card_view="http://schemas.android.com/apk/res-auto"
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        card_view:cardCornerRadius="15dp"
-                        android:layout_margin="@dimen/card_margin"
-                        card_view:cardBackgroundColor="@color/colorAccent"
-                        app:layout_anchor="@id/appBar"
-                        android:onClick="openPhone">
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:text="Phone"
-                            android:textSize="15dp"
-                            android:textStyle="bold"
-                            android:gravity="center"/>
-                    </android.support.v7.widget.CardView>
-                </LinearLayout>
-
-            <RatingBar
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/ratingBar"
-                android:numStars="5"
-                android:isIndicator="false"
-                style="@style/customRatingBar"
-                android:layout_gravity="center_horizontal"/>
 
 
             <android.support.design.widget.TabLayout
@@ -133,7 +83,30 @@
             android:src="@drawable/ic_unfavorite"
             app:layout_anchor="@id/appBar"
             app:layout_anchorGravity="top|end"
-            android:onClick="favouriteChecked"/>
+            android:onClick="favouriteChecked"
+            />
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/rateFab"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:layout_marginTop="90dp"
+            android:layout_marginRight="10dp"
+            android:src="@drawable/ic_unfavorite"
+            app:layout_anchor="@id/appBar"
+            app:layout_anchorGravity="top|end"
+            android:onClick="ratingCheck"
+            />
+
+
+
+        <RatingBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/ratingBar1"
+            android:numStars="5"
+            android:isIndicator="false"
+            style="@style/customRatingBar"
+            android:layout_gravity="center_horizontal"/>
 
     </android.support.design.widget.CoordinatorLayout>
 

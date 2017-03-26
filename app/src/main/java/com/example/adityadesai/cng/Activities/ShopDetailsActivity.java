@@ -1,5 +1,6 @@
 package com.example.adityadesai.cng.Activities;
 
+import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
@@ -15,8 +16,10 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.RatingBar;
 import android.widget.TextView;
 
 import com.example.adityadesai.cng.Adapters.CustomAdapter;
@@ -89,6 +92,8 @@ public class ShopDetailsActivity extends AppCompatActivity implements TabLayout.
         phone = i.getStringExtra("shopPhone");
         industry=i.getStringExtra("industry_name");
         id = i.getStringExtra("shop_id");
+
+//fa
 
 
 //        Toolbar toolbar1 = (Toolbar) findViewById(R.id.toolbar1);
@@ -173,40 +178,40 @@ public class ShopDetailsActivity extends AppCompatActivity implements TabLayout.
 
 
 
-//        final ArrayList<String> mOfferItems = new ArrayList<>();
-//        mOfferItems.add("Buy 1 get 1 free on Item A");
-//        mOfferItems.add("Buy 2 get 1 free on Item B");
-//        mOfferItems.add("Flat 50% off on Item C");
-//        mOfferItems.add("Buy 1 get 1 free on Item D");
-//
-//
-//        mListView = (ListView)findViewById(R.id.offers_list);
-//        mArrayAdapter = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,mOfferItems);
-//        mListView.setAdapter(mArrayAdapter);
-//
-//        SlidingUpPanelLayout.PanelSlideListener mSlidePanelListener=new SlidingUpPanelLayout.PanelSlideListener() {
-//            @Override
-//            public void onPanelSlide(View panel, float slideOffset) {
-//                TextView title=(TextView)panel.findViewById(R.id.title_offer);
-//                ImageView icon=(ImageView)panel.findViewById(R.id.slide_panel_icon);
-//                View decorView = getWindow().getDecorView();
-//                if(slideOffset==1){
-//                    decorView.setSystemUiVisibility(View.SYSTEM_UI_FLAG_FULLSCREEN);
-//                    title.setText("Slide down to close!");
-//                    icon.setImageResource(android.R.drawable.arrow_down_float);
-//                }
-//                else{
-//                    decorView.setSystemUiVisibility(View.SYSTEM_UI_FLAG_IMMERSIVE);
-//                    title.setText("Slide up to view offers!");
-//                    icon.setImageResource(android.R.drawable.arrow_up_float);
-//                }
-//            }
-//            @Override
-//            public void onPanelStateChanged(View panel, SlidingUpPanelLayout.PanelState previousState, SlidingUpPanelLayout.PanelState newState) {
-//            }
-//        };
-//
-//        slidingPanel.addPanelSlideListener(mSlidePanelListener);
+        final ArrayList<String> mOfferItems = new ArrayList<>();
+        mOfferItems.add("Buy 1 get 1 free on Item A");
+        mOfferItems.add("Buy 2 get 1 free on Item B");
+        mOfferItems.add("Flat 50% off on Item C");
+        mOfferItems.add("Buy 1 get 1 free on Item D");
+
+
+        mListView = (ListView)findViewById(R.id.offers_list);
+        mArrayAdapter = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,mOfferItems);
+        mListView.setAdapter(mArrayAdapter);
+
+        SlidingUpPanelLayout.PanelSlideListener mSlidePanelListener=new SlidingUpPanelLayout.PanelSlideListener() {
+            @Override
+            public void onPanelSlide(View panel, float slideOffset) {
+                TextView title=(TextView)panel.findViewById(R.id.title_offer);
+                ImageView icon=(ImageView)panel.findViewById(R.id.slide_panel_icon);
+                View decorView = getWindow().getDecorView();
+                if(slideOffset==1){
+                    decorView.setSystemUiVisibility(View.SYSTEM_UI_FLAG_FULLSCREEN);
+                    title.setText("Slide down to close!");
+                    icon.setImageResource(android.R.drawable.arrow_down_float);
+                }
+                else{
+                    decorView.setSystemUiVisibility(View.SYSTEM_UI_FLAG_IMMERSIVE);
+                    title.setText("Slide up to view offers!");
+                    icon.setImageResource(android.R.drawable.arrow_up_float);
+                }
+            }
+            @Override
+            public void onPanelStateChanged(View panel, SlidingUpPanelLayout.PanelState previousState, SlidingUpPanelLayout.PanelState newState) {
+            }
+        };
+
+        slidingPanel.addPanelSlideListener(mSlidePanelListener);
 
 //        fetchItemList fIL = new fetchItemList();
 //        fIL.execute();
@@ -296,6 +301,28 @@ public class ShopDetailsActivity extends AppCompatActivity implements TabLayout.
             favFab.setImageResource(R.drawable.ic_unfavorite);
             isFavourite=0;
         }
+    }
+
+
+    public void ratingCheck(View v){
+        final Dialog rankDialog = new Dialog(ShopDetailsActivity.this, R.style.FullHeightDialog);
+        rankDialog.setContentView(R.layout.rank_dialog);
+        rankDialog.setCancelable(true);
+        RatingBar ratingBar = (RatingBar)rankDialog.findViewById(R.id.dialog_ratingbar);
+        ratingBar.setRating(0);
+
+        TextView text = (TextView) rankDialog.findViewById(R.id.rank_dialog_text1);
+        text.setText(name);
+
+        Button updateButton = (Button) rankDialog.findViewById(R.id.rank_dialog_button);
+        updateButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                rankDialog.dismiss();
+            }
+        });
+        //now that the dialog is set up, it's time to show it
+        rankDialog.show();
     }
 
     @Override
