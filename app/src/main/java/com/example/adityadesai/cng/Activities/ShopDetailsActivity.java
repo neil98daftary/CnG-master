@@ -55,9 +55,9 @@ public class ShopDetailsActivity extends AppCompatActivity implements TabLayout.
     ArrayAdapter mArrayAdapter;
 
     private String name;
-    private String address;
-    private String phone;
-    private String industry;
+    public static String address;
+    public static String phone;
+    public static String industry;
     public static String id;
 
     private ListView mListView;
@@ -86,6 +86,8 @@ public class ShopDetailsActivity extends AppCompatActivity implements TabLayout.
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_shop_details);
+
+
 
         Intent i = getIntent();
         name = i.getStringExtra("shopName");
@@ -127,10 +129,7 @@ public class ShopDetailsActivity extends AppCompatActivity implements TabLayout.
         CircleIndicator indicator = (CircleIndicator) findViewById(R.id.indicator);
         indicator.setViewPager(mViewPager);
 
-        mFirebaseDatabase = FirebaseDatabase.getInstance();
-        mFirebaseStorage = FirebaseStorage.getInstance();
-        mItemDatabaseReference = mFirebaseDatabase.getReference().child(industry).child(id); //change industry to ShopListActivity.shop_type
-        mStorageReference = mFirebaseStorage.getReference().child("item_photos");// if it doesnt work
+
 
 
 
@@ -200,35 +199,34 @@ public class ShopDetailsActivity extends AppCompatActivity implements TabLayout.
     //        }
     //    }
 
+    public String getId(){
+        return id;
+    }
+
     @Override
     public void onBackPressed() {
         super.onBackPressed();
         overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
     }
 
-    public void openAddress(View v){
-        new AlertDialog.Builder(this)
-                .setTitle("Address")
-                .setMessage(address)
-                .setIcon(R.drawable.ic_home_24dp)
-                .show();
+    public void goToAddress(View v){
+        //NY for now
+        double latitude = 40.714728;
+        double longitude = -73.998672;
+        String label = name;
+        String uriBegin = "geo:" + latitude + "," + longitude;
+        String query = latitude + "," + longitude + "(" + label + ")";
+        String encodedQuery = Uri.encode(query);
+        String uriString = uriBegin + "?q=" + encodedQuery + "&z=16";
+        Uri uri = Uri.parse(uriString);
+        Intent intent = new Intent(android.content.Intent.ACTION_VIEW, uri);
+        startActivity(intent);
     }
 
-    public void openPhone(View v){
-        new AlertDialog.Builder(this)
-                .setTitle("Phone Number")
-                .setMessage(phone)
-                .setNeutralButton("Call",new DialogInterface.OnClickListener(){
-
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        Intent intent = new Intent(Intent.ACTION_DIAL);
-                        intent.setData(Uri.parse("tel:"+phone));
-                        startActivity(intent);
-                    }
-                })
-                .setIcon(R.drawable.ic_home_24dp)
-                .show();
+    public void callPhone(View v){
+        Intent intent = new Intent(Intent.ACTION_DIAL);
+        intent.setData(Uri.parse("tel:"+phone));
+        startActivity(intent);
     }
 
     public void favouriteChecked(View v){

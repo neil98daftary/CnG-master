@@ -9,13 +9,16 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.adityadesai.cng.Activities.ShopDetailsActivity;
 import com.example.adityadesai.cng.Adapters.MenuRecyclerAdapter;
 import com.example.adityadesai.cng.Objects.MenuItem;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
 import java.util.ArrayList;
@@ -25,11 +28,14 @@ public class view_items extends Fragment {
     private RecyclerView mRecyclerView;
     private GridLayoutManager mGridLayoutManager;
     private ArrayList<MenuItem> mMenuItems;
+    private MenuRecyclerAdapter mAdapter;
+
+    private FirebaseDatabase mFirebaseDatabase;
+    private FirebaseStorage mFirebaseStorage;
     private StorageReference mStorageReference;
     private ValueEventListener mValueEventListener;
     private DatabaseReference mItemDatabaseReference;
     private ChildEventListener mChildEventListener;
-    private MenuRecyclerAdapter mAdapter;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -38,13 +44,19 @@ public class view_items extends Fragment {
         //Change R.layout.tab1 in you classes
         View view = inflater.inflate(R.layout.view_items, container, false);
 
-
+        mFirebaseDatabase = FirebaseDatabase.getInstance();
+        mFirebaseStorage = FirebaseStorage.getInstance();
+        mItemDatabaseReference = mFirebaseDatabase.getReference().child(ShopDetailsActivity.industry).child(ShopDetailsActivity.id);
+        mStorageReference = mFirebaseStorage.getReference().child("item_photos");
 
         mRecyclerView = (RecyclerView) view.findViewById(R.id.shop_menu_recycler);
         mGridLayoutManager=new GridLayoutManager(getContext(), 2);
         mRecyclerView.setLayoutManager(mGridLayoutManager);
 
         mMenuItems= new ArrayList<>();
+
+        fetchItemList mFetch = new fetchItemList();
+        mFetch.execute();
 
         return view;
 
