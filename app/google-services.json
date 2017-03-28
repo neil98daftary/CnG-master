@@ -1,21 +1,21 @@
 {
   "project_info": {
-    "project_number": "216214926207",
-    "firebase_url": "https://cng-test.firebaseio.com",
-    "project_id": "cng-test",
-    "storage_bucket": "cng-test.appspot.com"
+    "project_number": "228435502475",
+    "firebase_url": "https://cng-app-36f27.firebaseio.com",
+    "project_id": "cng-app-36f27",
+    "storage_bucket": "cng-app-36f27.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:216214926207:android:83a93f62e89d4e35",
+        "mobilesdk_app_id": "1:228435502475:android:83a93f62e89d4e35",
         "android_client_info": {
           "package_name": "com.example.adityadesai.cng"
         }
       },
       "oauth_client": [
         {
-          "client_id": "216214926207-9m3s45jb8a79l2drjni53q31olj6uct8.apps.googleusercontent.com",
+          "client_id": "228435502475-qihu1suc548m9l1obi9chinks92ib7bp.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "com.example.adityadesai.cng",
@@ -23,13 +23,13 @@
           }
         },
         {
-          "client_id": "216214926207-9ha52jak6u4kfdsrb5s73tthe2ra1s9t.apps.googleusercontent.com",
+          "client_id": "228435502475-inmbj5eghbgf2l80ji4vtu0cb32oqo40.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyALtoOmjJPMBh8um21e3McAsKv8MOodKRc"
+          "current_key": "AIzaSyCAMP8Oz9as8cd-tbUYZxcag0NW0PUTsAY"
         }
       ],
       "services": {
@@ -40,7 +40,7 @@
           "status": 2,
           "other_platform_oauth_client": [
             {
-              "client_id": "216214926207-9ha52jak6u4kfdsrb5s73tthe2ra1s9t.apps.googleusercontent.com",
+              "client_id": "228435502475-inmbj5eghbgf2l80ji4vtu0cb32oqo40.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
