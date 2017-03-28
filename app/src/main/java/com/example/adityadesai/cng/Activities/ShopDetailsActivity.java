@@ -18,6 +18,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.RatingBar;
@@ -243,7 +244,7 @@ public class ShopDetailsActivity extends AppCompatActivity implements TabLayout.
 
 
     public void ratingCheck(View v){
-        final Dialog rankDialog = new Dialog(ShopDetailsActivity.this, R.style.FullHeightDialog);
+        final Dialog rankDialog = new Dialog(ShopDetailsActivity.this, R.style.Theme_AppCompat_Light_Dialog);
         rankDialog.setContentView(R.layout.rank_dialog);
         rankDialog.setCancelable(true);
         RatingBar ratingBar = (RatingBar)rankDialog.findViewById(R.id.dialog_ratingbar);
@@ -252,7 +253,7 @@ public class ShopDetailsActivity extends AppCompatActivity implements TabLayout.
         TextView text = (TextView) rankDialog.findViewById(R.id.rank_dialog_text1);
         text.setText(name);
 
-        Button updateButton = (Button) rankDialog.findViewById(R.id.rank_dialog_button);
+        ImageButton updateButton = (ImageButton) rankDialog.findViewById(R.id.rank_dialog_button);
         updateButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -30,6 +31,8 @@ import com.example.adityadesai.cng.R;
 import com.firebase.ui.auth.AuthUI;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -37,12 +40,20 @@ import com.google.firebase.database.FirebaseDatabase;
 public class  MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
+    public static final String ANONYMOUS = "anonymous";
+    public static final int RC_SIGN_IN=1;
+
     FragmentManager mFragmentManager;
 
+    SharedPreferences.Editor editor2;
     /*Initializing Firebase variables*/
 
+    private FirebaseAuth mFirebaseAuth;
+    private FirebaseAuth.AuthStateListener mAuthStateListener;
+    private FirebaseUser user;
 
-    private String name;
+
+    private String mUsername;
     private String url;
 
 
@@ -51,9 +62,24 @@ public class  MainActivity extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Toast.makeText(this, "Welcome to CNG!!", Toast.LENGTH_SHORT).show();
+
+        mUsername = ANONYMOUS;
+
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
+        if(!prefs.getBoolean("firstTime", false)) {
+            // run your one time code here
+            editor2=getSharedPreferences("signInMode",MODE_APPEND).edit();
+            editor2.putBoolean("isCustomer",true);
+            editor2.commit();
+
+            SharedPreferences.Editor editor = prefs.edit();
+            editor.putBoolean("firstTime", true);
+            editor.commit();
+        }
 
         /*Firebase Stuff*/
+
+
 
 
         //Initializing id folder
@@ -71,11 +97,11 @@ public class  MainActivity extends AppCompatActivity
 
 
 
-        Intent i = getIntent();
-        Bundle b = i.getExtras();
+//        Intent i = getIntent();
+//        Bundle b = i.getExtras();
 
-        name = b.getString("username");
-        url = b.getString("photoUrl");
+//        name = b.getString("username");
+//        url = b.getString("photoUrl");
 
 
         // Transition
@@ -98,9 +124,85 @@ public class  MainActivity extends AppCompatActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
+        mFirebaseAuth = FirebaseAuth.getInstance();
+
+        mAuthStateListener = new FirebaseAuth.AuthStateListener() {
+            @Override
+            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
+                user = firebaseAuth.getCurrentUser();
+                if (user != null) {
+                    // User is signed in
+                    Toast.makeText(MainActivity.this, "You're now signed in. Welcome to CnG!", Toast.LENGTH_SHORT).show();
+                    onSignedInInitialize(user.getDisplayName());
+
+                } else {
+                    // User is signed out
+
+                    onSignedOutCleanup();
+                    startActivityForResult(
+                            AuthUI.getInstance()
+                                    .createSignInIntentBuilder()
+                                    .setIsSmartLockEnabled(false)
+                                    .setProviders(
+                                            AuthUI.EMAIL_PROVIDER,
+                                            AuthUI.GOOGLE_PROVIDER)
+                                    .build(),
+                            RC_SIGN_IN);
+                }
+            }
+        };
+        //mFirebaseAuth.addAuthStateListener(mAuthStateListener);
+        //name=user.getDisplayName();
+
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        mFirebaseAuth.addAuthStateListener(mAuthStateListener);
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        if (mAuthStateListener != null) {
+            mFirebaseAuth.removeAuthStateListener(mAuthStateListener);
+        }
+    }
+
+    private void onSignedInInitialize(String username) {
+        mUsername = username;
+        //user.sendEmailVerification();
+    }
 
 
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == RC_SIGN_IN) {
+            if (resultCode == RESULT_OK) {
+                // Sign-in succeeded, set up the UI
+                Toast.makeText(this, "Signed in!", Toast.LENGTH_SHORT).show();
+            } else if (resultCode == RESULT_CANCELED) {
+                // Sign in was canceled by the user, finish the activity
+                Toast.makeText(this, "Sign in canceled", Toast.LENGTH_SHORT).show();
+                finish();
+            }
+        }
+    }
 
+    private void onSignedOutCleanup(){
+        mUsername=ANONYMOUS;
+    }
+
+    public void makeVendor(View v){
+        editor2=getSharedPreferences("signInMode",MODE_APPEND).edit();
+        editor2.putBoolean("isCustomer",false);
+        editor2.commit();
+        Intent intent = new Intent(this, MainActivity.class);
+        //intent.putExtra(user.getDisplayName(),"username");
+        //intent.putExtra(user.getPhotoUrl(),"photoUrl");
+        startActivity(intent);
     }
 
 
@@ -112,8 +214,6 @@ public class  MainActivity extends AppCompatActivity
             drawer.closeDrawer(GravityCompat.START);
         } else {
             super.onBackPressed();
-            Intent i=new Intent(this,ChooseActivity.class);
-            startActivity(i);
         }
     }
 
@@ -162,8 +262,6 @@ public class  MainActivity extends AppCompatActivity
                     .addOnCompleteListener(new OnCompleteListener<Void>() {
                         public void onComplete(@NonNull Task<Void> task) {
                             // user is now signed out
-                            startActivity(new Intent(MainActivity.this, ChooseActivity.class));
-                            finish();
                         }
                     });
         }

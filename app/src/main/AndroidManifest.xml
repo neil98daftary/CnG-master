@@ -11,19 +11,18 @@
         <activity
             android:name=".Activities.MainActivity"
             android:label="@string/app_name"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".Activities.ShopListActivity" />
-        <activity
-            android:name=".Activities.ShopDetailsActivity"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".Activities.ItemDetailsActivity" />
-        <activity android:name=".Activities.ChooseActivity">
+            android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".Activities.ShopListActivity" />
+        <activity
+            android:name=".Activities.ShopDetailsActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".Activities.ItemDetailsActivity" />
         <activity
             android:name=".Activities.VendorItemsListActivity"
             android:theme="@style/AppTheme.NoActionBar" />

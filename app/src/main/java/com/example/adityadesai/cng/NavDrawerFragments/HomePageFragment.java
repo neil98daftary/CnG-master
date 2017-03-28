@@ -13,6 +13,7 @@ import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.adityadesai.cng.Activities.MainActivity;
@@ -43,7 +44,8 @@ public class HomePageFragment extends android.support.v4.app.Fragment {
     private int id=1000;
     private boolean isCustomer;
     private ArrayList<Industry> mIndustryList;
-    NavigationView navView;
+    private NavigationView navView;
+    private TextView makeVendorTextView;
 
 
 
@@ -98,6 +100,10 @@ public class HomePageFragment extends android.support.v4.app.Fragment {
             navView=(NavigationView)getActivity().findViewById(R.id.nav_view);
             Menu menu=navView.getMenu();
             menu.findItem(R.id.myshop).setVisible(false);
+        }
+        else{
+            makeVendorTextView=(TextView)getActivity().findViewById(R.id.become_vendor);
+            makeVendorTextView.setVisibility(View.GONE);
         }
 
         /*Using AsyncTask to load the Data*/
