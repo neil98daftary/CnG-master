@@ -1,6 +1,7 @@
 package com.example.adityadesai.cng.Activities;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
@@ -14,6 +15,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 
@@ -58,7 +60,10 @@ public class EditShopActivity extends AppCompatActivity {
     private String finalId;
     private Uri imageUrl;
 
+    private SharedPreferences sharedprefs;
+
     private static final int RC_PHOTO_PICKER = 2;
+    private static final int RC_CAMERA = 3;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -75,6 +80,8 @@ public class EditShopActivity extends AppCompatActivity {
         shopPhoneEditText=(EditText)findViewById(R.id.edit_shop_phone);
         shopAddressEditText=(EditText)findViewById(R.id.edit_shop_address);
         mImageView = (ImageView) findViewById(R.id.imageView);
+
+        sharedprefs = getSharedPreferences("userInfo",MODE_APPEND);
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.shop_edit_done_fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -106,6 +113,16 @@ public class EditShopActivity extends AppCompatActivity {
         startActivityForResult(Intent.createChooser(intent, "Complete action using"), RC_PHOTO_PICKER);
     }
 
+    public void openCamera(View view){
+        Toast.makeText(this,"Yet to implement",Toast.LENGTH_SHORT).show();
+        // IDK if the code is right
+       /* Intent intent = new Intent(Intent.ACTION_CAMERA_BUTTON);
+        intent.setType("image/jpeg");
+        intent.putExtra(Intent.EXTRA_LOCAL_ONLY,true);
+        startActivityForResult(Intent.createChooser(intent,"Complete action using"),RC_CAMERA);
+        */
+    }
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -126,6 +143,11 @@ public class EditShopActivity extends AppCompatActivity {
                                         .into(mImageView);
                             }
                         });
+            }
+        }
+        if(requestCode == RC_CAMERA){
+            if(resultCode == RESULT_OK){
+                //Code to do
             }
         }
 
@@ -154,7 +176,7 @@ public class EditShopActivity extends AppCompatActivity {
 
     private void pushShop(String shopId){
         finalId=Integer.toString((Integer.parseInt(shopId))+1);
-        mDatabaseReference.push().setValue(new Shop(shopName,shopAddress,shopPhone,finalId,shopIndustry,imageUrl.toString()));
+        mDatabaseReference.push().setValue(new Shop(shopName,shopAddress,shopPhone,finalId,shopIndustry,imageUrl.toString(),sharedprefs.getString("uid",null)));
         updateId(finalId);
 
         Intent i =new Intent(getBaseContext(),MainActivity.class);

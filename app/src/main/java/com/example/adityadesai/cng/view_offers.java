@@ -24,7 +24,7 @@ public class view_offers extends Fragment {
         View view1 = inflater.inflate(R.layout.view_offers, container, false);
 
         mOfferItems = new ArrayList<>();
-        mOfferItems.add("Buy 1 get 1 free on Item A");
+        mOfferItems.add("Buy 1 get 1 free on Item AA");
         mOfferItems.add("Buy 2 get 1 free on Item B");
         mOfferItems.add("Flat 50% off on Item C");
         mOfferItems.add("Buy 1 get 1 free on Item D");

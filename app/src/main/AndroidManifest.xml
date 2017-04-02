@@ -43,7 +43,11 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".view_items" />
         <activity android:name=".view_offers" />
-        <activity android:name=".view_details"></activity>
+        <activity android:name=".view_details" />
+        <activity android:name=".Activities.PofileActivity" />
+        <activity android:name=".Activities.OwnerInfo"
+                  android:theme="@style/AppTheme.PopUp">
+        </activity>
     </application>
 
 </manifest>

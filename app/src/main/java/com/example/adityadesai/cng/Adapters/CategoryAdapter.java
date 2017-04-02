@@ -11,6 +11,10 @@ import com.example.adityadesai.cng.view_offers;
 import com.example.adityadesai.cng.view_details;
 import com.example.adityadesai.cng.view_items;
 
+import static com.example.adityadesai.cng.R.layout.view_details;
+import static com.example.adityadesai.cng.R.layout.view_items;
+import static com.example.adityadesai.cng.R.layout.view_offers;
+
 /**
  * Created by neil on 23/3/17.
  */

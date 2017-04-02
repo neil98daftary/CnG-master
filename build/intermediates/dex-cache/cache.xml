@@ -3,21 +3,39 @@
 
     <item
         is-multidex="false"
-        jar="/Users/adityadesai/Desktop/CnG-master/Libraries/SlidableListView/build/intermediates/bundles/default/classes.jar"
+        jar="C:\Users\USER\.android\build-cache\0453ab0cc013095760c5a100d71c60d812f3e9d4\output\jars\classes.jar"
         jumboMode="false"
         optimize="true"
         revision="25.0.0"
-        sha1="f4700bdc0d247d638cc6098ffe444fc4dc76a4e0">
-        <dex dex="/Users/adityadesai/Desktop/CnG-master/app/build/intermediates/pre-dexed/debug/classes_f8d8a048f4a441d59ba16bd6240e8a91b15ff355.jar" />
+        sha1="44ee06abb66da30f5855e6bf54574e64cdcd982a">
+        <dex dex="C:\Users\Public\AndroidStudioProjects\CnG-master\app\build\intermediates\pre-dexed\debug\classes_5529829b6fabfb4ea6ba269d2ea68a01c5556d39.jar" />
     </item>
     <item
         is-multidex="false"
-        jar="/Users/adityadesai/Desktop/CnG-master/Libraries/circleindicator/build/intermediates/bundles/default/classes.jar"
+        jar="C:\Users\Public\AndroidStudioProjects\CnG-master\Libraries\circleindicator\build\intermediates\bundles\default\classes.jar"
         jumboMode="false"
         optimize="true"
         revision="25.0.0"
         sha1="1db6784d006818fee2591f13b0bf09ac31a3d49a">
-        <dex dex="/Users/adityadesai/Desktop/CnG-master/app/build/intermediates/pre-dexed/debug/classes_11221142d51dc866da2b657a8c63635401b578d8.jar" />
+        <dex dex="C:\Users\Public\AndroidStudioProjects\CnG-master\app\build\intermediates\pre-dexed\debug\classes_74c97dced2ebd73a4a303d3c192ee41d8fa4ffb2.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\USER\AppData\Local\Android\sdk\extras\m2repository\com\android\support\constraint\constraint-layout-solver\1.0.2\constraint-layout-solver-1.0.2.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="b9cd8fc6bd15cb915735d34535db30ece0c44603">
+        <dex dex="C:\Users\Public\AndroidStudioProjects\CnG-master\app\build\intermediates\pre-dexed\debug\constraint-layout-solver-1.0.2_de4a646ca453efd53589557820cfff55482253f3.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Public\AndroidStudioProjects\CnG-master\Libraries\SlidableListView\build\intermediates\bundles\default\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="f4700bdc0d247d638cc6098ffe444fc4dc76a4e0">
+        <dex dex="C:\Users\Public\AndroidStudioProjects\CnG-master\app\build\intermediates\pre-dexed\debug\classes_fab780e3a125511b28548499bae3fb884e7a0350.jar" />
     </item>
 
 </items>

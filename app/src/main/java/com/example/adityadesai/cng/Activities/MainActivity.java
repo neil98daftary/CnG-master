@@ -27,6 +27,7 @@ import com.example.adityadesai.cng.NavDrawerFragments.OffersPageFragment;
 //import com.example.adityadesai.cng.Objects.Id;
 import com.example.adityadesai.cng.Objects.Industry;
 import com.example.adityadesai.cng.Objects.ItemDetail;
+import com.example.adityadesai.cng.Objects.User;
 import com.example.adityadesai.cng.R;
 import com.firebase.ui.auth.AuthUI;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -35,6 +36,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.example.adityadesai.cng.Activities.PofileActivity;
 
 
 public class  MainActivity extends AppCompatActivity
@@ -45,8 +47,12 @@ public class  MainActivity extends AppCompatActivity
 
     FragmentManager mFragmentManager;
 
+    SharedPreferences.Editor editor1;
     SharedPreferences.Editor editor2;
     /*Initializing Firebase variables*/
+
+    private FirebaseDatabase mFirebaseDatabase;
+    private DatabaseReference mDatabaseReference;
 
     private FirebaseAuth mFirebaseAuth;
     private FirebaseAuth.AuthStateListener mAuthStateListener;
@@ -55,7 +61,9 @@ public class  MainActivity extends AppCompatActivity
 
     private String mUsername;
     private String url;
+    private Intent mIntent;
 
+    SharedPreferences prefs;
 
 
     @Override
@@ -65,17 +73,13 @@ public class  MainActivity extends AppCompatActivity
 
         mUsername = ANONYMOUS;
 
-        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
-        if(!prefs.getBoolean("firstTime", false)) {
+        prefs = PreferenceManager.getDefaultSharedPreferences(this);
+        /*if(!prefs.getBoolean("firstTime", false)) {
             // run your one time code here
-            editor2=getSharedPreferences("signInMode",MODE_APPEND).edit();
-            editor2.putBoolean("isCustomer",true);
-            editor2.commit();
 
-            SharedPreferences.Editor editor = prefs.edit();
-            editor.putBoolean("firstTime", true);
-            editor.commit();
-        }
+
+
+        } */
 
         /*Firebase Stuff*/
 
@@ -125,6 +129,8 @@ public class  MainActivity extends AppCompatActivity
         navigationView.setNavigationItemSelectedListener(this);
 
         mFirebaseAuth = FirebaseAuth.getInstance();
+        mFirebaseDatabase = FirebaseDatabase.getInstance();
+        mDatabaseReference = mFirebaseDatabase.getReference().child("users");
 
         mAuthStateListener = new FirebaseAuth.AuthStateListener() {
             @Override
@@ -133,7 +139,30 @@ public class  MainActivity extends AppCompatActivity
                 if (user != null) {
                     // User is signed in
                     Toast.makeText(MainActivity.this, "You're now signed in. Welcome to CnG!", Toast.LENGTH_SHORT).show();
-                    onSignedInInitialize(user.getDisplayName());
+                    //onSignedInInitialize(user.getDisplayName());
+
+                    if(!prefs.getBoolean("firstTime", false)){
+                        // One time pushing
+                        editor2=getSharedPreferences("signInMode",MODE_APPEND).edit();
+                        editor2.putBoolean("isCustomer",true);
+                        editor2.commit();
+
+
+                        editor1 = getSharedPreferences("userInfo",MODE_APPEND).edit();
+                        editor1.putString("name",user.getDisplayName());
+                        editor1.putString("email",user.getEmail());
+                        editor1.putString("phone",null);
+                        editor1.putString("pic",user.getPhotoUrl().toString());
+                        editor1.putString("uid",user.getUid());
+                        editor1.commit();
+                        mIntent = new Intent(MainActivity.this,PofileActivity.class);
+                        startActivity(mIntent);
+
+
+                        SharedPreferences.Editor editor = prefs.edit();
+                        editor.putBoolean("firstTime", true);
+                        editor.commit();
+                    }
 
                 } else {
                     // User is signed out
@@ -143,9 +172,7 @@ public class  MainActivity extends AppCompatActivity
                             AuthUI.getInstance()
                                     .createSignInIntentBuilder()
                                     .setIsSmartLockEnabled(false)
-                                    .setProviders(
-                                            AuthUI.EMAIL_PROVIDER,
-                                            AuthUI.GOOGLE_PROVIDER)
+                                    .setProviders(AuthUI.GOOGLE_PROVIDER)
                                     .build(),
                             RC_SIGN_IN);
                 }
@@ -183,6 +210,7 @@ public class  MainActivity extends AppCompatActivity
             if (resultCode == RESULT_OK) {
                 // Sign-in succeeded, set up the UI
                 Toast.makeText(this, "Signed in!", Toast.LENGTH_SHORT).show();
+
             } else if (resultCode == RESULT_CANCELED) {
                 // Sign in was canceled by the user, finish the activity
                 Toast.makeText(this, "Sign in canceled", Toast.LENGTH_SHORT).show();
@@ -257,6 +285,9 @@ public class  MainActivity extends AppCompatActivity
             fragment=new MyShopsFragment();
         } else if (id == R.id.sign_out) {
             // Till sign out page is not made
+            SharedPreferences.Editor editor = prefs.edit();
+            editor.putBoolean("firstTime", false);
+            editor.commit();
             AuthUI.getInstance()
                     .signOut(this)
                     .addOnCompleteListener(new OnCompleteListener<Void>() {

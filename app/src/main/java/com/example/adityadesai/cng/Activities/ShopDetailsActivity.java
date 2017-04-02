@@ -60,6 +60,8 @@ public class ShopDetailsActivity extends AppCompatActivity implements TabLayout.
     public static String phone;
     public static String industry;
     public static String id;
+    public static String url;
+    public static String ownerid;
 
     private ListView mListView;
     //public static ArrayList<ItemDetail> mItemDetails;
@@ -96,6 +98,8 @@ public class ShopDetailsActivity extends AppCompatActivity implements TabLayout.
         phone = i.getStringExtra("shopPhone");
         industry=i.getStringExtra("industry_name");
         id = i.getStringExtra("shop_id");
+        url = i.getStringExtra("shop_url");
+        ownerid = i.getStringExtra("owner_id");
 
 
         //Initializing viewPager
@@ -103,6 +107,7 @@ public class ShopDetailsActivity extends AppCompatActivity implements TabLayout.
 
         //Creating our pager adapter
         CategoryAdapter adapter = new CategoryAdapter(this,getSupportFragmentManager());
+
 
         //Adding adapter to pager
         viewPager.setAdapter(adapter);

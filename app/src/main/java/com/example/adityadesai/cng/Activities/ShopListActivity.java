@@ -64,7 +64,7 @@ public class ShopListActivity extends AppCompatActivity {
         mLinearLayoutManager=new LinearLayoutManager(this);
         mRecyclerView.setLayoutManager(mLinearLayoutManager);
 
-        Toast.makeText(this,mShopDatabaseReference.getRoot().getKey(),Toast.LENGTH_SHORT).show();
+        Toast.makeText(this,"Shops",Toast.LENGTH_SHORT).show();
 
         mShopList= new ArrayList<>();
         /*mShopList.add(new Shop("Shop A","Address A","0000"));
@@ -119,10 +119,11 @@ public class ShopListActivity extends AppCompatActivity {
                         String shop_id =  (String) snapshot.child("shop_id").getValue();
                         String industry_name =  (String) snapshot.child("industryName").getValue();
                         String shop_uri = (String) snapshot.child("shopUrl").getValue();
+                        String owner_id = (String) snapshot.child("ownerId").getValue();
 
 
                         if(shop_name != null && shop_address != null && shop_phonenum != null && shop_id != null) {
-                            mShopList.add(new Shop(shop_name, shop_address, shop_phonenum,shop_id,industry_name,shop_uri));
+                            mShopList.add(new Shop(shop_name, shop_address, shop_phonenum,shop_id,industry_name,shop_uri,owner_id));
                         }
 
                     }

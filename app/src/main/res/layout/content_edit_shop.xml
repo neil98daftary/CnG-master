@@ -38,12 +38,26 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
 
-    <ImageButton
-        android:id="@+id/imageButton"
-        android:layout_width="50dp"
+    <LinearLayout
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:onClick="uploadPic"
-        app:srcCompat="@drawable/ic_menu_gallery" />
+        android:orientation="horizontal">
+
+        <ImageButton
+            android:id="@+id/imageButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="uploadPic"
+            app:srcCompat="@drawable/ic_menu_gallery" />
+
+        <ImageButton
+            android:id="@+id/cameraButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="openCamera"
+            app:srcCompat="@drawable/ic_menu_camera" />
+
+    </LinearLayout>
 
     <ImageView
         android:id="@+id/imageView"
