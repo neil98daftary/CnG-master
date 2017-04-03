@@ -172,7 +172,8 @@ public class  MainActivity extends AppCompatActivity
                             AuthUI.getInstance()
                                     .createSignInIntentBuilder()
                                     .setIsSmartLockEnabled(false)
-                                    .setProviders(AuthUI.GOOGLE_PROVIDER)
+                                    .setProviders(AuthUI.GOOGLE_PROVIDER,
+                                                  AuthUI.EMAIL_PROVIDER)
                                     .build(),
                             RC_SIGN_IN);
                 }

@@ -12,10 +12,13 @@ import android.widget.Toast;
 import com.bumptech.glide.Glide;
 
 import com.example.adityadesai.cng.Objects.User;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 import com.example.adityadesai.cng.R;
+import com.google.firebase.database.ValueEventListener;
 
 public class PofileActivity extends AppCompatActivity {
 
@@ -47,6 +50,23 @@ public class PofileActivity extends AppCompatActivity {
         mUserEmail.setText(sharedPrefs.getString("email",null));
 
         Glide.with(this).load(sharedPrefs.getString("pic",null)).into(mUserPic);
+
+        mDatabaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                for(DataSnapshot snapshot : dataSnapshot.getChildren()){
+                    if(snapshot.child("uid").getValue().equals(sharedPrefs.getString("uid",null))){
+                        Toast.makeText(getBaseContext(),"U have already registered",Toast.LENGTH_SHORT);
+                        finish();
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
 
     }
 
