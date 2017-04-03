@@ -57,6 +57,7 @@ public class MyShopsFragment extends android.support.v4.app.Fragment {
     private FirebaseDatabase mFirebaseDatabase;
     private DatabaseReference mDatabaseReference;
     private ValueEventListener mValueEventListener;
+    private SharedPreferences userspf;
 
     @Nullable
     @Override
@@ -65,6 +66,8 @@ public class MyShopsFragment extends android.support.v4.app.Fragment {
         View rootView =inflater.inflate(R.layout.myshops_page,null);
 
         SharedPreferences sharedPrefs=getActivity().getSharedPreferences("signInMode", Context.MODE_APPEND);
+        userspf = getActivity().getSharedPreferences("userInfo",Context.MODE_APPEND);
+
         if(sharedPrefs.getBoolean("isCustomer",true)){
             navView=(NavigationView)getActivity().findViewById(R.id.nav_view);
             Menu menu=navView.getMenu();
@@ -73,7 +76,7 @@ public class MyShopsFragment extends android.support.v4.app.Fragment {
 
         //Configured to just show groceries till users feature is not added
         mFirebaseDatabase = FirebaseDatabase.getInstance();
-        mDatabaseReference = mFirebaseDatabase.getReference().child("Groceries");
+
 
         mRecyclerView = (RecyclerView) rootView.findViewById(R.id.myshops_list);
         mLinearLayoutManager=new LinearLayoutManager(getActivity());
@@ -109,6 +112,8 @@ public class MyShopsFragment extends android.support.v4.app.Fragment {
         return rootView;
     }
 
+    // Call this function....
+
     public void updateUI(){
         mAdapter = new VendorShopListAdapter(mShopList);
         mRecyclerView.setAdapter(mAdapter);
@@ -117,24 +122,23 @@ public class MyShopsFragment extends android.support.v4.app.Fragment {
     public class fetchShopList extends AsyncTask<Void,Void,ArrayList<Shop>> {
         @Override
         protected ArrayList<Shop> doInBackground(Void... params) {
-
-            mValueEventListener = new ValueEventListener() {
+            mDatabaseReference = mFirebaseDatabase.getReference().child("Groceries");
+            mDatabaseReference.addListenerForSingleValueEvent(new ValueEventListener(){
                 @Override
                 public void onDataChange(DataSnapshot dataSnapshot) {
                     mShopList.clear();
                     for(DataSnapshot snapshot : dataSnapshot.getChildren()){
-                        String shop_name = (String) snapshot.child("shopName").getValue();
-                        String shop_address = (String) snapshot.child("shopAddress").getValue();
-                        String shop_phonenum = (String) snapshot.child("shopPhone").getValue();
-                        String shop_id =  (String) snapshot.child("shop_id").getValue();
-                        String industry_name =  (String) snapshot.child("industryName").getValue();
-                        String shop_uri = (String) snapshot.child("shopUrl").getValue();
-                        String uid = (String) snapshot.child("ownerId").getValue();
-
-                        if(shop_name != null && shop_address != null && shop_phonenum != null && shop_id != null) {
+                        if(snapshot.child("ownerId").getValue() == null){continue;}
+                        if(snapshot.child("ownerId").getValue().equals(userspf.getString("uid",null))){
+                            String shop_name = (String) snapshot.child("shopName").getValue();
+                            String shop_address = (String) snapshot.child("shopAddress").getValue();
+                            String shop_phonenum = (String) snapshot.child("shopPhone").getValue();
+                            String shop_id =  (String) snapshot.child("shop_id").getValue();
+                            String industry_name =  (String) snapshot.child("industryName").getValue();
+                            String shop_uri = (String) snapshot.child("shopUrl").getValue();
+                            String uid = (String) snapshot.child("ownerId").getValue();
                             mShopList.add(new Shop(shop_name, shop_address, shop_phonenum,shop_id,industry_name,shop_uri,uid));
                         }
-
                     }
                     updateUI();
                 }
@@ -143,9 +147,36 @@ public class MyShopsFragment extends android.support.v4.app.Fragment {
                 public void onCancelled(DatabaseError databaseError) {
 
                 }
-            };
+            });
 
-            mDatabaseReference.addValueEventListener(mValueEventListener);
+
+            mDatabaseReference = mFirebaseDatabase.getReference().child("Gym");
+            mDatabaseReference.addListenerForSingleValueEvent(new ValueEventListener(){
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
+                    for(DataSnapshot snapshot : dataSnapshot.getChildren()){
+                        if(snapshot.child("ownerId").getValue() == null){continue;}
+                        if(snapshot.child("ownerId").getValue().equals(userspf.getString("uid",null))){
+                            String shop_name = (String) snapshot.child("shopName").getValue();
+                            String shop_address = (String) snapshot.child("shopAddress").getValue();
+                            String shop_phonenum = (String) snapshot.child("shopPhone").getValue();
+                            String shop_id =  (String) snapshot.child("shop_id").getValue();
+                            String industry_name =  (String) snapshot.child("industryName").getValue();
+                            String shop_uri = (String) snapshot.child("shopUrl").getValue();
+                            String uid = (String) snapshot.child("ownerId").getValue();
+                            mShopList.add(new Shop(shop_name, shop_address, shop_phonenum,shop_id,industry_name,shop_uri,uid));
+                        }
+                    }
+                    updateUI();
+                }
+
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
+
+                }
+            });
+
+
             return null;
         }
     }

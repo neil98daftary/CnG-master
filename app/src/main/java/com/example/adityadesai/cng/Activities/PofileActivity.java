@@ -57,6 +57,9 @@ public class PofileActivity extends AppCompatActivity {
                 for(DataSnapshot snapshot : dataSnapshot.getChildren()){
                     if(snapshot.child("uid").getValue().equals(sharedPrefs.getString("uid",null))){
                         Toast.makeText(getBaseContext(),"U have already registered",Toast.LENGTH_SHORT);
+                        SharedPreferences.Editor ph = sharedPrefs.edit();
+                        ph.putString("phone",snapshot.child("phone").getValue().toString());
+                        ph.commit();
                         finish();
                     }
                 }

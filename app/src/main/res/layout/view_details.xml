@@ -109,11 +109,11 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:src="@drawable/ic_place_black_24dp"
+            android:background="@android:color/transparent"
+            android:onClick="goToAddress"
             android:scaleX="0.35"
             android:scaleY="0.35"
-            android:background="@android:color/transparent"
-            android:onClick="goToAddress"/>
+            android:src="@drawable/ic_place_black_24dp" />
 
         <ImageButton
             android:layout_width="0dp"

@@ -10,13 +10,14 @@ android:focusableInTouchMode="true">
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="@dimen/home_adv_height"
-            android:background="@android:color/holo_blue_light"
+            android:background="@color/colorPrimaryLight"
+            android:gravity="center"
             android:text="Advertisement"
-            android:textSize="45dp"
-            android:gravity="center" />
+            android:textSize="45dp" />
 
         <android.support.v7.widget.RecyclerView
             app:layout_behavior="@string/appbar_scrolling_view_behavior"
@@ -27,11 +28,12 @@ android:focusableInTouchMode="true">
             android:clickable="true"></android.support.v7.widget.RecyclerView>
     </LinearLayout>
 
-<android.support.design.widget.FloatingActionButton
-    android:id="@+id/add_shop_fab"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_gravity="bottom|end"
-    android:layout_margin="@dimen/fab_margin"
-    app:srcCompat="@android:drawable/ic_input_add" />
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/add_shop_fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_margin="@dimen/fab_margin"
+        app:rippleColor="@color/buttonTextColor"
+        app:srcCompat="@android:drawable/ic_menu_add" />
 </android.support.design.widget.CoordinatorLayout>
