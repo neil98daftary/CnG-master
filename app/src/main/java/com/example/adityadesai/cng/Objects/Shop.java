@@ -1,5 +1,7 @@
 package com.example.adityadesai.cng.Objects;
 
+import java.util.ArrayList;
+
 /**
  * Created by adityadesai on 13/02/17.
  */
@@ -12,8 +14,9 @@ public class Shop {
     private String industryName;
     private String shopUrl;
     private String ownerId;
+    private ArrayList<String> offers;
 
-    public Shop(String name, String address, String phone,String id, String industry, String shop_Url,String ownerId){
+    public Shop(String name, String address, String phone,String id, String industry, String shop_Url,String ownerId,ArrayList<String> offers){
         shopName=name;
         shopAddress=address;
         shopPhone=phone;
@@ -21,6 +24,7 @@ public class Shop {
         industryName = industry;
         shopUrl = shop_Url;
         this.ownerId  = ownerId;
+        this.offers = offers;
     }
 
     public String getShopName(){
@@ -42,4 +46,6 @@ public class Shop {
     public String getShopUrl() {return shopUrl;}
 
     public String getOwnerId() {return ownerId;}
+
+    public ArrayList<String> getOffers() {return offers;}
 }

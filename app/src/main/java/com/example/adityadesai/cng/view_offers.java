@@ -8,6 +8,8 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
+import com.example.adityadesai.cng.Activities.ShopDetailsActivity;
+
 import java.util.ArrayList;
 
 public class view_offers extends Fragment {
@@ -22,9 +24,12 @@ public class view_offers extends Fragment {
         //Returning the layout file after inflating
         //Change R.layout.tab1 in you classes
         View view1 = inflater.inflate(R.layout.view_offers, container, false);
+        mOfferItems = new ArrayList<String>();
 
-        mOfferItems = new ArrayList<>();
-        mOfferItems.add("Buy 1 get 1 free on Item AA");
+        if(ShopDetailsActivity.offers != null) {
+            mOfferItems.addAll(0,ShopDetailsActivity.offers);
+        }
+        /*mOfferItems.add("Buy 1 get 1 free on Item AA");
         mOfferItems.add("Buy 2 get 1 free on Item B");
         mOfferItems.add("Flat 50% off on Item C");
         mOfferItems.add("Buy 1 get 1 free on Item D");
@@ -38,6 +43,7 @@ public class view_offers extends Fragment {
         mOfferItems.add("Flat 50% off on Item C");
         mOfferItems.add("Flat 50% off on Item C");
         mOfferItems.add("Flat 50% off on Item C");
+        */
 
 
         mListView = (ListView) view1.findViewById(R.id.offers_list1);

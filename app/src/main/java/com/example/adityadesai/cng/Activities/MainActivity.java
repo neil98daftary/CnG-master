@@ -138,7 +138,7 @@ public class  MainActivity extends AppCompatActivity
                 user = firebaseAuth.getCurrentUser();
                 if (user != null) {
                     // User is signed in
-                    Toast.makeText(MainActivity.this, "You're now signed in. Welcome to CnG!", Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(MainActivity.this, "You're now signed in. Welcome to CnG!", Toast.LENGTH_SHORT).show();
                     //onSignedInInitialize(user.getDisplayName());
 
                     if(!prefs.getBoolean("firstTime", false)){
@@ -172,8 +172,7 @@ public class  MainActivity extends AppCompatActivity
                             AuthUI.getInstance()
                                     .createSignInIntentBuilder()
                                     .setIsSmartLockEnabled(false)
-                                    .setProviders(AuthUI.GOOGLE_PROVIDER,
-                                                  AuthUI.EMAIL_PROVIDER)
+                                    .setProviders(AuthUI.GOOGLE_PROVIDER)
                                     .build(),
                             RC_SIGN_IN);
                 }

@@ -137,7 +137,8 @@ public class MyShopsFragment extends android.support.v4.app.Fragment {
                             String industry_name =  (String) snapshot.child("industryName").getValue();
                             String shop_uri = (String) snapshot.child("shopUrl").getValue();
                             String uid = (String) snapshot.child("ownerId").getValue();
-                            mShopList.add(new Shop(shop_name, shop_address, shop_phonenum,shop_id,industry_name,shop_uri,uid));
+                            ArrayList<String>  offers = (ArrayList<String>) snapshot.child("offers").getValue();
+                            mShopList.add(new Shop(shop_name, shop_address, shop_phonenum,shop_id,industry_name,shop_uri,uid,offers));
                         }
                     }
                     updateUI();
@@ -164,7 +165,8 @@ public class MyShopsFragment extends android.support.v4.app.Fragment {
                             String industry_name =  (String) snapshot.child("industryName").getValue();
                             String shop_uri = (String) snapshot.child("shopUrl").getValue();
                             String uid = (String) snapshot.child("ownerId").getValue();
-                            mShopList.add(new Shop(shop_name, shop_address, shop_phonenum,shop_id,industry_name,shop_uri,uid));
+                            ArrayList<String>  offers = (ArrayList<String>) snapshot.child("offers").getValue();
+                            mShopList.add(new Shop(shop_name, shop_address, shop_phonenum,shop_id,industry_name,shop_uri,uid,offers));
                         }
                     }
                     updateUI();

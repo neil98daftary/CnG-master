@@ -120,10 +120,11 @@ public class ShopListActivity extends AppCompatActivity {
                         String industry_name =  (String) snapshot.child("industryName").getValue();
                         String shop_uri = (String) snapshot.child("shopUrl").getValue();
                         String owner_id = (String) snapshot.child("ownerId").getValue();
+                        ArrayList<String> offers = (ArrayList<String>) snapshot.child("offers").getValue();
 
 
                         if(shop_name != null && shop_address != null && shop_phonenum != null && shop_id != null) {
-                            mShopList.add(new Shop(shop_name, shop_address, shop_phonenum,shop_id,industry_name,shop_uri,owner_id));
+                            mShopList.add(new Shop(shop_name, shop_address, shop_phonenum,shop_id,industry_name,shop_uri,owner_id,offers));
                         }
 
                     }

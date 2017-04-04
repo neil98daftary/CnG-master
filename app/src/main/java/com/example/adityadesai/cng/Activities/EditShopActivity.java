@@ -32,6 +32,8 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
+import java.util.ArrayList;
+
 import static android.icu.lang.UCharacter.GraphemeClusterBreak.L;
 import static com.example.adityadesai.cng.Activities.ShopListActivity.shop_type;
 import static java.security.AccessController.getContext;
@@ -50,6 +52,7 @@ public class EditShopActivity extends AppCompatActivity {
     private EditText shopNameEditText;
     private EditText shopPhoneEditText;
     private EditText shopAddressEditText;
+    private EditText offerInput;
     private ImageView mImageView;
 
     private String shopIndustry;
@@ -59,6 +62,7 @@ public class EditShopActivity extends AppCompatActivity {
     private String shopId;
     private String finalId;
     private Uri imageUrl;
+    private ArrayList<String> offers;
 
     private SharedPreferences sharedprefs;
 
@@ -72,6 +76,8 @@ public class EditShopActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        offers = new ArrayList<String>();
+
         mFirebaseStorage = FirebaseStorage.getInstance();
         mStorageReference = mFirebaseStorage.getReference().child("shop_photos");
 
@@ -79,6 +85,7 @@ public class EditShopActivity extends AppCompatActivity {
         shopNameEditText=(EditText)findViewById(R.id.edit_shop_name);
         shopPhoneEditText=(EditText)findViewById(R.id.edit_shop_phone);
         shopAddressEditText=(EditText)findViewById(R.id.edit_shop_address);
+        offerInput = (EditText)findViewById(R.id.offerInput);
         mImageView = (ImageView) findViewById(R.id.imageView);
 
         sharedprefs = getSharedPreferences("userInfo",MODE_APPEND);
@@ -104,6 +111,12 @@ public class EditShopActivity extends AppCompatActivity {
 
             }
         });
+    }
+
+    public void addOffer(View view){
+        offers.add(offerInput.getText().toString());
+        offerInput.setText(null);
+        offerInput.setHint("Keep Adding :p");
     }
 
     public void uploadPic(View view){
@@ -176,7 +189,7 @@ public class EditShopActivity extends AppCompatActivity {
 
     private void pushShop(String shopId){
         finalId=Integer.toString((Integer.parseInt(shopId))+1);
-        mDatabaseReference.push().setValue(new Shop(shopName,shopAddress,shopPhone,finalId,shopIndustry,imageUrl.toString(),sharedprefs.getString("uid",null)));
+        mDatabaseReference.push().setValue(new Shop(shopName,shopAddress,shopPhone,finalId,shopIndustry,imageUrl.toString(),sharedprefs.getString("uid",null),offers));
         updateId(finalId);
 
         Intent i =new Intent(getBaseContext(),MainActivity.class);

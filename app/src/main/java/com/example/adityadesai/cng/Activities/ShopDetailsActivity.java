@@ -3,6 +3,7 @@ package com.example.adityadesai.cng.Activities;
 import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.support.design.widget.FloatingActionButton;
@@ -62,6 +63,7 @@ public class ShopDetailsActivity extends AppCompatActivity implements TabLayout.
     public static String id;
     public static String url;
     public static String ownerid;
+    public static ArrayList<String> offers;
 
     private ListView mListView;
     //public static ArrayList<ItemDetail> mItemDetails;
@@ -90,7 +92,7 @@ public class ShopDetailsActivity extends AppCompatActivity implements TabLayout.
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_shop_details);
 
-
+        offers = new ArrayList<String>();
 
         Intent i = getIntent();
         name = i.getStringExtra("shopName");
@@ -100,6 +102,9 @@ public class ShopDetailsActivity extends AppCompatActivity implements TabLayout.
         id = i.getStringExtra("shop_id");
         url = i.getStringExtra("shop_url");
         ownerid = i.getStringExtra("owner_id");
+        if(i.getStringArrayListExtra("offers") != null) {
+            offers.addAll(0, i.getStringArrayListExtra("offers"));
+        }
 
 
         //Initializing viewPager

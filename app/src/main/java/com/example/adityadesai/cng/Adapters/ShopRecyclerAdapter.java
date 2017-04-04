@@ -41,6 +41,7 @@ public class ShopRecyclerAdapter extends RecyclerView.Adapter<ShopRecyclerAdapte
         private String industry;
         private String shopurl;
         private String ownerid;
+        private ArrayList<String> offers;
 
         public ShopHolder(View v) {
             super(v);
@@ -64,6 +65,7 @@ public class ShopRecyclerAdapter extends RecyclerView.Adapter<ShopRecyclerAdapte
                 id = mShop.getShop_id();
                 shopurl = mShop.getShopUrl();
                 ownerid = mShop.getOwnerId();
+                offers = mShop.getOffers();
             }
 
             Intent i=new Intent(v.getContext(),ShopDetailsActivity.class);
@@ -74,6 +76,7 @@ public class ShopRecyclerAdapter extends RecyclerView.Adapter<ShopRecyclerAdapte
             i.putExtra("industry_name",industry);
             i.putExtra("shop_url",shopurl);
             i.putExtra("owner_id",ownerid);
+            i.putExtra("offers",offers);
             v.getContext().startActivity(i);
         }
 
