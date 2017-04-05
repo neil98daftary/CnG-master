@@ -5,9 +5,11 @@ import android.support.v4.app.Fragment;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ProgressBar;
 
 import com.example.adityadesai.cng.Activities.ShopDetailsActivity;
 import com.example.adityadesai.cng.Adapters.MenuRecyclerAdapter;
@@ -29,6 +31,7 @@ public class view_items extends Fragment {
     private GridLayoutManager mGridLayoutManager;
     private ArrayList<MenuItem> mMenuItems;
     private MenuRecyclerAdapter mAdapter;
+    private ProgressBar bar;
 
     private FirebaseDatabase mFirebaseDatabase;
     private FirebaseStorage mFirebaseStorage;
@@ -43,6 +46,8 @@ public class view_items extends Fragment {
         //Returning the layout file after inflating
         //Change R.layout.tab1 in you classes
         View view = inflater.inflate(R.layout.view_items, container, false);
+
+        bar = (ProgressBar) view.findViewById(R.id.progressBar);
 
         mFirebaseDatabase = FirebaseDatabase.getInstance();
         mFirebaseStorage = FirebaseStorage.getInstance();
@@ -63,11 +68,17 @@ public class view_items extends Fragment {
     }
 
         public void updateUI(){
-        mAdapter = new MenuRecyclerAdapter(mMenuItems);
-        mRecyclerView.setAdapter(mAdapter);
+            bar.setVisibility(View.GONE);
+            mAdapter = new MenuRecyclerAdapter(mMenuItems, getActivity());
+            mRecyclerView.setAdapter(mAdapter);
     }
 
     public class fetchItemList extends AsyncTask<Void,Void,ArrayList<MenuItem>> {
+        @Override
+        protected void onPreExecute() {
+            bar.setVisibility(View.VISIBLE);
+        }
+
         @Override
         protected ArrayList<MenuItem> doInBackground(Void... params) {
 

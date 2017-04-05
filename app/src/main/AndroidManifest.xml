@@ -18,11 +18,14 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Activities.ShopListActivity" />
+        <activity android:name=".Activities.ShopListActivity"
+            android:parentActivityName=".Activities.MainActivity"/>
         <activity
             android:name=".Activities.ShopDetailsActivity"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".Activities.ItemDetailsActivity" />
+            android:theme="@style/AppTheme.NoActionBar"
+            android:parentActivityName=".Activities.ShopListActivity"/>
+        <activity android:name=".Activities.ItemDetailsActivity"
+            android:parentActivityName=".Activities.ShopDetailsActivity"/>
         <activity
             android:name=".Activities.VendorItemsListActivity"
             android:theme="@style/AppTheme.NoActionBar" />
@@ -44,7 +47,7 @@
         <activity android:name=".view_items" />
         <activity android:name=".view_offers" />
         <activity android:name=".view_details" />
-        <activity android:name=".Activities.PofileActivity" />
+        <activity android:name=".Activities.ProfileActivity" />
         <activity android:name=".Activities.OwnerInfo"
                   android:theme="@style/AppTheme.PopUp">
         </activity>

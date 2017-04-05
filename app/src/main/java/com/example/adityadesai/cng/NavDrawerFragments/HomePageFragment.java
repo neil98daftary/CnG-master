@@ -1,6 +1,7 @@
 package com.example.adityadesai.cng.NavDrawerFragments;
 
 
+import android.animation.ObjectAnimator;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
@@ -9,10 +10,13 @@ import android.support.annotation.Nullable;
 import android.support.design.widget.NavigationView;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.DecelerateInterpolator;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -46,6 +50,7 @@ public class HomePageFragment extends android.support.v4.app.Fragment {
     private ArrayList<Industry> mIndustryList;
     private NavigationView navView;
     private TextView makeVendorTextView;
+    private ProgressBar bar;
 
 
 
@@ -68,6 +73,9 @@ public class HomePageFragment extends android.support.v4.app.Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
 
         View rootView =inflater.inflate(R.layout.home_page,null);
+
+        bar = (ProgressBar) rootView.findViewById(R.id.progressBar);
+
         mFirebaseDatabase = FirebaseDatabase.getInstance();
         mFirebaseStorage = FirebaseStorage.getInstance();
         mMessagesDatabaseReference = mFirebaseDatabase.getReference().child("Industry");
@@ -126,7 +134,8 @@ public class HomePageFragment extends android.support.v4.app.Fragment {
     }
 
     public void updateUI(){
-        mAdapter = new HomeRecyclerAdapter(mIndustryList);
+        bar.setVisibility(View.GONE);
+        mAdapter = new HomeRecyclerAdapter(mIndustryList, getActivity());
         mRecyclerView.setAdapter(mAdapter);
     }
 
@@ -162,6 +171,13 @@ public class HomePageFragment extends android.support.v4.app.Fragment {
 
 
     public class fetchIndustryList extends AsyncTask<Void,Void,ArrayList<Industry>>{
+
+        @Override
+        protected void onPreExecute() {
+            Log.v("tag","entered");
+            bar.setVisibility(View.VISIBLE);
+        }
+
         @Override
         protected ArrayList<Industry> doInBackground(Void... params) {
 

@@ -1,6 +1,5 @@
 package com.example.adityadesai.cng.Activities;
 
-import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -25,9 +24,6 @@ import com.example.adityadesai.cng.NavDrawerFragments.HomePageFragment;
 import com.example.adityadesai.cng.NavDrawerFragments.MyShopsFragment;
 import com.example.adityadesai.cng.NavDrawerFragments.OffersPageFragment;
 //import com.example.adityadesai.cng.Objects.Id;
-import com.example.adityadesai.cng.Objects.Industry;
-import com.example.adityadesai.cng.Objects.ItemDetail;
-import com.example.adityadesai.cng.Objects.User;
 import com.example.adityadesai.cng.R;
 import com.firebase.ui.auth.AuthUI;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -36,7 +32,6 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.example.adityadesai.cng.Activities.PofileActivity;
 
 
 public class  MainActivity extends AppCompatActivity
@@ -155,7 +150,7 @@ public class  MainActivity extends AppCompatActivity
                         editor1.putString("pic",user.getPhotoUrl().toString());
                         editor1.putString("uid",user.getUid());
                         editor1.commit();
-                        mIntent = new Intent(MainActivity.this,PofileActivity.class);
+                        mIntent = new Intent(MainActivity.this,ProfileActivity.class);
                         startActivity(mIntent);
 
 
@@ -224,6 +219,25 @@ public class  MainActivity extends AppCompatActivity
     }
 
     public void makeVendor(View v){
+//        FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
+//        final FirebaseUser user = firebaseAuth.getCurrentUser();
+//        FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
+//        DatabaseReference databaseReference = firebaseDatabase.getReference().child("users");
+//        databaseReference.addValueEventListener(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(DataSnapshot dataSnapshot) {
+//                for(DataSnapshot snapshot : dataSnapshot.getChildren()){
+//                    if(snapshot.child("uid").getValue().toString().equals(user.getUid())){
+//
+//                    }
+//                }
+//            }
+//
+//            @Override
+//            public void onCancelled(DatabaseError databaseError) {
+//
+//            }
+//        });
         editor2=getSharedPreferences("signInMode",MODE_APPEND).edit();
         editor2.putBoolean("isCustomer",false);
         editor2.commit();

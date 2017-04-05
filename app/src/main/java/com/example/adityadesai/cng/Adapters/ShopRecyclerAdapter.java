@@ -1,13 +1,19 @@
 package com.example.adityadesai.cng.Adapters;
 
+import android.content.ClipData;
+import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.DragEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
@@ -25,7 +31,10 @@ import java.util.ArrayList;
 
 public class ShopRecyclerAdapter extends RecyclerView.Adapter<ShopRecyclerAdapter.ShopHolder> {
 
+    private Context context;
+
     private static ArrayList<Shop> mShops;
+    private int lastPosition = -1;
 
     public static class ShopHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
@@ -43,12 +52,15 @@ public class ShopRecyclerAdapter extends RecyclerView.Adapter<ShopRecyclerAdapte
         private String ownerid;
         private ArrayList<String> offers;
 
+        LinearLayout container;
+
         public ShopHolder(View v) {
             super(v);
 
             mItemName = (TextView) v.findViewById(R.id.shop_name);
             mItemAddress = (TextView) v.findViewById(R.id.shop_address);
             mImageView = (ImageView) v.findViewById(R.id.shop_image);
+            container = (LinearLayout) v.findViewById(R.id.shopRootLayout);
             v.setOnClickListener(this);
         }
 
@@ -80,6 +92,8 @@ public class ShopRecyclerAdapter extends RecyclerView.Adapter<ShopRecyclerAdapte
             v.getContext().startActivity(i);
         }
 
+
+
         public void bindIndustry(Shop shop) {
             mShop = shop;
             mItemName.setText(shop.getShopName());
@@ -91,8 +105,9 @@ public class ShopRecyclerAdapter extends RecyclerView.Adapter<ShopRecyclerAdapte
         }
     }
 
-    public ShopRecyclerAdapter(ArrayList<Shop> shops) {
+    public ShopRecyclerAdapter(ArrayList<Shop> shops, Context context) {
         mShops = shops;
+        this.context = context;
     }
 
     @Override
@@ -106,6 +121,18 @@ public class ShopRecyclerAdapter extends RecyclerView.Adapter<ShopRecyclerAdapte
     public void onBindViewHolder(ShopRecyclerAdapter.ShopHolder holder, int position) {
         Shop itemShop = mShops.get(position);
         holder.bindIndustry(itemShop);
+        setAnimation(holder.container, position);
+    }
+
+    private void setAnimation(View viewToAnimate, int position)
+    {
+        // If the bound view wasn't previously displayed on screen, it's animated
+        if (position > lastPosition)
+        {
+            Animation animation = AnimationUtils.loadAnimation(context, R.anim.push_left_in);
+            viewToAnimate.startAnimation(animation);
+            lastPosition = position;
+        }
     }
 
     @Override

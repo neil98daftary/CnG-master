@@ -1,5 +1,6 @@
 package com.example.adityadesai.cng.Activities;
 
+import android.content.ClipData;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -7,8 +8,11 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.ProgressBar;
 
 import com.example.adityadesai.cng.Adapters.ItemDetailAdapter;
 import com.example.adityadesai.cng.Adapters.VendorItemDetailsAdapter;
@@ -33,6 +37,7 @@ public class VendorItemDetailsActivity extends AppCompatActivity {
     private VendorItemDetailsAdapter mAdapter;
     private ArrayList<ItemDetail> mDetailList;
     public static String item_name;
+    private ProgressBar bar;
 
     private FirebaseDatabase mFirebaseDatabase;
     private DatabaseReference mItemDetailDatabaseReference;
@@ -42,6 +47,9 @@ public class VendorItemDetailsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_vendor_item_details);
+
+        bar = (ProgressBar)findViewById(R.id.progressBar);
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -84,9 +92,21 @@ public class VendorItemDetailsActivity extends AppCompatActivity {
                 R.id.item_description
         ));*/
 
+//        mListView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+//            @Override
+//            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+//                view.setVisibility(View.INVISIBLE);
+//                ClipData data = ClipData.newPlainText("", "");
+//                View.DragShadowBuilder shadow = new View.DragShadowBuilder(view);
+//                view.startDrag(data, shadow, null, 0);
+//                return false;
+//            }
+//        });
+
     }
 
     public void updateUI(){
+        bar.setVisibility(View.GONE);
         mAdapter = new VendorItemDetailsAdapter(VendorItemDetailsActivity.this, mDetailList);
         mListView.setAdapter(new SlideExpandableListAdapter(
                 mAdapter,
@@ -98,6 +118,12 @@ public class VendorItemDetailsActivity extends AppCompatActivity {
     }
 
     public class fetchItemDetail extends AsyncTask<Void,Void,ArrayList<ItemDetail>> {
+
+        @Override
+        protected void onPreExecute() {
+            bar.setVisibility(View.VISIBLE);
+        }
+
         @Override
         protected ArrayList<ItemDetail> doInBackground(Void... params) {
 

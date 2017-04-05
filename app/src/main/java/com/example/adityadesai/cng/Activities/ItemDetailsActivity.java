@@ -4,8 +4,11 @@ import android.content.Intent;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.ListView;
+import android.widget.ProgressBar;
 
 import com.example.adityadesai.cng.Adapters.ItemDetailAdapter;
 import com.example.adityadesai.cng.Objects.ItemDetail;
@@ -30,6 +33,7 @@ public class ItemDetailsActivity extends AppCompatActivity {
     private ItemDetailAdapter mAdapter;
     private ArrayList<ItemDetail> mItemDetails;
     private String item_name;
+    private ProgressBar bar;
 
     private FirebaseDatabase mFirebaseDatabase;
     private DatabaseReference mItemDetailDatabaseReference;
@@ -42,6 +46,8 @@ public class ItemDetailsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_item_details);
+
+        bar = (ProgressBar)findViewById(R.id.progressBar);
 
         //mListView = (ListView) findViewById(R.id.item_details_list);
         mListView = (ListView) this.findViewById(R.id.item_details_list);
@@ -80,6 +86,7 @@ public class ItemDetailsActivity extends AppCompatActivity {
     }
 
     public void updateUI(){
+        bar.setVisibility(View.GONE);
         mAdapter = new ItemDetailAdapter(this, mItemDetails);
         mListView.setAdapter(new SlideExpandableListAdapter(
                 mAdapter,
@@ -89,6 +96,11 @@ public class ItemDetailsActivity extends AppCompatActivity {
     }
 
     public class fetchItemDetail extends AsyncTask<Void,Void,ArrayList<ItemDetail>> {
+        @Override
+        protected void onPreExecute() {
+            bar.setVisibility(View.VISIBLE);
+        }
+
         @Override
         protected ArrayList<ItemDetail> doInBackground(Void... params) {
 

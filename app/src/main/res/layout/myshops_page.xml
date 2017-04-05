@@ -1,39 +1,56 @@
-<android.support.design.widget.CoordinatorLayout
-android:id="@+id/main_content"
-xmlns:android="http://schemas.android.com/apk/res/android"
-xmlns:app="http://schemas.android.com/apk/res-auto"
-android:layout_width="match_parent"
-android:layout_height="match_parent"
-android:focusableInTouchMode="true">
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
-    <LinearLayout
+    <android.support.design.widget.CoordinatorLayout
+        android:id="@+id/main_content"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:layout_height="match_parent"
+        android:focusableInTouchMode="true">
 
-        <TextView
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="@dimen/home_adv_height"
-            android:background="@color/colorPrimaryLight"
-            android:gravity="center"
-            android:text="Advertisement"
-            android:textSize="45dp" />
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
-        <android.support.v7.widget.RecyclerView
-            app:layout_behavior="@string/appbar_scrolling_view_behavior"
-            android:id="@+id/myshops_list"
-            android:layout_width="match_parent"
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/home_adv_height"
+                android:background="@color/colorPrimaryLight"
+                android:gravity="center"
+                android:text="Advertisement"
+                android:textSize="45dp" />
+
+            <android.support.v7.widget.RecyclerView
+                app:layout_behavior="@string/appbar_scrolling_view_behavior"
+                android:id="@+id/myshops_list"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scrollbars="vertical"
+                android:clickable="true"></android.support.v7.widget.RecyclerView>
+        </LinearLayout>
+
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/add_shop_fab"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:scrollbars="vertical"
-            android:clickable="true"></android.support.v7.widget.RecyclerView>
-    </LinearLayout>
+            android:layout_gravity="bottom|end"
+            android:layout_margin="@dimen/fab_margin"
+            app:rippleColor="@color/buttonTextColor"
+            app:srcCompat="@android:drawable/ic_input_add" />
+    </android.support.design.widget.CoordinatorLayout>
 
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/add_shop_fab"
+    <ProgressBar
+        android:id="@+id/progressBar"
+        style="?android:attr/progressBarStyleLarge"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="bottom|end"
-        android:layout_margin="@dimen/fab_margin"
-        app:rippleColor="@color/buttonTextColor"
-        app:srcCompat="@android:drawable/ic_menu_add" />
-</android.support.design.widget.CoordinatorLayout>
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:visibility="gone"
+        android:indeterminateDrawable="@drawable/circular" >
+    </ProgressBar>
+
+</RelativeLayout>

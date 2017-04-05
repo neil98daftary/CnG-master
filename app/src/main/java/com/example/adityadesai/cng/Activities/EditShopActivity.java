@@ -34,6 +34,7 @@ import com.google.firebase.storage.UploadTask;
 
 import java.util.ArrayList;
 
+import static android.R.attr.data;
 import static android.icu.lang.UCharacter.GraphemeClusterBreak.L;
 import static com.example.adityadesai.cng.Activities.ShopListActivity.shop_type;
 import static java.security.AccessController.getContext;
@@ -63,6 +64,7 @@ public class EditShopActivity extends AppCompatActivity {
     private String finalId;
     private Uri imageUrl;
     private ArrayList<String> offers;
+    private String editShop;
 
     private SharedPreferences sharedprefs;
 
@@ -70,9 +72,15 @@ public class EditShopActivity extends AppCompatActivity {
     private static final int RC_CAMERA = 3;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_shop);
+
+        Intent i = getIntent();
+        editShop = i.getStringExtra("editShop");
+        shopIndustry = i.getStringExtra("industry");
+        shopId = i.getStringExtra("id");
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -111,6 +119,30 @@ public class EditShopActivity extends AppCompatActivity {
 
             }
         });
+
+        if(editShop.equals("yes")){
+            FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
+            final DatabaseReference databaseReference = firebaseDatabase.getReference().child(shopIndustry);
+            databaseReference.addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
+                    for(DataSnapshot snapshot: dataSnapshot.getChildren()){
+                        if(snapshot.hasChild("shop_id") && snapshot.child("shop_id").getValue().toString().equals(shopId)){
+                            industryNameEditText.setText(snapshot.child("industryName").getValue().toString());
+                            shopNameEditText.setText(snapshot.child("shopName").getValue().toString());
+                            shopPhoneEditText.setText(snapshot.child("shopPhone").getValue().toString());
+                            shopAddressEditText.setText(snapshot.child("shopAddress").getValue().toString());
+                            Glide.with(mImageView.getContext()).load(snapshot.child("shopUrl").getValue().toString()).into(mImageView);
+                        }
+                    }
+                }
+
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
+
+                }
+            });
+        }
     }
 
     public void addOffer(View view){
@@ -189,7 +221,9 @@ public class EditShopActivity extends AppCompatActivity {
 
     private void pushShop(String shopId){
         finalId=Integer.toString((Integer.parseInt(shopId))+1);
-        mDatabaseReference.push().setValue(new Shop(shopName,shopAddress,shopPhone,finalId,shopIndustry,imageUrl.toString(),sharedprefs.getString("uid",null),offers));
+        if (imageUrl!=null){
+            mDatabaseReference.push().setValue(new Shop(shopName,shopAddress,shopPhone,finalId,shopIndustry,imageUrl.toString(),sharedprefs.getString("uid",null),offers));
+        }
         updateId(finalId);
 
         Intent i =new Intent(getBaseContext(),MainActivity.class);

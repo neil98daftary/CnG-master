@@ -1,15 +1,21 @@
 package com.example.adityadesai.cng.Adapters;
 
+import android.content.ClipData;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.DragEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
@@ -23,6 +29,8 @@ import com.example.adityadesai.cng.Activities.ShopDetailsActivity;
 
 import java.util.ArrayList;
 
+import static com.example.adityadesai.cng.Activities.ShopDetailsActivity.industry;
+
 
 /**
  * Created by adityadesai on 13/02/17.
@@ -31,7 +39,10 @@ import java.util.ArrayList;
 
 public class VendorShopListAdapter extends RecyclerView.Adapter<VendorShopListAdapter.ShopHolder> {
 
+    static Context context;
+
     private static ArrayList<Shop> mShops;
+    int lastPosition = -1;
 
     public static class ShopHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
 
@@ -39,6 +50,7 @@ public class VendorShopListAdapter extends RecyclerView.Adapter<VendorShopListAd
         private TextView mItemAddress;
         private ImageView mImageView;
         private Shop mShop;
+        private LinearLayout container;
 
         private String industryName;
         private String name;
@@ -53,7 +65,37 @@ public class VendorShopListAdapter extends RecyclerView.Adapter<VendorShopListAd
             mItemName = (TextView) v.findViewById(R.id.shop_name);
             mItemAddress = (TextView) v.findViewById(R.id.shop_address);
             mImageView = (ImageView) v.findViewById(R.id.shop_image);
+            container = (LinearLayout) v.findViewById(R.id.shopRootLayout);
             v.setOnClickListener(this);
+            v.setOnLongClickListener(new View.OnLongClickListener() {
+                @Override
+                public boolean onLongClick(final View v) {
+                    new AlertDialog.Builder(context)
+                            .setPositiveButton("Delete", new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int which) {
+
+                                }
+                            })
+                            .setNeutralButton("Edit", new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int which) {
+                                    int position = getAdapterPosition();
+                                    mShop = mShops.get(position);
+                                    if(mShop!=null){
+                                        industryName = mShop.getIndustryName();
+                                        id = mShop.getShop_id();
+                                    }
+                                    Intent i = new Intent(v.getContext(),EditShopActivity.class);
+                                    i.putExtra("editShop","yes");
+                                    i.putExtra("industry",industryName);
+                                    i.putExtra("id",id);
+                                    v.getContext().startActivity(i);
+                                }
+                            })
+                            .setIcon(android.R.drawable.ic_dialog_alert)
+                            .show();
+                    return false;
+                }
+            });
         }
 
         @Override
@@ -91,8 +133,9 @@ public class VendorShopListAdapter extends RecyclerView.Adapter<VendorShopListAd
         }
     }
 
-    public VendorShopListAdapter(ArrayList<Shop> shops) {
+    public VendorShopListAdapter(ArrayList<Shop> shops, Context context) {
         mShops = shops;
+        this.context = context;
     }
 
     @Override
@@ -106,6 +149,18 @@ public class VendorShopListAdapter extends RecyclerView.Adapter<VendorShopListAd
     public void onBindViewHolder(VendorShopListAdapter.ShopHolder holder, int position) {
         Shop itemShop = mShops.get(position);
         holder.bindIndustry(itemShop);
+        setAnimation(holder.container, position);
+    }
+
+    private void setAnimation(View viewToAnimate, int position)
+    {
+        // If the bound view wasn't previously displayed on screen, it's animated
+        if (position > lastPosition)
+        {
+            Animation animation = AnimationUtils.loadAnimation(context, R.anim.push_left_in);
+            viewToAnimate.startAnimation(animation);
+            lastPosition = position;
+        }
     }
 
     @Override

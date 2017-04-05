@@ -7,6 +7,8 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.example.adityadesai.cng.Adapters.ShopRecyclerAdapter;
@@ -31,6 +33,7 @@ public class ShopListActivity extends AppCompatActivity {
     private LinearLayoutManager mLinearLayoutManager;
     private ShopRecyclerAdapter mAdapter;
     private ArrayList<Shop> mShopList;
+    private ProgressBar bar;
 
     private FirebaseDatabase mFirebaseDatabase;
     private DatabaseReference mShopDatabaseReference,test;
@@ -46,6 +49,8 @@ public class ShopListActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_shop_list);
+
+        bar = (ProgressBar) findViewById(R.id.progressBar);
 
 
         // Get and display IID
@@ -100,11 +105,18 @@ public class ShopListActivity extends AppCompatActivity {
 
 
     public void updateUI(){
-        mAdapter = new ShopRecyclerAdapter(mShopList);
+        bar.setVisibility(View.GONE);
+        mAdapter = new ShopRecyclerAdapter(mShopList, this);
         mRecyclerView.setAdapter(mAdapter);
     }
 
     public class fetchShopList extends AsyncTask<Void,Void,ArrayList<Shop>> {
+
+        @Override
+        protected void onPreExecute() {
+            bar.setVisibility(View.VISIBLE);
+        }
+
         @Override
         protected ArrayList<Shop> doInBackground(Void... params) {
 

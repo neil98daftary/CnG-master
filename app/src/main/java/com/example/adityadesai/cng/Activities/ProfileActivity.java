@@ -20,7 +20,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.example.adityadesai.cng.R;
 import com.google.firebase.database.ValueEventListener;
 
-public class PofileActivity extends AppCompatActivity {
+public class ProfileActivity extends AppCompatActivity {
 
     private TextView mUserName;
     private TextView mUserEmail;
@@ -35,7 +35,7 @@ public class PofileActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         Toast.makeText(this,"Please dont save if u have already with this account",Toast.LENGTH_SHORT).show();
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_pofile);
+        setContentView(R.layout.activity_profile);
 
         mFirebaseDatabase = FirebaseDatabase.getInstance();
         mDatabaseReference = mFirebaseDatabase.getReference().child("users");

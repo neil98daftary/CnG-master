@@ -21,6 +21,7 @@ import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.example.adityadesai.cng.Activities.EditShopActivity;
@@ -53,6 +54,7 @@ public class MyShopsFragment extends android.support.v4.app.Fragment {
     private boolean isCustomer;
     NavigationView navView;
     private ArrayList<Shop> mShopList;
+    private ProgressBar bar;
 
     private FirebaseDatabase mFirebaseDatabase;
     private DatabaseReference mDatabaseReference;
@@ -64,6 +66,8 @@ public class MyShopsFragment extends android.support.v4.app.Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
 
         View rootView =inflater.inflate(R.layout.myshops_page,null);
+
+        bar = (ProgressBar) rootView.findViewById(R.id.progressBar);
 
         SharedPreferences sharedPrefs=getActivity().getSharedPreferences("signInMode", Context.MODE_APPEND);
         userspf = getActivity().getSharedPreferences("userInfo",Context.MODE_APPEND);
@@ -105,6 +109,9 @@ public class MyShopsFragment extends android.support.v4.app.Fragment {
             @Override
             public void onClick(View view) {
                 Intent i=new Intent(getActivity(), EditShopActivity.class);
+                i.putExtra("editShop","no");
+                i.putExtra("industry","");
+                i.putExtra("id","");
                 startActivity(i);
             }
         });
@@ -112,14 +119,19 @@ public class MyShopsFragment extends android.support.v4.app.Fragment {
         return rootView;
     }
 
-    // Call this function....
-
     public void updateUI(){
-        mAdapter = new VendorShopListAdapter(mShopList);
+        bar.setVisibility(View.GONE);
+        mAdapter = new VendorShopListAdapter(mShopList, getActivity());
         mRecyclerView.setAdapter(mAdapter);
     }
 
     public class fetchShopList extends AsyncTask<Void,Void,ArrayList<Shop>> {
+
+        @Override
+        protected void onPreExecute() {
+            bar.setVisibility(View.VISIBLE);
+        }
+
         @Override
         protected ArrayList<Shop> doInBackground(Void... params) {
             mDatabaseReference = mFirebaseDatabase.getReference().child("Groceries");

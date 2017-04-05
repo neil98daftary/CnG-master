@@ -11,6 +11,7 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
+import android.widget.ProgressBar;
 
 import com.example.adityadesai.cng.Adapters.MenuRecyclerAdapter;
 import com.example.adityadesai.cng.Adapters.VendorItemListAdapter;
@@ -33,6 +34,7 @@ public class VendorItemsListActivity extends AppCompatActivity {
     private GridLayoutManager mGridLayoutManager;
     private VendorItemListAdapter mAdapter;
     public static ArrayList<MenuItem> mMenuItems;
+    private ProgressBar bar;
 
     private FirebaseDatabase mFirebaseDatabase;
     private DatabaseReference mItemDatabaseReference;
@@ -48,6 +50,9 @@ public class VendorItemsListActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_vendor_item_list);
+
+        bar = (ProgressBar)findViewById(R.id.progressBar);
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -95,11 +100,18 @@ public class VendorItemsListActivity extends AppCompatActivity {
     }
 
     public void updateUI(){
-        mAdapter = new VendorItemListAdapter(mMenuItems);
+        bar.setVisibility(View.GONE);
+        mAdapter = new VendorItemListAdapter(mMenuItems, this);
         mRecyclerView.setAdapter(mAdapter);
     }
 
     public class fetchItemList extends AsyncTask<Void,Void,ArrayList<MenuItem>> {
+
+        @Override
+        protected void onPreExecute() {
+            bar.setVisibility(View.VISIBLE);
+        }
+
         @Override
         protected ArrayList<MenuItem> doInBackground(Void... params) {
 
@@ -115,7 +127,6 @@ public class VendorItemsListActivity extends AppCompatActivity {
                         if(iName != null) {
                             mMenuItems.add(new MenuItem(iName));
                         }
-
                     }
                     updateUI();
                 }
