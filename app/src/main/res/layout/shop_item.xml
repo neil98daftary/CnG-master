@@ -19,7 +19,7 @@
             android:layout_height="match_parent"
             android:orientation="horizontal">
 
-            <ImageView
+            <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/shop_image"
                 android:layout_width="@dimen/shop_item_height"
                 android:layout_height="@dimen/shop_item_height"

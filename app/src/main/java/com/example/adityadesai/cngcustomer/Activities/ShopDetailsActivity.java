@@ -230,13 +230,13 @@ public class ShopDetailsActivity extends AppCompatActivity implements TabLayout.
     }
 
     public void favouriteChecked(View v){
-        FloatingActionButton favFab=(FloatingActionButton)findViewById(R.id.favFab);
+        com.github.clans.fab.FloatingActionButton favFab=(com.github.clans.fab.FloatingActionButton)findViewById(R.id.fab22);
         if(isFavourite==0){
-            favFab.setImageResource(R.drawable.ic_favorite);
+            favFab.setImageResource(R.drawable.ic_favorite_white_24px);
             isFavourite=1;
         }
         else{
-            favFab.setImageResource(R.drawable.ic_unfavorite);
+            favFab.setImageResource(R.drawable.ic_favorite_border_white_24px);
             isFavourite=0;
         }
     }

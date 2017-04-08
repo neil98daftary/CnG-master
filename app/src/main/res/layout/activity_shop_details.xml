@@ -21,7 +21,7 @@
                 app:layout_scrollFlags="scroll|enterAlwaysCollapsed|snap"
                 android:fitsSystemWindows="true"
                 app:contentScrim="?attr/colorPrimary"
-                app:expandedTitleMarginStart="48dp"
+                app:expandedTitleMarginStart="20dp"
                 app:expandedTitleMarginEnd="64dp"
                 app:title="Toolbar">
 
@@ -39,7 +39,7 @@
                 <android.support.v7.widget.Toolbar
                     android:id="@+id/main.toolbar"
                     android:layout_width="match_parent"
-                    android:layout_height="?attr/actionBarSize"
+                    android:layout_height="20dp"
                     app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
                     app:layout_collapseMode="pin"
                     />
@@ -72,28 +72,46 @@
             </LinearLayout>
         </android.support.v4.widget.NestedScrollView>
 
+    <com.github.clans.fab.FloatingActionMenu
+        xmlns:fab="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/menu_yellow"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        fab:layout_anchor="@id/nest_scrollview"
+        fab:layout_anchorGravity="bottom|right"
+        fab:menu_labels_style="@style/MenuLabelsStyle"
+        fab:menu_labels_showAnimation="@anim/jump_from_down"
+        fab:menu_labels_hideAnimation="@anim/jump_to_down"
+        fab:menu_animationDelayPerItem="0"
+        fab:menu_colorNormal="#FFB805"
+        fab:menu_colorPressed="#F2AB00"
+        fab:menu_colorRipple="#D99200">
 
-        <android.support.design.widget.FloatingActionButton
-            android:id="@+id/favFab"
-            android:layout_height="wrap_content"
+        <com.github.clans.fab.FloatingActionButton
+            android:id="@+id/fab12"
             android:layout_width="wrap_content"
-            android:layout_marginTop="30dp"
-            android:layout_marginRight="10dp"
-            android:src="@drawable/ic_unfavorite"
-            app:layout_anchor="@id/appBar"
-            app:layout_anchorGravity="top|end"
-            android:onClick="favouriteChecked"
-            />
-        <android.support.design.widget.FloatingActionButton
-            android:id="@+id/rateFab"
             android:layout_height="wrap_content"
+            android:src="@drawable/ic_star_white_24px"
+            fab:fab_size="normal"
+            fab:fab_label="Rate"
+            style="@style/MenuButtonsStyle"
+            android:onClick="ratingCheck"/>
+
+        <com.github.clans.fab.FloatingActionButton
+            android:id="@+id/fab22"
             android:layout_width="wrap_content"
-            android:layout_marginTop="90dp"
-            android:layout_marginRight="10dp"
-            android:src="@drawable/ic_star_border_black_18dp"
-            app:layout_anchor="@id/appBar"
-            app:layout_anchorGravity="top|end"
-            android:onClick="ratingCheck"
-            />
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_favorite_border_white_24px"
+            fab:fab_size="normal"
+            fab:fab_label="Favourite"
+            style="@style/MenuButtonsStyle"
+            android:onClick="favouriteChecked"/>
+
+    </com.github.clans.fab.FloatingActionMenu>
+
 
 </android.support.design.widget.CoordinatorLayout>
