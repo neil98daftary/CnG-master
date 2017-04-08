@@ -24,8 +24,7 @@
             android:name="com.example.adityadesai.cngcustomer.Activities.ShopDetailsActivity"
             android:theme="@style/AppTheme.NoActionBar"
             android:parentActivityName="com.example.adityadesai.cngcustomer.Activities.ShopListActivity"/>
-        <activity android:name="com.example.adityadesai.cngcustomer.Activities.ItemDetailsActivity"
-            android:parentActivityName="com.example.adityadesai.cngcustomer.Activities.ShopDetailsActivity"/>
+        <activity android:name="com.example.adityadesai.cngcustomer.Activities.ItemDetailsActivity" />
         <activity android:name="com.example.adityadesai.cngcustomer.view_items" />
         <activity android:name="com.example.adityadesai.cngcustomer.view_offers" />
         <activity android:name="com.example.adityadesai.cngcustomer.view_details" />

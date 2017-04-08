@@ -17,14 +17,27 @@
             android:text="Advertisement"
             android:textSize="45dp" />
 
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/industry_list"
+        <android.support.v4.widget.SwipeRefreshLayout
+            android:id="@+id/refreshPage"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@color/buttonTextColor"
-            android:clickable="true"
-            android:scrollbars="vertical">
-        </android.support.v7.widget.RecyclerView>
+            android:layout_height="match_parent">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/industry_list"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/buttonTextColor"
+                    android:clickable="true"
+                    android:scrollbars="vertical">
+                </android.support.v7.widget.RecyclerView>
+
+            </RelativeLayout>
+
+        </android.support.v4.widget.SwipeRefreshLayout>
     </LinearLayout>
 
     <ProgressBar

@@ -2,6 +2,7 @@ package com.example.adityadesai.cngcustomer.Activities;
 
 import android.content.Intent;
 import android.os.AsyncTask;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -33,6 +34,7 @@ public class ShopListActivity extends AppCompatActivity {
     private ShopRecyclerAdapter mAdapter;
     private ArrayList<Shop> mShopList;
     private ProgressBar bar;
+    private SwipeRefreshLayout swipeRefreshLayout;
 
     private FirebaseDatabase mFirebaseDatabase;
     private DatabaseReference mShopDatabaseReference,test;
@@ -62,6 +64,17 @@ public class ShopListActivity extends AppCompatActivity {
         mFirebaseStorage = FirebaseStorage.getInstance();
         mShopDatabaseReference = mFirebaseDatabase.getReference().child(ShopListActivity.shop_type);
         mStorageReference = mFirebaseStorage.getReference().child("shop_photos");
+
+        swipeRefreshLayout = (SwipeRefreshLayout) findViewById(R.id.refreshPage);
+        swipeRefreshLayout.setColorSchemeColors(getResources().getColor(R.color.colorAccent));
+        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                swipeRefreshLayout.setRefreshing(true);
+                fetchShopList fSl = new fetchShopList();
+                fSl.execute();
+            }
+        });
 
         // Recyclerview code
         mRecyclerView = (RecyclerView) findViewById(R.id.shop_list);
@@ -104,6 +117,7 @@ public class ShopListActivity extends AppCompatActivity {
 
 
     public void updateUI(){
+        swipeRefreshLayout.setRefreshing(false);
         bar.setVisibility(View.GONE);
         mAdapter = new ShopRecyclerAdapter(mShopList, this);
         mRecyclerView.setAdapter(mAdapter);

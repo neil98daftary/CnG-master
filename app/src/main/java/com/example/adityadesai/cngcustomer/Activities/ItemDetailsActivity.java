@@ -2,6 +2,7 @@ package com.example.adityadesai.cngcustomer.Activities;
 
 import android.content.Intent;
 import android.os.AsyncTask;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -32,6 +33,7 @@ public class ItemDetailsActivity extends AppCompatActivity {
     private ArrayList<ItemDetail> mItemDetails;
     private String item_name;
     private ProgressBar bar;
+    private SwipeRefreshLayout swipeRefreshLayout;
 
     private FirebaseDatabase mFirebaseDatabase;
     private DatabaseReference mItemDetailDatabaseReference;
@@ -46,6 +48,17 @@ public class ItemDetailsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_item_details);
 
         bar = (ProgressBar)findViewById(R.id.progressBar);
+
+        swipeRefreshLayout = (SwipeRefreshLayout)findViewById(R.id.refreshPage);
+        swipeRefreshLayout.setColorSchemeColors(getResources().getColor(R.color.colorAccent));
+        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                swipeRefreshLayout.setRefreshing(true);
+                fetchItemDetail fID = new fetchItemDetail();
+                fID.execute();
+            }
+        });
 
         //mListView = (ListView) findViewById(R.id.item_details_list);
         mListView = (ListView) this.findViewById(R.id.item_details_list);
@@ -84,6 +97,7 @@ public class ItemDetailsActivity extends AppCompatActivity {
     }
 
     public void updateUI(){
+        swipeRefreshLayout.setRefreshing(false);
         bar.setVisibility(View.GONE);
         mAdapter = new ItemDetailAdapter(this, mItemDetails);
         mListView.setAdapter(new SlideExpandableListAdapter(

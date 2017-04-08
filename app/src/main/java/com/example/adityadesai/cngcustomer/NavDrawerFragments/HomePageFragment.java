@@ -5,6 +5,7 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.NavigationView;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -44,6 +45,7 @@ public class HomePageFragment extends android.support.v4.app.Fragment {
     private NavigationView navView;
     private TextView makeVendorTextView;
     private ProgressBar bar;
+    private SwipeRefreshLayout swipeRefreshLayout;
 
 
 
@@ -74,7 +76,16 @@ public class HomePageFragment extends android.support.v4.app.Fragment {
         mMessagesDatabaseReference = mFirebaseDatabase.getReference().child("Industry");
         mStorageReference = mFirebaseStorage.getReference().child("Industry_photos");
 
-
+        swipeRefreshLayout = (SwipeRefreshLayout)rootView.findViewById(R.id.refreshPage);
+        swipeRefreshLayout.setColorSchemeColors(getResources().getColor(R.color.colorAccent));
+        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                swipeRefreshLayout.setRefreshing(true);
+                fetchIndustryList mFetch = new fetchIndustryList();
+                mFetch.execute();
+            }
+        });
 
         mRecyclerView = (RecyclerView) rootView.findViewById(R.id.industry_list);
         mGridLayoutManager=new GridLayoutManager(getActivity(),2);
@@ -116,6 +127,7 @@ public class HomePageFragment extends android.support.v4.app.Fragment {
     }
 
     public void updateUI(){
+        swipeRefreshLayout.setRefreshing(false);
         bar.setVisibility(View.GONE);
         mAdapter = new HomeRecyclerAdapter(mIndustryList, getActivity());
         mRecyclerView.setAdapter(mAdapter);

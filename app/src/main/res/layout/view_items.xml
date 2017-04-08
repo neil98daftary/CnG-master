@@ -6,11 +6,18 @@
     android:layout_height="match_parent"
     tools:context="com.example.adityadesai.cngcustomer.view_items">
 
-    <android.support.v7.widget.RecyclerView
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:id="@+id/refreshItemPage"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/shop_menu_recycler">
-    </android.support.v7.widget.RecyclerView>
+        android:layout_height="match_parent">
+
+        <android.support.v7.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/shop_menu_recycler">
+        </android.support.v7.widget.RecyclerView>
+
+    </android.support.v4.widget.SwipeRefreshLayout>
 
     <ProgressBar
         android:id="@+id/progressBar"

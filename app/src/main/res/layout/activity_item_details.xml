@@ -22,9 +22,16 @@
         android:indeterminateDrawable="@drawable/circular" >
     </ProgressBar>
 
-    <ListView
-        android:id="@+id/item_details_list"
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:id="@+id/refreshPage"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent">
+
+        <ListView
+            android:id="@+id/item_details_list"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+    </android.support.v4.widget.SwipeRefreshLayout>
 
 </RelativeLayout>

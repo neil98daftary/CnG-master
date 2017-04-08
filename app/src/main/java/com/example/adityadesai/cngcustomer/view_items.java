@@ -3,6 +3,7 @@ package com.example.adityadesai.cngcustomer;
 import android.os.AsyncTask;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -31,6 +32,7 @@ public class view_items extends Fragment {
     private ArrayList<MenuItem> mMenuItems;
     private MenuRecyclerAdapter mAdapter;
     private ProgressBar bar;
+    private SwipeRefreshLayout swipeRefreshLayout;
 
     private FirebaseDatabase mFirebaseDatabase;
     private FirebaseStorage mFirebaseStorage;
@@ -53,6 +55,17 @@ public class view_items extends Fragment {
         mItemDatabaseReference = mFirebaseDatabase.getReference().child(ShopDetailsActivity.industry).child(ShopDetailsActivity.id);
         mStorageReference = mFirebaseStorage.getReference().child("item_photos");
 
+        swipeRefreshLayout = (SwipeRefreshLayout)view.findViewById(R.id.refreshItemPage);
+        swipeRefreshLayout.setColorSchemeColors(getResources().getColor(R.color.colorAccent));
+        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                swipeRefreshLayout.setRefreshing(true);
+                fetchItemList mFetch = new fetchItemList();
+                mFetch.execute();
+            }
+        });
+
         mRecyclerView = (RecyclerView) view.findViewById(R.id.shop_menu_recycler);
         mGridLayoutManager=new GridLayoutManager(getContext(), 2);
         mRecyclerView.setLayoutManager(mGridLayoutManager);
@@ -67,6 +80,7 @@ public class view_items extends Fragment {
     }
 
         public void updateUI(){
+            swipeRefreshLayout.setRefreshing(false);
             bar.setVisibility(View.GONE);
             mAdapter = new MenuRecyclerAdapter(mMenuItems, getActivity());
             mRecyclerView.setAdapter(mAdapter);
