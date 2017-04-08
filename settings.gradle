@@ -1,4 +1,4 @@
-include ':app'
+include ':app', ':mylibrary'
 include ':Libraries:circleindicator'
 include ':Libraries:PullUpMenu'
 include 'Libraries:SlidableListView'

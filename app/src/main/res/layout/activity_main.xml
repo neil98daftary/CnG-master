@@ -27,19 +27,6 @@
             android:layout_gravity="bottom"
             android:clickable="true"
             android:orientation="vertical">
-
-            <TextView
-                android:id="@+id/become_vendor"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingBottom="10dp"
-                android:gravity="center"
-                android:text="Click here to become a vendor!"
-                android:textSize="15dp"
-                android:background="?attr/selectableItemBackground"
-                android:textColor="@color/colorAccent"
-                android:onClick="makeVendor"/>
-
         </LinearLayout>
 
     </android.support.design.widget.NavigationView>

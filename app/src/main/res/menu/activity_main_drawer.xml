@@ -8,10 +8,6 @@
             android:icon="@drawable/ic_home_24dp"
             android:title="@string/home"/>
         <item
-            android:id="@+id/myshop"
-            android:icon="@drawable/ic_my_shop_24dp"
-            android:title="My shops"/>
-        <item
             android:id="@+id/offers"
             android:icon="@drawable/ic_offers_24dp"
             android:title="@string/offers"/>

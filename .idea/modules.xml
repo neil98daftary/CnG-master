@@ -8,6 +8,7 @@
       <module fileurl="file://$PROJECT_DIR$/Libraries/SlidableListView/SlidableListView.iml" filepath="$PROJECT_DIR$/Libraries/SlidableListView/SlidableListView.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/Libraries/circleindicator/circleindicator.iml" filepath="$PROJECT_DIR$/Libraries/circleindicator/circleindicator.iml" />
+      <module fileurl="file://$PROJECT_DIR$/mylibrary/mylibrary.iml" filepath="$PROJECT_DIR$/mylibrary/mylibrary.iml" />
     </modules>
   </component>
 </project>
