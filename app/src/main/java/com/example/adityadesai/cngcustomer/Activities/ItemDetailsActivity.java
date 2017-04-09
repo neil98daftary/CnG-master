@@ -5,10 +5,17 @@ import android.os.AsyncTask;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseExpandableListAdapter;
+import android.widget.ExpandableListView;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.example.adityadesai.cngcustomer.Adapters.ItemDetailAdapter;
 import com.example.adityadesai.cngcustomer.Objects.ItemDetail;
 import com.example.adityadesai.cngcustomer.R;
@@ -28,9 +35,10 @@ import com.google.firebase.storage.StorageReference;
 
 public class ItemDetailsActivity extends AppCompatActivity {
 
-    private ListView mListView;
-    private ItemDetailAdapter mAdapter;
-    private ArrayList<ItemDetail> mItemDetails;
+    private ExpandableListView mExpandableListView;
+    private ItemDetailsAdapter mAdapter;
+    private ArrayList<ItemDetail> mDetailList;
+    private ArrayList<ArrayList<String>> mDescriptionList;
     private String item_name;
     private ProgressBar bar;
     private SwipeRefreshLayout swipeRefreshLayout;
@@ -41,6 +49,8 @@ public class ItemDetailsActivity extends AppCompatActivity {
     private FirebaseStorage mFirebaseStorage;
     private StorageReference mStorageReference;
     private ValueEventListener mValueEventListener;
+
+    private int i = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,8 +71,9 @@ public class ItemDetailsActivity extends AppCompatActivity {
         });
 
         //mListView = (ListView) findViewById(R.id.item_details_list);
-        mListView = (ListView) this.findViewById(R.id.item_details_list);
-        mItemDetails = new ArrayList<ItemDetail>();
+        mExpandableListView = (ExpandableListView) this.findViewById(R.id.item_details_list);
+        mDetailList = new ArrayList<ItemDetail>();
+        mDescriptionList = new ArrayList<ArrayList<String>>();
 
         Intent i = getIntent();
         item_name = i.getStringExtra("Item");
@@ -99,12 +110,9 @@ public class ItemDetailsActivity extends AppCompatActivity {
     public void updateUI(){
         swipeRefreshLayout.setRefreshing(false);
         bar.setVisibility(View.GONE);
-        mAdapter = new ItemDetailAdapter(this, mItemDetails);
-        mListView.setAdapter(new SlideExpandableListAdapter(
-                mAdapter,
-                R.id.item_detail_view,
-                R.id.item_description
-        ));
+        mAdapter = new ItemDetailsAdapter(mDetailList,mDescriptionList);
+        mExpandableListView.setAdapter(mAdapter);
+        mExpandableListView.setChildIndicator(null);
     }
 
     public class fetchItemDetail extends AsyncTask<Void,Void,ArrayList<ItemDetail>> {
@@ -119,7 +127,7 @@ public class ItemDetailsActivity extends AppCompatActivity {
             mValueEventListener = new ValueEventListener() {
                 @Override
                 public void onDataChange(DataSnapshot dataSnapshot) {
-                    mItemDetails.clear();
+                    mDetailList.clear();
                     for(DataSnapshot snapshot : dataSnapshot.getChildren()){
                         String iName = (String) snapshot.child("itemName").getValue();
                         String iPrice = (String) snapshot.child("itemPrice").getValue();
@@ -128,7 +136,10 @@ public class ItemDetailsActivity extends AppCompatActivity {
                         /*Trapping the price and Description????How???*/
                         if(iName != null && iPrice != null && iDesc != null) {
                             ItemDetail itemDetail = new ItemDetail(iName, iPrice, iDesc,iUrl);
-                            mItemDetails.add(itemDetail);
+                            mDetailList.add(itemDetail);
+                            mDescriptionList.add(new ArrayList<String>());
+                            mDescriptionList.get(i).add(iDesc);
+                            i++;
                         }
 
                     }
@@ -151,4 +162,112 @@ public class ItemDetailsActivity extends AppCompatActivity {
         super.onBackPressed();
         overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
     }
+
+    public class ItemDetailsAdapter extends BaseExpandableListAdapter {
+
+        private final LayoutInflater inf;
+        private ArrayList<ItemDetail> groups;
+        private ArrayList<ArrayList<String>> children;
+
+        public ItemDetailsAdapter(ArrayList<ItemDetail> groups, ArrayList<ArrayList<String>> children) {
+            this.groups = groups;
+            this.children = children;
+            inf = LayoutInflater.from(getApplicationContext());
+        }
+
+        @Override
+        public int getGroupCount() {
+            return groups.size();
+        }
+
+        @Override
+        public int getChildrenCount(int groupPosition) {
+            return children.get(groupPosition).size();
+        }
+
+        @Override
+        public ItemDetail getGroup(int groupPosition) {
+            return groups.get(groupPosition);
+        }
+
+        @Override
+        public Object getChild(int groupPosition, int childPosition) {
+            return children.get(groupPosition).get(childPosition);
+        }
+
+        @Override
+        public long getGroupId(int groupPosition) {
+            return groupPosition;
+        }
+
+        @Override
+        public long getChildId(int groupPosition, int childPosition) {
+            return childPosition;
+        }
+
+        @Override
+        public boolean hasStableIds() {
+            return true;
+        }
+
+
+        @Override
+        public View getChildView(int groupPosition, final int childPosition, boolean isLastChild, View convertView, ViewGroup parent) {
+
+            ItemDetailsAdapter.ChildHolder holder;
+            if (convertView == null) {
+                convertView = inf.inflate(R.layout.shop_detail_item_child, parent, false);
+                holder = new ItemDetailsAdapter.ChildHolder();
+
+                holder.description = (TextView) convertView.findViewById(R.id.item_description);
+                //holder.text.setBackgroundColor(getResources().getColor(R.color.colorTranslucent));
+                convertView.setTag(holder);
+            } else {
+                holder = (ItemDetailsAdapter.ChildHolder) convertView.getTag();
+            }
+
+            holder.description.setText(getChild(groupPosition, childPosition).toString());
+//        holder.text.setAutoLinkMask(Linkify.PHONE_NUMBERS);
+
+            return convertView;
+        }
+
+        @Override
+        public View getGroupView(int groupPosition, boolean isExpanded, View convertView, ViewGroup parent) {
+            ItemDetailsAdapter.GroupHolder holder;
+
+            if (convertView == null) {
+                convertView = inf.inflate(R.layout.shop_detail_item, parent, false);
+
+                holder = new ItemDetailsAdapter.GroupHolder();
+                holder.name = (TextView) convertView.findViewById(R.id.item_name);
+                holder.price = (TextView) convertView.findViewById(R.id.item_price);
+                holder.image = (ImageView) convertView.findViewById(R.id.item_image);
+                convertView.setTag(holder);
+            } else {
+                holder = (ItemDetailsAdapter.GroupHolder) convertView.getTag();
+            }
+
+            holder.name.setText(getGroup(groupPosition).getItemName().toString());
+            holder.price.setText(getGroup(groupPosition).getItemPrice().toString());
+            Glide.with(holder.image.getContext()).load(getGroup(groupPosition).getItemUrl()).into(holder.image);
+            return convertView;
+        }
+
+        @Override
+        public boolean isChildSelectable(int groupPosition, int childPosition) {
+            return true;
+        }
+
+        private class GroupHolder {
+            TextView name;
+            TextView price;
+            ImageView image;
+
+        }
+        private  class ChildHolder{
+            TextView description;
+        }
+    }
+
 }

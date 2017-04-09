@@ -23,6 +23,7 @@ import com.example.adityadesai.cngcustomer.NavDrawerFragments.FeedbackPageFragme
 import com.example.adityadesai.cngcustomer.NavDrawerFragments.HomePageFragment;
 import com.example.adityadesai.cngcustomer.NavDrawerFragments.OffersPageFragment;
 //import com.example.adityadesai.cng.Objects.Id;
+import com.example.adityadesai.cngcustomer.Objects.Industry;
 import com.example.adityadesai.cngcustomer.R;
 import com.firebase.ui.auth.AuthUI;
 import com.google.android.gms.tasks.OnCompleteListener;

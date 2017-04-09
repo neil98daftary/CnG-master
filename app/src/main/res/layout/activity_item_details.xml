@@ -27,10 +27,12 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <ListView
+        <ExpandableListView
             android:id="@+id/item_details_list"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent"
+            android:childIndicator="@color/colorAccent"
+            android:layoutDirection="rtl"/>
 
     </android.support.v4.widget.SwipeRefreshLayout>
 
