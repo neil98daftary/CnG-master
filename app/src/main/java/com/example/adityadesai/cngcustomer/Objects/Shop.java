@@ -15,8 +15,10 @@ public class Shop {
     private String shopUrl;
     private String ownerId;
     private ArrayList<String> offers;
+    private String totalRatePoints;
+    private String numRates;
 
-    public Shop(String name, String address, String phone,String id, String industry, String shop_Url,String ownerId,ArrayList<String> offers){
+    public Shop(String name, String address, String phone,String id, String industry, String shop_Url,String ownerId,ArrayList<String> offers,String totalRatePoints,String numRates){
         shopName=name;
         shopAddress=address;
         shopPhone=phone;
@@ -25,6 +27,8 @@ public class Shop {
         shopUrl = shop_Url;
         this.ownerId  = ownerId;
         this.offers = offers;
+        this.totalRatePoints = totalRatePoints;
+        this.numRates = numRates;
     }
 
     public String getShopName(){
@@ -48,4 +52,12 @@ public class Shop {
     public String getOwnerId() {return ownerId;}
 
     public ArrayList<String> getOffers() {return offers;}
+
+    public String getTotalRatePoints() {
+        return totalRatePoints;
+    }
+
+    public String getNumRates() {
+        return numRates;
+    }
 }

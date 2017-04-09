@@ -3,15 +3,6 @@
 
     <item
         is-multidex="false"
-        jar="/Users/adityadesai/Desktop/CnG-master/Libraries/SlidableListView/build/intermediates/bundles/default/classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.0"
-        sha1="f4700bdc0d247d638cc6098ffe444fc4dc76a4e0">
-        <dex dex="/Users/adityadesai/Desktop/CnG-master/app/build/intermediates/pre-dexed/debug/classes_f8d8a048f4a441d59ba16bd6240e8a91b15ff355.jar" />
-    </item>
-    <item
-        is-multidex="false"
         jar="/Users/adityadesai/Desktop/CnG-master/Libraries/circleindicator/build/intermediates/bundles/default/classes.jar"
         jumboMode="false"
         optimize="true"
@@ -21,12 +12,12 @@
     </item>
     <item
         is-multidex="false"
-        jar="/Users/adityadesai/.android/build-cache/4104b789b2a0f253758f89da6f463814502cee24/output/jars/classes.jar"
+        jar="/Users/adityadesai/Desktop/CnG-master/Libraries/SlidableListView/build/intermediates/bundles/default/classes.jar"
         jumboMode="false"
         optimize="true"
         revision="25.0.0"
-        sha1="1c3b9743fe8bb166a90a7e98b9b9f1f8021d80cd">
-        <dex dex="/Users/adityadesai/Desktop/CnG-master/app/build/intermediates/pre-dexed/debug/classes_aa59527a381b92432b435ae0f5d50ca251bf6dbc.jar" />
+        sha1="f4700bdc0d247d638cc6098ffe444fc4dc76a4e0">
+        <dex dex="/Users/adityadesai/Desktop/CnG-master/app/build/intermediates/pre-dexed/debug/classes_f8d8a048f4a441d59ba16bd6240e8a91b15ff355.jar" />
     </item>
 
 </items>

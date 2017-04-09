@@ -2,6 +2,7 @@ package com.example.adityadesai.cngcustomer.Adapters;
 
 import android.content.Context;
 import android.content.Intent;
+import android.support.annotation.IntegerRes;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,6 +11,7 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RatingBar;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
@@ -37,6 +39,7 @@ public class ShopRecyclerAdapter extends RecyclerView.Adapter<ShopRecyclerAdapte
         private TextView mItemName;
         private TextView mItemAddress;
         private ImageView mImageView;
+        private RatingBar ratingBar;
         private Shop mShop;
 
         private String name;
@@ -56,6 +59,7 @@ public class ShopRecyclerAdapter extends RecyclerView.Adapter<ShopRecyclerAdapte
             mItemName = (TextView) v.findViewById(R.id.shop_name);
             mItemAddress = (TextView) v.findViewById(R.id.shop_address);
             mImageView = (ImageView) v.findViewById(R.id.shop_image);
+            ratingBar = (RatingBar) v.findViewById(R.id.ratingBar);
             container = (LinearLayout) v.findViewById(R.id.shopRootLayout);
             v.setOnClickListener(this);
         }
@@ -94,10 +98,16 @@ public class ShopRecyclerAdapter extends RecyclerView.Adapter<ShopRecyclerAdapte
             mShop = shop;
             mItemName.setText(shop.getShopName());
             mItemAddress.setText(shop.getShopAddress());
+            if(Integer.parseInt(shop.getNumRates())!=0){
+                ratingBar.setRating(Float.parseFloat(shop.getTotalRatePoints())/Integer.parseInt(shop.getNumRates()));
+            }
+            else{
+                ratingBar.setRating(0);
+            }
             if (shop.getShopUrl() != null) {
                 Glide.with(mImageView.getContext()).load(mShop.getShopUrl()).into(mImageView);
-
             }
+
         }
     }
 
