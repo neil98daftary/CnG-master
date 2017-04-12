@@ -143,7 +143,7 @@ public class ShopListActivity extends AppCompatActivity {
                         String shop_phonenum = (String) snapshot.child("shopPhone").getValue();
                         String shop_id =  (String) snapshot.child("shop_id").getValue();
                         String industry_name =  (String) snapshot.child("industryName").getValue();
-                        String shop_uri = (String) snapshot.child("shopUrl").getValue();
+                        ArrayList<String> shop_uri = (ArrayList<String>) snapshot.child("shopUrl").getValue();
                         String owner_id = (String) snapshot.child("ownerId").getValue();
                         ArrayList<String> offers = (ArrayList<String>) snapshot.child("offers").getValue();
                         String totalRatePoints;

@@ -12,13 +12,13 @@ public class Shop {
     private String shopPhone;
     private String shop_id;
     private String industryName;
-    private String shopUrl;
+    private ArrayList<String> shopUrl;
     private String ownerId;
     private ArrayList<String> offers;
     private String totalRatePoints;
     private String numRates;
 
-    public Shop(String name, String address, String phone,String id, String industry, String shop_Url,String ownerId,ArrayList<String> offers,String totalRatePoints,String numRates){
+    public Shop(String name, String address, String phone,String id, String industry, ArrayList<String> shop_Url,String ownerId,ArrayList<String> offers,String totalRatePoints,String numRates){
         shopName=name;
         shopAddress=address;
         shopPhone=phone;
@@ -47,7 +47,7 @@ public class Shop {
 
     public String getIndustryName() {return industryName;}
 
-    public String getShopUrl() {return shopUrl;}
+    public ArrayList<String> getShopUrl() {return shopUrl;}
 
     public String getOwnerId() {return ownerId;}
 

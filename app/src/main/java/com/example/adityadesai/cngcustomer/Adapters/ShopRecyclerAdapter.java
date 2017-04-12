@@ -47,7 +47,7 @@ public class ShopRecyclerAdapter extends RecyclerView.Adapter<ShopRecyclerAdapte
         private String phone;
         private String id;
         private String industry;
-        private String shopurl;
+        private ArrayList<String> shopurl;
         private String ownerid;
         private ArrayList<String> offers;
 
@@ -86,7 +86,7 @@ public class ShopRecyclerAdapter extends RecyclerView.Adapter<ShopRecyclerAdapte
             i.putExtra("shopPhone",phone);
             i.putExtra("shop_id",id);
             i.putExtra("industry_name",industry);
-            i.putExtra("shop_url",shopurl);
+            i.putStringArrayListExtra("shop_url",shopurl);
             i.putExtra("owner_id",ownerid);
             i.putExtra("offers",offers);
             v.getContext().startActivity(i);
@@ -105,7 +105,7 @@ public class ShopRecyclerAdapter extends RecyclerView.Adapter<ShopRecyclerAdapte
                 ratingBar.setRating(0);
             }
             if (shop.getShopUrl() != null) {
-                Glide.with(mImageView.getContext()).load(mShop.getShopUrl()).into(mImageView);
+                Glide.with(mImageView.getContext()).load(mShop.getShopUrl().get(0)).into(mImageView);
             }
 
         }

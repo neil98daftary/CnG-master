@@ -53,7 +53,7 @@ public class ShopDetailsActivity extends AppCompatActivity implements TabLayout.
     public static String phone;
     public static String industry;
     public static String id;
-    public static String url;
+    public static ArrayList<String> url;
     public static String ownerid;
     public static ArrayList<String> offers;
 
@@ -92,7 +92,9 @@ public class ShopDetailsActivity extends AppCompatActivity implements TabLayout.
         phone = i.getStringExtra("shopPhone");
         industry=i.getStringExtra("industry_name");
         id = i.getStringExtra("shop_id");
-        url = i.getStringExtra("shop_url");
+        if(i.getStringArrayListExtra("shop_url") != null) {
+            url.addAll(0,i.getStringArrayListExtra("shop_url"));
+        }
         ownerid = i.getStringExtra("owner_id");
         if(i.getStringArrayListExtra("offers") != null) {
             offers.addAll(0, i.getStringArrayListExtra("offers"));
